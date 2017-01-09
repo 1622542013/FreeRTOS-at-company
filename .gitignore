@@ -1,0 +1,6 @@
+*~
+*.map
+*.lst
+*.uvoptx
+*.uvguix.*
+Output/
