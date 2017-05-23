@@ -1,13 +1,20 @@
 /*============================================================================*/
+<<<<<<< HEAD
 /* Copyright (C), 2017, Yagro Co., Ltd.                                       */
 /* File name:   main.c                                                        */
 /* Date:        2017.4.19                                                     */
+=======
+/* Copyright (C), 2016, Yagro Co., Ltd.                                       */
+/* File name:   main.c                                                        */
+/* Date:        2016.11.29                                                    */
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 /* Description:                                                               */
 /*============================================================================*/
 
 /*============================================================================*/
 /*                               Header include                               */
 /*============================================================================*/
+<<<<<<< HEAD
 
 #include "config.h"
 #include "gnss.h"
@@ -45,10 +52,17 @@ unsigned char state_mag = 0;
 EllipFittingResult ell_result;
 TpUchar  mag_result = 0;
 
+=======
+#include "stm32f4xx.h"
+#include "config.h"
+#include "gnss.h"
+#include "protocol.h"
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 /*============================================================================*/
 /*                            Function definition                             */
 /*============================================================================*/
+<<<<<<< HEAD
 extern TpUchar Gnss_not_already_flag;
 int count = 0;
 TpInt32 num;
@@ -130,3 +144,26 @@ TpInt32 main(TpVoid)
 }
 
 
+=======
+
+TpInt32 main(TpVoid)
+{
+  SCB->VTOR = FLASH_BASE|0x10000;
+	
+  HardWareInit();
+  PackageInit(&package);
+  ProtocolInit(&protocol);
+
+	StartPrint();
+	Delay_ms(100);	
+  
+  EXTI_Config();
+  NVIC_Config();
+	
+	for(;;)
+	{
+		 UsartSend(&usart2);
+	}
+
+}
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6

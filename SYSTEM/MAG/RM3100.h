@@ -13,11 +13,16 @@
 /*============================================================================*/
 
 #include "SPI1.h"
+<<<<<<< HEAD
 #include "globals.h"
+=======
+
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 /*============================================================================*/
 /*                                   Macros                                   */
 /*============================================================================*/
 
+<<<<<<< HEAD
 #define MAG_LSB_TO_GS_Counts_50 (1.0f/1985.714285714284f) /* Counts_50 */
 #define MAG_LSB_TO_GS_Counts_100 (1.0f/3821.428571428569f) /* Counts_100 */
 #define MAG_LSB_TO_GS_Counts_200 (1.0f/7492.857142857140f) /* Counts_200 */
@@ -29,6 +34,9 @@
 #define MAG_LSB_TO_GS_Counts_12800 (1.0f/470092.8571428570f) /* Counts_12800 */
 #define MAG_LSB_TO_GS_Counts_25600 (1.0f/940035.7142857140f) /* Counts_25600 */
 
+=======
+#define MAG_LSB_TO_GS (1.0f/29909.25f) /* Counts_800 */
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 /********** RM3100 Register ***********/
 
@@ -110,6 +118,7 @@
 
 typedef struct tagRM3100
 {
+<<<<<<< HEAD
 	/* reg data  */
 	TpInt32   magx_reg;
 	TpInt32   magy_reg;
@@ -133,6 +142,12 @@ typedef struct _tagMagSend
 }MagSend;
 
 
+=======
+	TpInt32   mag_reg[3];
+  TpFloat mag[3];
+}RM3100;
+
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 #pragma pack(pop)
 
 /*============================================================================*/
@@ -143,6 +158,7 @@ typedef struct _tagMagSend
 extern "C"
 {
 #endif /* __cplusplus */
+<<<<<<< HEAD
 
 	
 /*============================================================================*/
@@ -168,6 +184,19 @@ TpBool MagCaliCompensate(const float bias_mag[3],const float mul_matrix[],RM3100
 TpBool MagMulMatrixCalc(const float matrix_mag[],const float rotation_mag[],float mul_matrix[]);
 TpBool ChangeMagSampleRate(TpUint16 rate);
 //TpBool CombineMagBin(RM3100* pRm3100,UmiMagBin* pUmiMagBin);	
+=======
+  
+extern RM3100 rm3100;
+
+TpUchar RM3100_ReadData(TpUchar addr);
+TpBool  RM3100_WriteData(TpUchar addr, TpUchar data);
+TpBool  RM3100_DRDY_Init(TpVoid);
+TpBool  RM3100_Init(TpUint16 counts, TpUchar rate);
+TpBool  RM3100_Read(RM3100* rm);
+TpBool  RM3100_DataConversion(RM3100* rm);
+TpBool  RM3100Config(TpVoid);
+
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

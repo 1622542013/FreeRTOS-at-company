@@ -35,13 +35,22 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx.h"
+<<<<<<< HEAD
 #include "definition.h"
 #include "usart.h"
 #include "SPI1.h"
+=======
+#include "gnss.h"
+#include "RM3100.h"
+#include "usart.h"
+#include "protocol.h"
+
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+<<<<<<< HEAD
 
 typedef struct _tagInterruptRecFlag
 {
@@ -64,6 +73,8 @@ typedef struct _tagInterruptRecFlag
 }InterruptRecFlag;
 
 
+=======
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 	 
 void NMI_Handler(void);
 void HardFault_Handler(void);
@@ -75,6 +86,7 @@ void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
 
+<<<<<<< HEAD
 InterruptRecFlag* GetInterruptRecFlag(TpVoid);
 
 extern TpUchar isSetMag;
@@ -83,6 +95,8 @@ extern TpUchar isSetMag;
 /*   */
 
 
+=======
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 #ifdef __cplusplus
 }
 #endif

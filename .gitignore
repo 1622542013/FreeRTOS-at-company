@@ -1,4 +1,5 @@
 *~
+<<<<<<< HEAD
 *.dat
 *.txt
 *.bak
@@ -11,6 +12,8 @@ Release/
 Objects/
 ipch/
 *~
+=======
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 *.map
 *.lst
 *.uvoptx

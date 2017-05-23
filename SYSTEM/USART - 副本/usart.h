@@ -1,21 +1,12 @@
 /*=========================================================================*/
 /* Copyright (C), 2016, Yagro Co., Ltd.                                    */
 /* File name:   USART.h                                                    */
-<<<<<<< HEAD
-/* Date:        2016.8.4                                                   */
-/* Description:                                                            */
-/*=========================================================================*/
-
-#ifndef __UMI_USART_H__
-#define __UMI_USART_H__
-=======
 /* Date:        2016.12.7                                                   */
 /* Description:                                                            */
 /*=========================================================================*/
 
 #ifndef __PROJECT_UMI_USART_H
 #define __PROJECT_UMI_USART_H
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 /*============================================================================*/
 /*                               Header include                               */
@@ -23,86 +14,10 @@
 
 #include "stm32f4xx.h"
 #include "definition.h"
-<<<<<<< HEAD
-=======
-#include "globals.h"
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 /*============================================================================*/
 /*                                   Macros                                   */
 /*============================================================================*/
-<<<<<<< HEAD
-
-#define USART_1 ((uint8_t)0x01)
-#define USART_2 ((uint8_t)0x02)
-//#define USART_3 ((uint8_t)0x03)
-//#define USART_4 ((uint8_t)0x04)
-//#define USART_5 ((uint8_t)0x05)
-#define USART_6 ((uint8_t)0x06)
-
-
-#define BUFSIZE_USART        (512)
-
-/* usart 1 */
-#define BUFSIZE_USART1_SEND  (256)
-#define BUFSIZE_USART1_REC   (512)
-
-/* usart 2 */
-#define BUFSIZE_USART2_SEND  (1024)
-#define BUFSIZE_USART2_REC   (512)
-
-/* usart 3 */
-#define BUFSIZE_USART3_SEND  (256)
-#define BUFSIZE_USART3_REC   (256)
-
-/* usart 4 */
-#define BUFSIZE_USART4_SEND  (256)
-#define BUFSIZE_USART4_REC   (256)
-
-/* usart 5 */
-#define BUFSIZE_USART5_SEND  (256)
-#define BUFSIZE_USART5_REC   (256)
-
-/* usart 6 */
-#define BUFSIZE_USART6_SEND  (512)
-#define BUFSIZE_USART6_REC   (1024)
-
-
-
-#define BAUD_9600       (9600)
-#define BAUD_115200     (115200)
-
-#define BAUD_USART1     ((TpUint32)115200)
-#define BAUD_USART2     ((TpUint32)460800)
-#define BAUD_USART3     ((TpUint32)115200)
-#define BAUD_USART4     ((TpUint32)115200)
-#define BAUD_USART5     ((TpUint32)115200)
-#define BAUD_USART6     ((TpUint32)921600)
-
-#define PARITY_USART1   USART_Parity_No
-#define PARITY_USART2   USART_Parity_No
-#define PARITY_USART3   USART_Parity_No
-#define PARITY_USART4   USART_Parity_No
-#define PARITY_USART5   USART_Parity_No
-#define PARITY_USART6   USART_Parity_No
-
-#define WORDLEN_USART1  USART_WordLength_8b
-#define WORDLEN_USART2  USART_WordLength_8b
-#define WORDLEN_USART3  USART_WordLength_8b
-#define WORDLEN_USART4  USART_WordLength_8b
-#define WORDLEN_USART5  USART_WordLength_8b
-#define WORDLEN_USART6  USART_WordLength_8b
-
-#define STOPBIT_USART1  USART_StopBits_1
-#define STOPBIT_USART2  USART_StopBits_1
-#define STOPBIT_USART3  USART_StopBits_1
-#define STOPBIT_USART4  USART_StopBits_1
-#define STOPBIT_USART5  USART_StopBits_1
-#define STOPBIT_USART6  USART_StopBits_1
-
-
-/***************** USART_1 Configuration *********************/
-=======
 /* buf size */
 #define BUFSIZE_USART_512    ((TpUint16)512)
 #define BUFSIZE_USART_1024   ((TpUint16)1024)
@@ -159,7 +74,6 @@
 #define INDEX_USART6         ((uint8_t)0x06)
 
 /***************** USART1 Configuration *********************/
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 #define RCC_AHB1Periph_USART_1_Tx     RCC_AHB1Periph_GPIOA
 #define RCC_AHB1Periph_USART_1_Rx     RCC_AHB1Periph_GPIOA
@@ -175,11 +89,7 @@
 
 /*************************************************************/
 
-<<<<<<< HEAD
-/***************** USART_2 Configuration *********************/
-=======
 /***************** USART2 Configuration *********************/
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 #define RCC_AHB1Periph_USART_2_Tx     RCC_AHB1Periph_GPIOA
 #define RCC_AHB1Periph_USART_2_Rx     RCC_AHB1Periph_GPIOA
@@ -195,11 +105,7 @@
 
 /*************************************************************/
 
-<<<<<<< HEAD
-/***************** USART_3 Configuration *********************/
-=======
 /***************** USART3 Configuration *********************/
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 #define RCC_AHB1Periph_USART_3_Tx     RCC_AHB1Periph_GPIOB
 #define RCC_AHB1Periph_USART_3_Rx     RCC_AHB1Periph_GPIOB
@@ -215,11 +121,7 @@
 
 /*************************************************************/
 
-<<<<<<< HEAD
-/***************** USART_4 Configuration *********************/
-=======
 /***************** USART4 Configuration *********************/
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 #define RCC_AHB1Periph_USART_4_Tx     RCC_AHB1Periph_GPIOC
 #define RCC_AHB1Periph_USART_4_Rx     RCC_AHB1Periph_GPIOC
@@ -235,11 +137,7 @@
 
 /*************************************************************/
 
-<<<<<<< HEAD
-/***************** USART_5 Configuration *********************/
-=======
 /***************** USART5 Configuration *********************/
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 #define RCC_AHB1Periph_USART_5_Tx     RCC_AHB1Periph_GPIOC
 #define RCC_AHB1Periph_USART_5_Rx     RCC_AHB1Periph_GPIOD
@@ -255,11 +153,7 @@
 
 /*************************************************************/
 
-<<<<<<< HEAD
-/***************** USART_6 Configuration *********************/
-=======
 /***************** USART6 Configuration *********************/
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 #define RCC_AHB1Periph_USART_6_Tx     RCC_AHB1Periph_GPIOA
 #define RCC_AHB1Periph_USART_6_Rx     RCC_AHB1Periph_GPIOA
@@ -282,23 +176,6 @@
 
 typedef struct tagComBuf
 {
-<<<<<<< HEAD
-  TpUchar* rec_buf;
-  TpUint16 rec_size; 
-  TpUint16 rec_pt;
-  
-  TpUchar* send_buf;
-  TpUint16 send_size;
-  TpUint16 send_pt;
-	TpUint16 send_lock;
-	
-	
-	TpUchar* main_buf;
-	TpUint16 main_size;
-	TpUint16 main_pt;
-	TpUint16 main_lock;
-	
-=======
   TpUchar  rec_buf[BUFSIZE_USART_512];
   TpUint16 rec_size; 
   TpUint16 rec_pt;
@@ -310,7 +187,6 @@ typedef struct tagComBuf
 	TpUchar  send_flag;
 	
   TpUchar  flag_block;	
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 }ComBuf;
 
 typedef struct tagComPara
@@ -321,13 +197,15 @@ typedef struct tagComPara
   TpUchar  stopbit;
 }ComPara;
 
-<<<<<<< HEAD
-typedef struct tagDmaPara
-{
-	DMA_InitTypeDef  RecDMA_InitStructure;
-	DMA_InitTypeDef  SentDMA_InitStructure;
-}DmaPara;	
-=======
+//typedef struct tagComDma
+//{
+//  USART_TypeDef *USART_TypeStructure;  
+//	DMA_Stream_TypeDef* DMA_RecStream;
+//	DMA_Stream_TypeDef* DMA_SentStream;
+//	DMA_InitTypeDef  RecDMA_InitStructure;
+//	DMA_InitTypeDef  SentDMA_InitStructure;
+//}ComDma;
+
 typedef struct tagMainBuf
 {
 	TpUchar  send_buf[BUFSIZE_USART_512];
@@ -335,49 +213,19 @@ typedef struct tagMainBuf
 	TpUint16 send_pt;
   TpUint16 num_lock;
 }MainBuf;
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 typedef struct tagUsart
 {
   TpUchar  index;
   ComBuf   cb;
-<<<<<<< HEAD
-  ComPara  cp;
-	TpUchar  is_send;
-//  DmaPara  dp;  
-}Usart;
-#pragma pack(pop)
-
-
-
-/* config usart */
-TpVoid UsartConfig(Usart* pu,TpUchar index,TpUint32 baudrate);
-TpVoid UsartComBufConfig(Usart* pu);
-TpVoid UsartGpioConfig(Usart* pu);
-TpVoid UsartDmaConfig(Usart* pu);
-
-TpVoid UsartParaConfig(Usart* pu,TpUint32 buadrate);
-
-/* send data */
-TpVoid UsartPushSendBuf(Usart* pu,TpUchar* pbuf,TpUint16 len);
-TpVoid UsartPushMainBuf(Usart* pu,TpUchar* pbuf,TpUint16 len);
-TpBool UsartSend(Usart* pu);
-TpVoid SendCom(Usart* pu);
-
-/* start rec  */
-TpVoid UsartRecEnable(Usart* pu);
-Usart* GetUsartAddress(TpUchar index);
-
-/* get rec num */
-TpUint32 GetUsartRxNum(TpUchar index);
-TpVoid UsartSendImmediately(Usart* pu,TpUchar* buff,TpUint16 length);
-
-#endif 	/* __USART_H */
-=======
   ComPara  cp;  
 	MainBuf  mb;
+	/* dma */
+	DMA_Stream_TypeDef* DMA_RecStream;
+	DMA_Stream_TypeDef* DMA_SentStream;
+	DMA_InitTypeDef  RecDMA_InitStructure;
+	DMA_InitTypeDef  SentDMA_InitStructure;
 }Usart;
-
 #pragma pack(pop)
 
 /*============================================================================*/
@@ -392,32 +240,30 @@ extern Usart usart1;
 extern Usart usart2;
 extern Usart usart6;
 
-#ifdef UBLOX_ON
-extern DMA_InitTypeDef SentDMA_InitStructure1;
-#endif
-
 /* config usart api*/
 TpBool UsartConfig(Usart* pu,TpUchar index,TpUint32 baudrate);
 
-TpBool UsartComBufConfig(Usart* pu,TpUchar index);                  /* config rec and send buf */
-TpBool UsartGpioConfig(Usart* pu,TpUchar index);                    /* config gpio */
-TpBool UsartDmaConfig(Usart* pu,TpUchar index);                     /* config dma */
-TpBool UsartParaConfig(Usart* pu,TpUchar index,TpUint32 buadrate);  /* config param */
+TpBool UsartComBufConfig(Usart* pu);                  /* config rec and send buf */
+TpBool UsartGpioConfig(Usart* pu);                    /* config gpio */
+TpBool UsartDmaConfig(Usart* pu);                     /* config dma */
+TpBool UsartParaConfig(Usart* pu,TpUint32 buadrate);  /* config param */
 
-/* push data to send buf*/
-TpBool UsartPushSendBuf(Usart* pu,TpUchar* pbuf,TpUint16 num,TpUint16 index);
-/* push data to main buf  */	
-TpBool UsartPushMainBuf(Usart* pu,TpUchar* pbuf,TpUint16 num);
-
-/* send data  */
-TpUint16 UsartDmaGetCurrentDataCnt(Usart* pu);
-TpBool UsartSendMainBuf(Usart* pu);
-TpBool UsartSend(Usart* pu);
-TpBool UsartDmaSend(Usart* pu);
+/* send data */
+TpBool UsartPushBuf(Usart* pu,TpUchar* pbuf,TpUint16 len,TpUint16 index);
+//TpBool UsartSendBuf(Usart* pu,TpUint16 len);
+TpBool UsartSendBuf(Usart* pu);
 	
+/*  main buf  */	
+TpBool UsartPushMainBuf(Usart* pu,TpUchar* pbuf,TpUint16 num);
+TpBool UsartSendMainBuf(Usart* pu);
+	
+#ifdef UBLOX_ON
+/* config Ublox  */
+TpVoid UsartUblox(TpVoid);
+#endif
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
 #endif 	/* __PROJECT_UMI_USART_H */
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6

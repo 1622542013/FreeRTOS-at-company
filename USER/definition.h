@@ -40,7 +40,11 @@
 #endif
 
 typedef void               TpVoid;
+<<<<<<< HEAD
 typedef signed char        TpBool;
+=======
+typedef int                TpBool;
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 typedef char               TpChar;
 typedef unsigned char      TpUchar;
 typedef short              TpInt16;
@@ -52,7 +56,13 @@ typedef double             TpDouble;
 typedef long long          TpInt64;
 typedef unsigned long long TpUint64;
 
+<<<<<<< HEAD
 	
 #endif
 	
  
+=======
+#endif
+  
+  
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6

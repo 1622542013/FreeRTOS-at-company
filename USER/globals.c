@@ -1,7 +1,12 @@
 /*============================================================================*/
 /* Copyright (C), 2016, Yagro Co., Ltd.                                       */
+<<<<<<< HEAD
 /* File name:   globals.c                                                     */
 /* Date:        2017.4.29                                                     */
+=======
+/* File name:   user_define.c                                                         */
+/* Date:        2016.7.21                                                     */
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 /* Description:                                                              */
 /*============================================================================*/
 
@@ -16,6 +21,7 @@
 /*                              Global variables                              */
 /*============================================================================*/
 
+<<<<<<< HEAD
 
 #define NUM_MAX 							2e32-1
 
@@ -113,3 +119,36 @@ TpBool My_atoi(const char* buff,int32_t* num)
 	return result;
 	
 }
+=======
+UmiOutput st_UmiOutput;
+UmiOutIMU st_UmiOutIMU;
+UmiMagSend    umiMagSend;
+
+/*  add for 54 suo */
+#ifdef UMI_SATCOM_FORMAT
+SatComYawInit    satComYawInit;
+SatComYawUpdate  satComYawUpdate;
+SatComYawFlag    satComYawFlag;
+SatComImuOut     satComImuOut;
+SatComPosOut     satComPosOut;
+SatComOverRange  satComOverRange;
+#endif
+
+/* out pitch and roll */
+TpUchar outgps_flag = 1;
+TpUchar outimu_flag = 0;
+TpUchar outimu_len = 0;
+TpUchar outimu_buf[50] = {0};
+
+TpUchar outmis_flag = 0;
+TpUchar rec_reply = 0;
+
+TpUchar flag_throughgps = 0;
+TpUint32 logtimer = 0;
+
+
+/*============================================================================*/
+/*                              Global functions                              */
+/*============================================================================*/
+
+>>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
