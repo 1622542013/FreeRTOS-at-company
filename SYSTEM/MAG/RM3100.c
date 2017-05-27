@@ -11,7 +11,6 @@
 
 #include "RM3100.h"
 
-<<<<<<< HEAD
 
 /*============================================================================*/
 /*                              Global variables                              */
@@ -19,34 +18,19 @@
 static RM3100 rm3100;
 static float MAG_LSB_TO_GS ;
 
-=======
-/*============================================================================*/
-/*                              Global variables                              */
-/*============================================================================*/
-
-RM3100 rm3100;
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 /*============================================================================*/
 /*                            Function definition                             */
 /*============================================================================*/
 
 /****************************************************
-<<<<<<< HEAD
  * Function:    Rm3100ReadData
-=======
- * Function:    RM3100_ReadData
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
  * Description: Read data from RM3100 register.
  * Input:       ADDR: RM3100 Register Address
  * Output:
  * Return:      Data register
 *****************************************************/
-<<<<<<< HEAD
 TpUchar Rm3100ReadData(TpUchar addr)
-=======
-TpUchar RM3100_ReadData(TpUchar addr)
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 {
 	uint16_t data, i;
 	
@@ -64,25 +48,15 @@ TpUchar RM3100_ReadData(TpUchar addr)
 }
 
 /****************************************************
-<<<<<<< HEAD
  * Function:    Rm3100WriteData
-=======
- * Function:    RM3100_WriteData
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
  * Description: Write data from RM3100 register.
  * Input:       ADDR: RM3100 Register Address
  *              Data: Data
  * Output:
  * Return:
 *****************************************************/
-<<<<<<< HEAD
 TpVoid Rm3100WriteData(TpUchar addr, TpUchar data)
 {
-=======
-TpBool RM3100_WriteData(TpUchar addr, TpUchar data)
-{
-  TpBool resutlt = INLIB_ERROR;
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
   TpUchar i;
   
   for(i=0; i<0x05; i++);
@@ -92,34 +66,17 @@ TpBool RM3100_WriteData(TpUchar addr, TpUchar data)
 	SPI1_CS1_HIGH();
   
   for(i=0; i<0x05; i++);
-<<<<<<< HEAD
 }
 
 /****************************************************
  * Function:    Rm3100DRDYInit
-=======
-  
-  resutlt = INLIB_OK;
-  return resutlt;
-}
-
-/****************************************************
- * Function:    RM3100_DRDY_Init
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
  * Description: Initialization RM3100 DRDY pin.
  * Input:
  * Output:
  * Return:
 *****************************************************/
-<<<<<<< HEAD
 TpVoid Rm3100DRDYInit(TpVoid)
 {  
-=======
-TpBool RM3100_DRDY_Init(TpVoid)
-{
-  TpBool resutlt = INLIB_ERROR;
-  
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 	GPIO_InitTypeDef GPIO_InitStructure;
 	EXTI_InitTypeDef EXTI_InitStructure;
 	
@@ -139,27 +96,16 @@ TpBool RM3100_DRDY_Init(TpVoid)
 	EXTI_InitStructure.EXTI_LineCmd = ENABLE;
 	EXTI_Init(&EXTI_InitStructure);
   
-<<<<<<< HEAD
 }
 
 /****************************************************
  * Function:    Rm3100Init
-=======
-  resutlt = INLIB_OK;
-  return resutlt;
-  
-}
-
-/****************************************************
- * Function:    RM3100_Init
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
  * Description: Initialization RM3100.
  * Input:       Counts: Cycle Counts
  *              Rate: Sample Rate
  * Output:
  * Return:
 *****************************************************/
-<<<<<<< HEAD
 TpVoid  Rm3100Init(TpUint16 counts, TpUchar rate)
 { 
 	 uint8_t data;
@@ -194,54 +140,11 @@ TpVoid  Rm3100Init(TpUint16 counts, TpUchar rate)
 
 /****************************************************
  * Function:    Rm3100Read
-=======
-TpBool  RM3100_Init(TpUint16 counts, TpUchar rate)
-{
-  TpBool resutlt = INLIB_ERROR;
-  
-	 uint8_t data;
-  
-    RM3100_DRDY_Init();
-  
-  /* Off Continuous Measurement Mode */
-    RM3100_WriteData(RM3100_CMM, 0x78);
-    while( (data&0xF0) != 0xF0 )
-    {
-      RM3100_WriteData(RM3100_BIST, 0x87);  /* On Self-Test */
-      RM3100_WriteData(RM3100_POLL, 0x70);
-      while(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_2) == 0);
-      data = RM3100_ReadData(RM3100_BIST);
-    }
-    RM3100_WriteData(RM3100_BIST, 0x00);  /* Off Self-Test */
-    
-    /* On Continuous Measurement Mode */
-    RM3100_WriteData(RM3100_CMM, 0x79);
-    
-    RM3100_WriteData(RM3100_CCX, (uint8_t)(counts>>8));
-    RM3100_WriteData(RM3100_CCX+1, (uint8_t)(counts&0x00FF));
-    
-    RM3100_WriteData(RM3100_CCY, (uint8_t)(counts>>8));
-    RM3100_WriteData(RM3100_CCY+1, (uint8_t)(counts&0x00FF));
-    
-    RM3100_WriteData(RM3100_CCZ, (uint8_t)(counts>>8));
-    RM3100_WriteData(RM3100_CCZ+1, (uint8_t)(counts&0x00FF));
-    
-    RM3100_WriteData(RM3100_TMRC, rate);;
-  
-  resutlt = INLIB_OK;
-  return resutlt;
-  
-}
-
-/****************************************************
- * Function:    RM3100_Read
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
  * Description: Read RM3100 MAG Data.
  * Input:       &rm3100
  * Output:
  * Return:
 *****************************************************/
-<<<<<<< HEAD
 TpBool Rm3100Read(RM3100* rm)
 {
 //  TpBool resutlt = INLIB_ERROR;
@@ -251,59 +154,29 @@ TpBool Rm3100Read(RM3100* rm)
 	Data = Rm3100ReadData(RM3100_MX)<<16;
 	Data |= Rm3100ReadData(RM3100_MX+1)<<8;
 	Data |= Rm3100ReadData(RM3100_MX+2);
-=======
-TpBool RM3100_Read(RM3100* rm)
-{
-  TpBool resutlt = INLIB_ERROR;
-	TpUint32 Data;
-	
-	Data = RM3100_ReadData(RM3100_MX)<<16;
-	Data |= RM3100_ReadData(RM3100_MX+1)<<8;
-	Data |= RM3100_ReadData(RM3100_MX+2);
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 	if(Data&0x00800000)
 	{
 		Data = Data|0xFF000000;
 	}
-<<<<<<< HEAD
 	rm->magx_reg = Data;
 	
 	Data = Rm3100ReadData(RM3100_MY)<<16;
 	Data |= Rm3100ReadData(RM3100_MY+1)<<8;
 	Data |= Rm3100ReadData(RM3100_MY+2);
-=======
-	rm->mag_reg[0] = Data;
-	
-	Data = RM3100_ReadData(RM3100_MY)<<16;
-	Data |= RM3100_ReadData(RM3100_MY+1)<<8;
-	Data |= RM3100_ReadData(RM3100_MY+2);
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 	if(Data&0x00800000)
 	{
 		Data = Data|0xFF000000;
 	}
-<<<<<<< HEAD
 	rm->magy_reg = Data;
 	
 	Data = Rm3100ReadData(RM3100_MZ)<<16;
 	Data |= Rm3100ReadData(RM3100_MZ+1)<<8;
 	Data |= Rm3100ReadData(RM3100_MZ+2);
-=======
-	rm->mag_reg[1] = Data;
-	
-	Data = RM3100_ReadData(RM3100_MZ)<<16;
-	Data |= RM3100_ReadData(RM3100_MZ+1)<<8;
-	Data |= RM3100_ReadData(RM3100_MZ+2);
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 	if(Data&0x00800000)
 	{
 		Data = Data|0xFF000000;
 	}
-<<<<<<< HEAD
 	rm->magz_reg = Data;
-=======
-	rm->mag_reg[2] = Data;
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
   
   resutlt = INLIB_OK;
   return resutlt;
@@ -311,18 +184,13 @@ TpBool RM3100_Read(RM3100* rm)
 }
 
 /****************************************************
-<<<<<<< HEAD
  * Function:    Rm3100DataConversion
-=======
- * Function:    RM3100_DataConversion
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
  * Description: Data Conversion.
  * Input:       &rm3100
  *              &fData_rm3100
  * Output:
  * Return:
 *****************************************************/
-<<<<<<< HEAD
 TpBool Rm3100DataConversion(RM3100* rm)
 { 
 	rm->magx = rm->magx_reg * MAG_LSB_TO_GS;
@@ -339,7 +207,7 @@ TpBool RM3100Config(TpUint16 rate)
   SPI1_DMA_TX_Init();
 	SPI1_DMA_RX_Init();
 	
-	MAG_LSB_TO_GS = MAG_LSB_TO_GS_Counts_400;
+	Rm3100SetMagLsbToGs(rate);
   
   return INLIB_OK;
 }
@@ -521,30 +389,3 @@ TpBool ChangeMagSampleRate(TpUint16 sample_rate)
 //  result = RESULT_OK;
 //	return result;
 //}
-=======
-TpBool RM3100_DataConversion(RM3100* rm)
-{
-  TpBool resutlt = INLIB_ERROR;
-  
-	rm->mag[0] = rm->mag_reg[0] * MAG_LSB_TO_GS;
-	rm->mag[1] = rm->mag_reg[1] * MAG_LSB_TO_GS;
-	rm->mag[2] = rm->mag_reg[2] * MAG_LSB_TO_GS;
-  
-  resutlt = INLIB_OK;
-  return resutlt;
-  
-}
-
-TpBool RM3100Config(TpVoid)
-{
-  TpBool resutlt = INLIB_ERROR;
-  
-  SPI1_Init();	
-	RM3100_Init(Counts_800, Rate_600Hz);
-  SPI1_DMA_TX_Init();
-	SPI1_DMA_RX_Init();
-  
-  resutlt = INLIB_OK;
-  return resutlt;
-}
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6

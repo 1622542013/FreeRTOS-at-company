@@ -190,12 +190,15 @@ TpUchar CheckNmea(const TpUchar *buf,const TpUint16 count)
 
 /*--------------------------------------------------------*/
 TpUchar Gnss_not_already_flag;
-int a = 0;
 TpVoid PackGnssData(GnssOutPut* gnss)
 {
 	if(gpgga.time_utc != gprmc.time_utc)
 	{
 		Gnss_not_already_flag = 1;
+		memset(gnss,0xff,sizeof(GnssOutPut));
+		gnss->head = 0xFEDC;
+		gnss->flag = GNSS_INCOMPLETE;
+		return ;
 	}
 	else
 	{
@@ -239,7 +242,7 @@ TpVoid PackGnssData(GnssOutPut* gnss)
 			}
 			else
 			{
-				gnss->lat = gnss->lat;				
+	  			gnss->lat = gnss->lat;				
 			}
 			
 			if(gpgga.lon_dir == 'W')
@@ -252,7 +255,7 @@ TpVoid PackGnssData(GnssOutPut* gnss)
 			}
 
 			gnss->alt = gpgga.alt;
-			gnss->spd = gprmc.spd;
+			gnss->spd = gprmc.spd * MILE2KM;
 			gnss->heading = gprmc.cog;
 	}
 	gnss->orient = 0;

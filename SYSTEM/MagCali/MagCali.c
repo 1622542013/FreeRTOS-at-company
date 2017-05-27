@@ -127,7 +127,9 @@ TpUchar IsVec3Zero(const TpFloat fVec[])
 }
 
 
-
+unsigned char ooo[31] = "$cmd,Mag,cali,faile!!\r\n";
+#include "delay.h"
+extern float mag_cal_time;
 unsigned char MagCaliOnline(unsigned char * pState_mag,EllipFittingResult * pEll_result)
 {
 	unsigned char result = 0;
@@ -143,12 +145,20 @@ unsigned char MagCaliOnline(unsigned char * pState_mag,EllipFittingResult * pEll
 			*pState_mag = GetEllipFittingState();
 			if(*pState_mag==2)
 			{
+					os_time_init();
+							
 					GetEllipFittingResult(pEll_result);
+				  
 				  stMagCaliFlag.flag_calidone = 1;
 				  stMagCaliFlag.flag_magcali = 1;
 				  if(pEll_result->is_ellipfitting_ok)
 					{
-            result = 1;						
+            result = 1;		
+					}
+					else
+					{		
+						UsartPushMainBuf(GetUsartAddress(USART_2),ooo,26);
+						mag_cal_time = os_time();	
 					}
 			}
 		}

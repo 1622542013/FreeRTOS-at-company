@@ -145,7 +145,7 @@
 
 
 
-#define OUTPUT_RATE_MAX						(100) /*200hz */
+#define OUTPUT_RATE_MAX						(100) /*100hz */
 
 #pragma pack(push)
 #pragma pack(1)

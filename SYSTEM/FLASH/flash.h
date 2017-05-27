@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*============================================================================*/
 /* Copyright (C), 2016, Yagro Co., Ltd.                                       */
 /* File name:   flash.h                                                      */
@@ -6,14 +5,6 @@
 /* Description:                                                              */
 /*============================================================================*/
 
-=======
-/*=========================================================================*/
-/* Copyright (C), 2016, Yagro Co., Ltd.                                    */
-/* File name:   Flash.h                                                    */
-/* Date:        2016.8.4                                                   */
-/* Description:                                                            */
-/*=========================================================================*/
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 #ifndef __UMI_FLASH_H_
 #define __UMI_FLASH_H_
 
@@ -22,19 +13,12 @@
 /*============================================================================*/
 
 #include "stm32f4xx.h"
-<<<<<<< HEAD
 #include "definition.h"
 #include "Ublox.h"
-=======
-#include "Ublox.h"
-#include "definition.h"
-
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 /*============================================================================*/
 /*                                   Macros                                   */
 /*============================================================================*/
 
-<<<<<<< HEAD
 #define FLAG_FLASH      ((uint32_t)0xAA55AA55)
 #define BASE_ADDRESS    ((uint32_t)0x08004000)
 
@@ -50,20 +34,11 @@
 
 /*============================================================================*/
 /*                             struct define                                  */
-=======
-#define FLAG_FLASH      (0xAA55AA55)
-#define BASE_ADDRESS    (0x08008000)
-#define COMMOND_ON      (0x00000001)
-#define COMMOND_OFF     (0x00000000)
-/*============================================================================*/
-/*                                struct define                               */
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 /*============================================================================*/
 
 #pragma pack(push)
 #pragma pack(1)
 
-<<<<<<< HEAD
 typedef struct _tagSysPara
 {
 	/* id */
@@ -89,22 +64,10 @@ typedef struct _tagSysPara
 	TpUchar  igm_bin_out_rate;
 	/* data out format */
 	TpUint16 data_out_format;
-=======
-typedef struct tagSysPara
-{
-	Ublox ub;	
-	TpUint32 id[4];
-  TpUint32 baud_usart1;
-  TpUint32 baud_usart2;
-	TpUint32 baud_usart6;
-  TpUint32 pos_freq;
-  TpUint32 imu_freq;
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 }SysPara;
 
 #pragma pack(pop)
 
-<<<<<<< HEAD
 typedef enum
 {
 	IMU_ASCII  = 1,
@@ -179,26 +142,3 @@ TpUchar GetOutputFormat(OutputFormat format);
 
 #endif 	/* __UMI_FLASH_H_ */
 
-=======
-
-/*============================================================================*/
-/*                           declarations                                     */
-/*============================================================================*/
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif /* __cplusplus */
-  
-extern SysPara syspara;
-
-TpBool   FlashInit(SysPara* sp);
-TpBool   FlashWrite(SysPara* sp);
-TpUint32 FlashRead(SysPara* sp);
-  
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-
-#endif
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6

@@ -7,7 +7,7 @@
 #define HEAD_RMC							"$GPRMC,"
 #define COMMA_ASCII_DIVISION	","
 
-
+#define MILE2KM              (1852.0f/3600.0f)
 
 /* GNSS fix type */
 #define GNSS_FIX_INVALID     ((TpUint16)0)
@@ -21,6 +21,7 @@
 #define GNSS_FIX_DATA        ((TpUint16)1<<15)
 #define GNSS_FIX_VALID       (GNSS_FIX_PV)
 
+#define GNSS_INCOMPLETE      ((TpUint16)1<<2)
 
 #pragma pack(push)
 #pragma pack(1)

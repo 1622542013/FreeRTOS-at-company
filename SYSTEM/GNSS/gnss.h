@@ -24,11 +24,7 @@
 #define HDOP_FAC             (100)
 
 #define CRC32_POLYNOMIAL     (0xEDB88320L)
-<<<<<<< HEAD
 #define UTC2GPS              (0)
-=======
-#define UTC2GPS              (17000)
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 #define NONE_IN				       ((TpUchar)0)
 #define GPGGA_IN			       ((TpUchar)1)
@@ -56,15 +52,8 @@
 #define GNSS_FIX_DATA        ((TpUint16)1<<15)
 #define GNSS_FIX_VALID       (GNSS_FIX_PV)
 
-<<<<<<< HEAD
-=======
-#ifdef UMI_SATCOM_FORMAT
-/* add for satcom  */
-#define GNSS_FIX_YAW_INIT    ((TpUint16)1<<2)
-#define GNSS_FIX_YAW_UPDATE  ((TpUint16)1<<3)
-#endif
 
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
+
 
 /*============================================================================*/
 /*                             struct define                             */
@@ -86,13 +75,6 @@ typedef struct
 	TpFloat   heading;
 	TpUint16  hdop;
 	TpFloat   orient;
-<<<<<<< HEAD
-=======
-#ifdef 	UMI_SATCOM_FORMAT
-	TpFloat   orient_q;
-	TpUchar   ack;
-#endif
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 	TpUchar   check;
 }GnssOut;
 
@@ -220,21 +202,13 @@ typedef struct tagGnssRec
 }GnssRec;
 
 
-<<<<<<< HEAD
  typedef struct tagPackageGnss
-=======
- typedef struct tagPackage
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 {
 	TpUchar  data_ptr[GNSS_PACK_SIZE];
 	TpUint16  buff_len;
 	TpUint16  pt;
 	TpUchar   start;
-<<<<<<< HEAD
 }PackageGnss;
-=======
-}Package;
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 #pragma pack(pop)
 
@@ -248,16 +222,11 @@ extern "C"
 #endif /* __cplusplus */
 
 extern GnssOut gnssout;
-<<<<<<< HEAD
 extern PackageGnss package;
-=======
-extern Package package;
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 extern GnssRec gnssrec;
   
 extern TpUchar  pps_start;
 
-<<<<<<< HEAD
 TpVoid  PackageInit(PackageGnss *pa);
 TpVoid  PackageRec(TpUchar *pbuf,TpUint16 num);
 TpVoid  GnssCombine(GnssOut *gno,GnssRec *gr);
@@ -269,19 +238,6 @@ TpVoid  GnssDecode(PackageGnss* pa,GnssRec *gr);
 
 static TpUchar BestVelDec(PackageGnss* pa,GnssRec *gr);
 static TpUchar HeadingaDec(PackageGnss* pa,GnssRec *gr);
-=======
-TpVoid PackageInit(Package *pa);
-TpVoid PackageRec(TpUchar *pbuf,TpUint16 num);
-TpVoid GnssCombine(GnssOut *gno,GnssRec *gr);
-
-TpUchar GpggaDecode(Package* pa,GnssRec *gr);
-TpUchar GprmcDecode(Package* pa,GnssRec *gr);
-TpUchar GphdtDecode(Package* pa,GnssRec *gr);
-TpVoid  GnssDecode(Package* pa,GnssRec *gr);
-
-static TpUchar BestVelDec(Package* pa,GnssRec *gr);
-static TpUchar HeadingaDec(Package* pa,GnssRec *gr);
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 static TpChar PvType(TpChar* buf,TpUint32 len);
 static TpChar SolStatus(TpChar* buf,TpUint32 len);
@@ -297,14 +253,6 @@ TpDouble Ddmm2dd(TpDouble data);
 TpInt32  Hhmmss2ss(TpDouble data);
 static TpUint16 Date2Week(TpFloat time,TpInt32 date);
 TpUchar  ReturnDay(TpInt32 date);
-<<<<<<< HEAD
-=======
-TpUchar CheckSumByte(TpUchar* buf ,int length);
-
-#ifdef UMI_SATCOM_FORMAT
-TpVoid SatComYawCombain(GnssOut *gno,SatComYawFlag *sy);
-#endif
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 #ifdef __cplusplus
 }

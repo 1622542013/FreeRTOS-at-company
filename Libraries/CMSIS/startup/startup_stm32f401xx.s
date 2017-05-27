@@ -36,11 +36,7 @@
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-<<<<<<< HEAD
 Stack_Size      EQU     0x0001000
-=======
-Stack_Size      EQU     0x00000800
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
@@ -51,11 +47,7 @@ __initial_sp
 ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-<<<<<<< HEAD
 Heap_Size       EQU     0x00007800
-=======
-Heap_Size       EQU     0x00000800
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
                 AREA    HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base

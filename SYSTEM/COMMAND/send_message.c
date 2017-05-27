@@ -146,31 +146,37 @@ TpVoid LogAhrsBin(UmiIgmBin* pUmiOutput)
 		UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)&ahrs_bin,sizeof(ahrs_bin));	
 }
 
-
+extern unsigned int rx_index;
+unsigned int arm3_index = 0;
+extern float mag_cal_time;
 TpVoid LogIgmAscii(UmiIgmBin* pUmiOutput)
 {
 	TpUchar len = 0;
+
 	float Acc_Temp  = (float)pUmiOutput->imu.acc_temp / 16.0f;
 	float Gyro_temp = (float)pUmiOutput->imu.gyo_temp / 16.0f;
 	float Bmp_Temp  = (float)pUmiOutput->imu.bmp_temp / 16.0f;
 
-//	len = snprintf((char*)imu_data_buff,512,"%d,%d,%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%.10f,%.10f,%f,%d\r\n",
-//		      OUTPUT_ID_IGM_ASCII,pUmiOutput->index,pUmiOutput->tow_imu,pUmiOutput->week,
-//					pUmiOutput->imu.gyox,pUmiOutput->imu.gyoy,pUmiOutput->imu.gyoz,
-//					pUmiOutput->imu.accx,pUmiOutput->imu.accy,pUmiOutput->imu.accz,
-//					pUmiOutput->mag.magx,pUmiOutput->mag.magy,pUmiOutput->mag.magz,
-//	        Gyro_temp,Acc_Temp,Bmp_Temp,
-//					pUmiOutput->gnss.weekn,pUmiOutput->gnss.tow_pps,pUmiOutput->gnss.lat,pUmiOutput->gnss.lon,
-//	        pUmiOutput->gnss.alt,pUmiOutput->gnss.hdop
-//					);
+	arm3_index++;
 	
-		len = snprintf((char*)imu_data_buff,512,"%d,%d,%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%.10f,%.10f\r\n",
+	len = snprintf((char*)imu_data_buff,512,"%d,%d,%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%.10f,%.10f,%f,%d,%d,%d,%d,%d,%f\r\n",
 		      OUTPUT_ID_IGM_ASCII,pUmiOutput->index,pUmiOutput->tow_imu,pUmiOutput->week,
 					pUmiOutput->imu.gyox,pUmiOutput->imu.gyoy,pUmiOutput->imu.gyoz,
 					pUmiOutput->imu.accx,pUmiOutput->imu.accy,pUmiOutput->imu.accz,
 					pUmiOutput->mag.magx,pUmiOutput->mag.magy,pUmiOutput->mag.magz,
-					pUmiOutput->gnss.lat,pUmiOutput->gnss.lon
+	        Gyro_temp,Acc_Temp,Bmp_Temp,
+					pUmiOutput->gnss.weekn,pUmiOutput->gnss.tow_pps,pUmiOutput->gnss.lat,pUmiOutput->gnss.lon,
+	        pUmiOutput->gnss.alt,pUmiOutput->gnss.gflag,pUmiOutput->gnss.hdop,
+					arm3_index,rx_index,pUmiOutput->nav.resv[0],mag_cal_time
 					);
+	
+//		len = snprintf((char*)imu_data_buff,512,"%d,%d,%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%.10f,%.10f\r\n",
+//		      OUTPUT_ID_IGM_ASCII,pUmiOutput->index,pUmiOutput->tow_imu,pUmiOutput->week,
+//					pUmiOutput->imu.gyox,pUmiOutput->imu.gyoy,pUmiOutput->imu.gyoz,
+//					pUmiOutput->imu.accx,pUmiOutput->imu.accy,pUmiOutput->imu.accz,
+//					pUmiOutput->mag.magx,pUmiOutput->mag.magy,pUmiOutput->mag.magz,
+//					pUmiOutput->gnss.lat,pUmiOutput->gnss.lon
+//					);
 	
   UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)imu_data_buff,(TpUint16)len);
 }

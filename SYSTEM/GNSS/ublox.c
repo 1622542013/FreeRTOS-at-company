@@ -1,955 +1,203 @@
-/*============================================================================*/
-/* Copyright (C), 2016, Yagro Co., Ltd.                                       */
-/* File name:   ublox.c                                                      */
-/* Date:        2016.7.25                                                     */
-/* Description:                                                              */
-/*============================================================================*/
+#include "Ublox.h"
+#include "Delay.h"
 
-#include "ublox.h"
-#include "config.h"
-
-/*============================================================================*/
-/*                               Header include                               */
-/*============================================================================*/
-
-void Ublox_Init(Ublox* ub)
+/*UBLOX Receiver Description P-121*/
+void Ublox_check(uint8_t* buff,uint8_t length)
 {
-	if(ub->Output_Rate==5)
-		Ublox_Output_Rate_5Hz();
-	else if(ub->Output_Rate==4)
-		Ublox_Output_Rate_4Hz();
-	else if(ub->Output_Rate==2)
-		Ublox_Output_Rate_2Hz();
-	else if(ub->Output_Rate==1)
-		Ublox_Output_Rate_1Hz();
+	uint32_t check_a = 0;
+	uint32_t check_b = 0;
+	uint8_t i;
+	uint8_t check_length = length - 2;
 	
-	if(ub->GNDTM)
-		Ublox_GNDTM_ON();
-	else
-		Ublox_GNDTM_OFF();
+	for(i = 2;i<check_length;i++)
+	{
+		check_a += buff[i];
+		check_b += check_a;
+	} 
 	
-	if(ub->GNGBS)
-		Ublox_GNGBS_ON();
-	else
-		Ublox_GNGBS_OFF();
-	
-	if(ub->GNGGA)
-		Ublox_GNGGA_ON();
-	else
-		Ublox_GNGGA_OFF();
-	
-	if(ub->GNGLL)
-		Ublox_GNGLL_ON();
-	else
-		Ublox_GNGLL_OFF();
-	
-	if(ub->GNGNS)
-		Ublox_GNGNS_ON();
-	else
-		Ublox_GNGNS_OFF();
-	
-	if(ub->GNGRS)
-		Ublox_GNGRS_ON();
-	else
-		Ublox_GNGRS_OFF();
-	
-	if(ub->GNGSA)
-		Ublox_GNGSA_ON();
-	else
-		Ublox_GNGSA_OFF();
-	
-	if(ub->GNGST)
-		Ublox_GNGST_ON();
-	else
-		Ublox_GNGST_OFF();
-	
-	if(ub->GNGSV)
-		Ublox_GNGSV_ON();
-	else
-		Ublox_GNGSV_OFF();
-	
-	if(ub->GNRMC)
-		Ublox_GNRMC_ON();
-	else
-		Ublox_GNRMC_OFF();
-	
-	if(ub->GNVLW)
-		Ublox_GNVLW_ON();
-	else
-		Ublox_GNVLW_OFF();
-	
-	if(ub->GNVTG)
-		Ublox_GNVTG_ON();
-	else
-		Ublox_GNVTG_OFF();
-	
-	if(ub->GNZDA)
-		Ublox_GNZDA_ON();
-	else
-		Ublox_GNZDA_OFF();
-	
-	Ublox_Baudrate();
-	
-	
+	buff[length - 2] = check_a;
+	buff[length - 1] = check_b;	
 }
 
-void Ublox_Config(uint8_t* data, Ublox* ub)
-{
-	if(!memcmp("$cmd,ublox,gngga,on", data, 19))
-	{
-		ub->GNGGA = 1;
-		Ublox_GNGGA_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngga,off", data, 20))
-	{
-		ub->GNGGA = 0;
-		Ublox_GNGGA_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gnrmc,on", data, 19))
-	{
-		ub->GNRMC = 1;
-		Ublox_GNRMC_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gnrmc,off", data, 20))
-	{
-		ub->GNRMC = 0;
-		Ublox_GNRMC_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gnvtg,on", data, 19))
-	{
-		ub->GNVTG = 1;
-		Ublox_GNVTG_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gnvtg,off", data, 20))
-	{
-		ub->GNVTG = 0;
-		Ublox_GNVTG_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngsa,on", data, 19))
-	{
-		ub->GNGSA = 1;
-		Ublox_GNGSA_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngsa,off", data, 20))
-	{
-		ub->GNGSA = 0;
-		Ublox_GNGSA_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngsv,on", data, 19))
-	{
-		ub->GNGSV = 1;
-		Ublox_GNGSV_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngsv,off", data, 20))
-	{
-		ub->GNGSV = 0;
-		Ublox_GNGSV_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngll,on", data, 19))
-	{
-		ub->GNGLL = 1;
-		Ublox_GNGLL_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngll,off", data, 20))
-	{
-		ub->GNGLL = 0;
-		Ublox_GNGLL_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngrs,on", data, 19))
-	{
-		ub->GNGRS = 1;
-		Ublox_GNGRS_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngrs,off", data, 20))
-	{
-		ub->GNGRS = 0;
-		Ublox_GNGRS_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngst,on", data, 19))
-	{
-		ub->GNGST = 1;
-		Ublox_GNGST_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngst,off", data, 20))
-	{
-		ub->GNGST = 0;
-		Ublox_GNGST_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gnzda,on", data, 19))
-	{
-		ub->GNZDA = 1;
-		Ublox_GNZDA_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gnzda,off", data, 20))
-	{
-		ub->GNZDA = 0;
-		Ublox_GNZDA_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngbs,on", data, 19))
-	{
-		ub->GNGBS = 1;
-		Ublox_GNGBS_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngbs,off", data, 20))
-	{
-		ub->GNGBS = 0;
-		Ublox_GNGBS_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gndtm,on", data, 19))
-	{
-		ub->GNDTM = 1;
-		Ublox_GNDTM_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gndtm,off", data, 20))
-	{
-		ub->GNDTM = 0;
-		Ublox_GNDTM_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngns,on", data, 19))
-	{
-		ub->GNGNS = 1;
-		Ublox_GNGNS_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gngns,off", data, 20))
-	{
-		ub->GNGNS = 0;
-		Ublox_GNGNS_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gnvlw,on", data, 19))
-	{
-		ub->GNVLW = 1;
-		Ublox_GNVLW_ON();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gnvlw,off", data, 20))
-	{
-		ub->GNVLW = 0;
-		Ublox_GNVLW_OFF();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,output_rate,5Hz", data, 26))
-	{
-		ub->Output_Rate = 5;
-		Ublox_Output_Rate_5Hz();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,output_rate,4Hz", data, 26))
-	{
-		ub->Output_Rate = 4;
-		Ublox_Output_Rate_4Hz();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,output_rate,2Hz", data, 26))
-	{
-		ub->Output_Rate = 2;
-		Ublox_Output_Rate_2Hz();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,output_rate,1Hz", data, 26))
-	{
-		ub->Output_Rate = 1;
-		Ublox_Output_Rate_1Hz();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,save", data, 15))
-	{
-		Ublox_SAVE();
-		Out_Config_OK();
-	}
-	else if(!memcmp("$cmd,ublox,gps_upload,on", data, 24))
-	{
-		Out_Config_OK();
-		ub->GPS_Upload = 1;
-	}
-	else if(!memcmp("$cmd,ublox,gps_upload,off", data, 25))
-	{
-		Out_Config_OK();
-		ub->GPS_Upload = 0;
-	}
-	else
-		Out_Command_Bad();
-}
+/*
+UBLOX Receiver Description P-157
 
-void Command_Reply(char *ReplyBuffer, uint16_t BufferNum)
+Message[2~7] is the send port
+We use the port 2,so we set the Message[3]
+
+Message[3] :
+The Effect of the Byte is frequency division
+Example: Output rate is 10HZ
+	The byte is 1. Message freq is 10HZ
+	The byte is 2. Message freq is 5HZ
+	The byte is 0. Message freq does not output
+*/
+Ublox_Message_Config Ublox_Msg;
+void UbloxMsgConfig(uint8_t Msg,uint8_t config)
 {
-	uint16_t i;
+	uint8_t command_length;
 	
-//	while(DMA_GetFlagStatus(DMA1_Stream6, DMA_FLAG_TCIF6)==0);
-  
-  memset(usart2.cb.send_buf, 0, BUFSIZE_USART1);	//清空内存
-	
-	for(i=0; i<BufferNum; i++)
+	Ublox_Msg.head[0] 		= UBLOX_HEAD_0;
+	Ublox_Msg.head[1] 		= UBLOX_HEAD_1;
+	Ublox_Msg.ublox_class = MSG_CLASS;
+	Ublox_Msg.ublox_id  	= MSG_ID;
+	Ublox_Msg.length 			= MSG_LENGTH;
+	Ublox_Msg.Message[0] 	= STANDARD_MSG;	
+	Ublox_Msg.Message[3]  = config;
+	switch(Msg)
 	{
-		usart2.cb.send_buf[i] = ReplyBuffer[i];
+		/*UBLOX Receiver Description P-97*/
+		case MSG_GGA_ID: 
+							Ublox_Msg.Message[1] = MSG_GGA_ID;break;
+		case MSG_GLL_ID: 
+							Ublox_Msg.Message[1] = MSG_GLL_ID;break;
+		case MSG_GSA_ID: 
+							Ublox_Msg.Message[1] = MSG_GSA_ID;break;
+		case MSG_GSV_ID: 
+							Ublox_Msg.Message[1] = MSG_GSV_ID;break;
+		case MSG_RMC_ID: 
+							Ublox_Msg.Message[1] = MSG_RMC_ID;break;
+		case MSG_VTG_ID: 
+							Ublox_Msg.Message[1] = MSG_VTG_ID;break;
+		case MSG_GRS_ID: 
+							Ublox_Msg.Message[1] = MSG_GRS_ID;break;
+		case MSG_GST_ID: 
+							Ublox_Msg.Message[1] = MSG_GST_ID;break;
+		case MSG_ZDA_ID:
+							Ublox_Msg.Message[1] = MSG_ZDA_ID;break;		
+		case MSG_GBS_ID: 
+							Ublox_Msg.Message[1] = MSG_GBS_ID;break;	
+		case MSG_DTM_ID: 
+							Ublox_Msg.Message[1] = MSG_DTM_ID;break;
+		case MSG_GNS_ID: 
+							Ublox_Msg.Message[1] = MSG_GNS_ID;break;
+		case MSG_VLW_ID: 
+							Ublox_Msg.Message[1] = MSG_VLW_ID;break;
+	
+		default :break;
 	}
 	
-//  UsartSend(&usart2,BufferNum);
+	command_length = MSG_LENGTH + COMMAND_FIXED_LENGTH;
+	Ublox_check((uint8_t*)&Ublox_Msg,command_length);
 	
+	UbloxCommandSend((uint8_t*)&Ublox_Msg,command_length);
 }
 
-void Command_Pass(uint8_t *ReplyBuffer, uint16_t BufferNum)
+Ublox_Baudrate_Config  Ublox_baudrate;
+void UbloxBaudrateConfig(void)
 {
-	uint16_t i;
+	uint8_t command_length;
+	Ublox_baudrate.head[0] 			= UBLOX_HEAD_0;
+	Ublox_baudrate.head[1] 			= UBLOX_HEAD_1;
+	Ublox_baudrate.ublox_class 	= CFG_PORT_CLASS;
+	Ublox_baudrate.ublox_id  		= CFG_PORT_ID;
+	Ublox_baudrate.length 			= CFG_PORT_LENGTH;
 	
-	while(DMA_GetFlagStatus(DMA2_Stream7, DMA_FLAG_TCIF7)==0);
-
-//	memset(usart1.cb.send_buf, 0, BUFSIZE_USART1);	//清空内存
-//	
-//	for(i=0; i<BufferNum; i++)
-//	{
-//		usart1.cb.send_buf[i] = ReplyBuffer[i];
-//	}
+	Ublox_baudrate.port_id 			= PORT_ID_UART;
+	Ublox_baudrate.reserved1 		= 0;
+	Ublox_baudrate.txready 			= 0;
+	Ublox_baudrate.mode 				= UBLOX_UART_MODE;
+	Ublox_baudrate.baudrate 		= UBLOX_UART_BAUDRATE_USER;
+	Ublox_baudrate.inProtoMask	=	0x0007;/*ENALBE ALL */	/*UBLOX Receiver Description P-97*/
+	Ublox_baudrate.outProtoMask	=	0x0003;/*ENALBE ALL */
+	Ublox_baudrate.flag 				= 0;
+	Ublox_baudrate.reserved2 		= 0;
 	
-	UsartPushSendBuf(&usart1,ReplyBuffer,BufferNum,0);
+	command_length = CFG_PORT_LENGTH + COMMAND_FIXED_LENGTH;
+	Ublox_check((uint8_t*)&Ublox_baudrate,command_length);
 	
-	UsartSend(&usart1);
-
-//	Delay_ms(5);
-
+	UbloxCommandSend((uint8_t*)&Ublox_baudrate,command_length);
 }
 
-
-/*******************************************************************************
-* 函数名称  : Out_Config_OK
-* 描述      : 输出设置成功提示语句
-* 输入      : 无
-* 输出		: $cmd,Config,OK*ff
-* 返回      : 无
-*******************************************************************************/
-void Out_Config_OK(void)
+Ublox_Rate_Config Ublox_Rate;
+void UbloxRateConfig(void)
 {
-	Command_Reply("$cmd,Config,OK*ff\r\n", 19);
+	uint8_t command_length;
+	Ublox_Rate.head[0] 			= UBLOX_HEAD_0;
+	Ublox_Rate.head[1] 			= UBLOX_HEAD_1;
+	Ublox_Rate.ublox_class 	= RATE_CLASS;
+	Ublox_Rate.ublox_id  		= RATE_ID;
+	Ublox_Rate.length 			= RATE_LENGTH;
+	
+	Ublox_Rate.measrate 		= UBLOX_RATE;
+	Ublox_Rate.navrate			= NAV_RATE_RATIO;
+	Ublox_Rate.timeref			= SYSTEM_TIME;
+	
+	command_length = RATE_LENGTH + COMMAND_FIXED_LENGTH;
+	Ublox_check((uint8_t*)&Ublox_Rate,command_length);
+	
+	UbloxCommandSend((uint8_t*)&Ublox_Rate,command_length);
 }
 
-
-/*******************************************************************************
-* 函数名称  : Out_Command_Bad
-* 描述      : 输出错误命令提示语句
-* 输入      : 无
-* 输出		: $cmd,Bad,Command*ff
-* 返回      : 无
-*******************************************************************************/
-void Out_Command_Bad(void)
+Ublox_CFG_NMEA ublox_cfg_nmea;
+void Ublox_NMEA_Config(void)
 {
-	Command_Reply("$cmd,Bad,Command*ff\r\n", 21);
+	uint8_t command_length;
+	ublox_cfg_nmea.head[0] 			= UBLOX_HEAD_0;
+	ublox_cfg_nmea.head[1] 			= UBLOX_HEAD_1;
+	ublox_cfg_nmea.ublox_class 	= CFG_NMEA_CLASS;
+	ublox_cfg_nmea.ublox_id  		= CFG_NMEA_ID;
+	ublox_cfg_nmea.length 			= CFG_NMEA_LENGTH;
+	
+  ublox_cfg_nmea.filter_flag = 0x0f;
+	ublox_cfg_nmea.nmeaVersion = CFG_NMEA_VERSION;
+	ublox_cfg_nmea.numSV = 0;
+	ublox_cfg_nmea.flag = 0;
+	ublox_cfg_nmea.gnssToFilter = 0;
+	ublox_cfg_nmea.svNumbering = 0;
+	ublox_cfg_nmea.mainTalkerId = HEAD_ID;
+	ublox_cfg_nmea.gsvTalkerId = 1;
+	ublox_cfg_nmea.version = 1;
+	ublox_cfg_nmea.bdsTalkerId = 0;
+	ublox_cfg_nmea.reserved1[0] = 0;
+	
+	command_length = 20 + COMMAND_FIXED_LENGTH;
+	Ublox_check((uint8_t*)&ublox_cfg_nmea,command_length);
+	
+	UbloxCommandSend((uint8_t*)&ublox_cfg_nmea,command_length);
 }
 
-
-void Ublox_GNGGA_ON(void)
+void UbloxInit(void)
 {
-	uint8_t data[16]={0};
+	UsartConfig(GetUsartAddress(USART_1),USART_1,UBLOX_UART_DEFAULT);
+	Delay_ms(250);
+	UbloxBaudrateConfig();
+	Delay_ms(250);	
 	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[9] = 0x01;
-	data[15] = 0x28;
+	UsartConfig(GetUsartAddress(USART_1),USART_1,UBLOX_UART_BAUDRATE_USER);
+	Delay_ms(250);	
 	
-	Command_Pass(data, 16);
+	UbloxRateConfig();
+	Delay_ms(50);
+	
+	Ublox_NMEA_Config();
+	Delay_ms(50);
+
+	UbloxMsgConfig(MSG_GGA_ID,MSG_GGA_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_GLL_ID,MSG_GLL_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_GSA_ID,MSG_GSA_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_GSV_ID,MSG_GSV_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_RMC_ID,MSG_RMC_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_VTG_ID,MSG_VTG_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_GRS_ID,MSG_GRS_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_GST_ID,MSG_GST_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_ZDA_ID,MSG_ZDA_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_GBS_ID,MSG_GBS_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_DTM_ID,MSG_DTM_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_GNS_ID,MSG_GNS_RATE_RADIO);
+	Delay_ms(50);	
+	UbloxMsgConfig(MSG_VLW_ID,MSG_VLW_RATE_RADIO);
+	
 }
 
-
-void Ublox_GNGGA_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[14] = 0xFF;
-	data[15] = 0x23;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNRMC_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x04;
-	data[9] = 0x01;
-	data[14] = 0x04;
-	data[15] = 0x44;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNRMC_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x04;
-	data[14] = 0x03;
-	data[15] = 0x3F;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNVTG_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x05;
-	data[9] = 0x01;
-	data[14] = 0x05;
-	data[15] = 0x4B;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNVTG_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x05;
-	data[14] = 0x04;
-	data[15] = 0x46;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGSA_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x02;
-	data[9] = 0x01;
-	data[14] = 0x02;
-	data[15] = 0x36;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGSA_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x02;
-	data[14] = 0x01;
-	data[15] = 0x31;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGSV_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x03;
-	data[9] = 0x01;
-	data[14] = 0x03;
-	data[15] = 0x3D;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGSV_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x03;
-	data[14] = 0x02;
-	data[15] = 0x38;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGLL_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x01;
-	data[9] = 0x01;
-	data[14] = 0x01;
-	data[15] = 0x2F;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGLL_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x01;
-	data[15] = 0x2A;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGRS_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x06;
-	data[9] = 0x01;
-	data[14] = 0x06;
-	data[15] = 0x52;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGRS_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x06;
-	data[14] = 0x05;
-	data[15] = 0x4D;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGST_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x07;
-	data[9] = 0x01;
-	data[14] = 0x07;
-	data[15] = 0x59;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGST_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x07;
-	data[14] = 0x06;
-	data[15] = 0x54;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNZDA_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x08;
-	data[9] = 0x01;
-	data[14] = 0x08;
-	data[15] = 0x60;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNZDA_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x08;
-	data[14] = 0x07;
-	data[15] = 0x5B;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGBS_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x09;
-	data[9] = 0x01;
-	data[14] = 0x09;
-	data[15] = 0x67;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGBS_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x09;
-	data[14] = 0x08;
-	data[15] = 0x62;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNDTM_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x0A;
-	data[9] = 0x01;
-	data[14] = 0x0A;
-	data[15] = 0x6E;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNDTM_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x0A;
-	data[14] = 0x09;
-	data[15] = 0x69;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGNS_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x0D;
-	data[9] = 0x01;
-	data[14] = 0x0D;
-	data[15] = 0x83;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNGNS_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x0D;
-	data[14] = 0x0C;
-	data[15] = 0x7E;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNVLW_ON(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x0F;
-	data[9] = 0x01;
-	data[14] = 0x0F;
-	data[15] = 0x91;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_GNVLW_OFF(void)
-{
-	uint8_t data[16]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x01;
-	data[4] = 0x08;
-	data[6] = 0xF0;
-	data[7] = 0x0F;
-	data[14] = 0x0E;
-	data[15] = 0x8C;
-	
-	Command_Pass(data, 16);
-}
-
-
-void Ublox_Output_Rate_1Hz(void)
-{
-	uint8_t data[14]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x08;
-	data[4] = 0x06;
-	data[6] = 0xE8;
-	data[7] = 0x03;
-	data[8] = 0x01;
-	data[10] = 0x01;
-	data[12] = 0x01;
-	data[13] = 0x39;
-	
-	Command_Pass(data, 14);
-}
-
-
-void Ublox_Output_Rate_2Hz(void)
-{
-	uint8_t data[14]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x08;
-	data[4] = 0x06;
-	data[6] = 0xF4;
-	data[7] = 0x01;
-	data[8] = 0x01;
-	data[10] = 0x01;
-	data[12] = 0x0B;
-	data[13] = 0x77;
-	
-	Command_Pass(data, 14);
-}
-
-
-void Ublox_Output_Rate_4Hz(void)
-{
-	uint8_t data[14]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x08;
-	data[4] = 0x06;
-	data[6] = 0xFA;
-	data[8] = 0x01;
-	data[10] = 0x01;
-	data[12] = 0x10;
-	data[13] = 0x96;
-	
-	Command_Pass(data, 14);
-}
-
-
-void Ublox_Output_Rate_5Hz(void)
-{
-	uint8_t data[14]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x08;
-	data[4] = 0x06;
-	data[6] = 0xC8;
-	data[8] = 0x01;
-	data[10] = 0x01;
-	data[12] = 0xDE;
-	data[13] = 0x6A;
-	
-	Command_Pass(data, 14);
-}
-
-//波特率115200
-void Ublox_Baudrate(void)
-{
-	uint8_t data[28]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[4] = 0x14;
-	data[6] = 0x01;
-	data[10] = 0xD0;
-	data[11] = 0x08;
-	data[15] = 0xC2;
-	data[16] = 0x01;
-	data[18] = 0x07;
-	data[20] = 0x03;
-	data[26] = 0xC0;
-	data[27] = 0x7E;
-	
-	Command_Pass(data, 28);
-}
-
-
-void Ublox_SAVE(void)
-{
-	uint8_t data[21]={0};
-	
-	data[0] = 0xB5;
-	data[1] = 0x62;
-	data[2] = 0x06;
-	data[3] = 0x09;
-	data[4] = 0x0D;
-	data[10] = 0xFF;
-	data[11] = 0xFF;
-	data[18] = 0x03;
-	data[19] = 0x1D;
-	data[20] = 0xAB;
-	
-	Command_Pass(data, 21);
-}

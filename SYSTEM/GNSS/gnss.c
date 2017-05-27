@@ -10,29 +10,18 @@
 /*============================================================================*/
 #include <math.h>
 #include "gnss.h"
-<<<<<<< HEAD
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
 #include "usart.h"
 #include "command.h"
 #include "config.h"
-=======
-#include <stdio.h>
-#include "stdlib.h"
-#include "string.h"
-#include "usart.h"
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 /*============================================================================*/
 /*                              Global variables                              */
 /*============================================================================*/
 
 GnssOut gnssout;
-<<<<<<< HEAD
 PackageGnss package;
-=======
-Package package;
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 Nmea    nmea;
 GnssRec gnssrec;
 
@@ -65,18 +54,10 @@ TpUchar  pps_start = 0;
 * output:         none
 ******************************************************************************/
 
-<<<<<<< HEAD
 TpVoid PackageInit(PackageGnss *pa)
 {
   pa->buff_len=0;
   pa->start=0;
-=======
-TpVoid PackageInit(Package *pa)
-{
-  pa->buff_len=0;
-  pa->start=0;
- // pa->data_ptr = (TpUchar *)malloc(sizeof(TpUchar)*GNSS_PACK_SIZE);
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
   memset(pa->data_ptr,0,GNSS_PACK_SIZE);
   pa->pt=0;
 }
@@ -101,28 +82,16 @@ TpVoid PackageRec(TpUchar *pbuf,TpUint16 num)
       break;
       case 0x0A:
       {
-<<<<<<< HEAD
         if(package.start)
-=======
-  //      if(package.data_ptr[package.pt]==0x0D&&package.start)
-         if(package.start)
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
         {
           package.start = 0;
           package.pt+=1;
           package.data_ptr[package.pt] = u8Byte;
           package.buff_len=package.pt;
 
-<<<<<<< HEAD
           GnssDecode(&package,&gnssrec);	
           GnssCombine(&gnssout,&gnssrec);
 					UsartPushMainBuf(GetUsartAddress(USART_1),(TpUchar*)&gnssout,sizeof(GnssOut)-1);			
-=======
-          GnssDecode(&package,&gnssrec);
-    //      GnssCombine(&gnssout,&gnssrec);
-       
-
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
        }
 
       }
@@ -136,7 +105,6 @@ TpVoid PackageRec(TpUchar *pbuf,TpUint16 num)
       }
     }
   }
-<<<<<<< HEAD
 	
 	
 }
@@ -146,15 +114,6 @@ TpVoid GnssDecode(PackageGnss* pa,GnssRec *gr)
   TpUchar u8Result;
 
 #if (UBLOX_OPEN)
-=======
-}
-
-TpVoid GnssDecode(Package* pa,GnssRec *gr)
-{
-  TpUchar u8Result;
-
-#ifdef UBLOX_ON
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
   if(!memcmp("$GNGGA,",pa->data_ptr,7))
 #else
   if(!memcmp("$GPGGA,",pa->data_ptr,7))
@@ -165,11 +124,7 @@ TpVoid GnssDecode(Package* pa,GnssRec *gr)
       gr->flag |= GPGGA_FLAG;
     }
   }
-<<<<<<< HEAD
 #if (UBLOX_OPEN)
-=======
-#ifdef UBLOX_ON
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
   else if(!memcmp("$GNRMC,",pa->data_ptr,7))
 #else
   else if(!memcmp("$GPRMC,",pa->data_ptr,7))
@@ -205,11 +160,7 @@ TpVoid GnssDecode(Package* pa,GnssRec *gr)
 	}
 }
 
-<<<<<<< HEAD
 TpUchar GpggaDecode(PackageGnss* pa,GnssRec *gr)
-=======
-TpUchar GpggaDecode(Package* pa,GnssRec *gr)
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 {
   TpUchar u8DataSum =0;
   TpUint16 i=0;
@@ -254,11 +205,7 @@ TpUchar GpggaDecode(Package* pa,GnssRec *gr)
         break;
       case 6:
         gr->nmea.gpgga.gps_state  = atoi(TempStr);
-<<<<<<< HEAD
      //   if(atoi(TempStr)>0)
-=======
-        if(atoi(TempStr)>0)
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
         {       
            gr->nmea.gpgga.data_flag =1;
         }       
@@ -366,11 +313,7 @@ TpDouble Ddmm2dd(TpDouble ddmm) /////
 }
 
 
-<<<<<<< HEAD
 TpUchar GprmcDecode(PackageGnss* pa,GnssRec *gr)
-=======
-TpUchar GprmcDecode(Package* pa,GnssRec *gr)
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 {
 	TpUchar datenum =0;
 	TpUint16 i=0;
@@ -450,11 +393,7 @@ TpUchar GprmcDecode(Package* pa,GnssRec *gr)
 	return GPRMC_IN;
 }
 
-<<<<<<< HEAD
 TpUchar GphdtDecode(PackageGnss* pa,GnssRec *gr)
-=======
-TpUchar GphdtDecode(Package* pa,GnssRec *gr)
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 {
   TpUchar datenum =0;
   TpUint16 i=0;
@@ -478,11 +417,7 @@ TpUchar GphdtDecode(Package* pa,GnssRec *gr)
       switch(datenum)
       {
       case 1:
-<<<<<<< HEAD
 //        gr->nmea.gphdt.orient = atof(TempStr);
-=======
-        gr->nmea.gphdt.orient = atof(TempStr);
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
         break;
       case 2:
         gr->nmea.gphdt.true_flag = TempStr[0];
@@ -498,11 +433,7 @@ TpUchar GphdtDecode(Package* pa,GnssRec *gr)
 }
 
 
-<<<<<<< HEAD
 static TpUchar BestVelDec(PackageGnss* pa,GnssRec *pstGnssIn)
-=======
-static TpUchar BestVelDec(Package* pa,GnssRec *pstGnssIn)
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 {
   TpChar datenum =0;
   int i=0;
@@ -657,11 +588,7 @@ static TpUchar BestVelDec(Package* pa,GnssRec *pstGnssIn)
   return BESTVELA_IN;
 }
 
-<<<<<<< HEAD
 static TpUchar HeadingaDec(PackageGnss* pa,GnssRec *gr)
-=======
-static TpUchar HeadingaDec(Package* pa,GnssRec *gr)
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 {
   TpChar datenum =0;
   int i=0;
@@ -1140,7 +1067,6 @@ TpVoid GnssCombine(GnssOut *gno,GnssRec *gr)
         gno->flag|=GNSS_FIX_RTK;
       }
       
-<<<<<<< HEAD
      
       gno->flag|=GNSS_FIX_DATA;
 		  memset(&gr,0,sizeof(gr));
@@ -1154,40 +1080,6 @@ TpVoid GnssCombine(GnssOut *gno,GnssRec *gr)
 			
 			gnssout.check = CheckSumByte((TpUchar*)&gnssout,sizeof(gnssout));
          
-=======
-      /*  add for satcom  */
-			#ifdef UMI_SATCOM_FORMAT
-      if(satComYawFlag.init_ok)
-			{
-			    satComYawFlag.init_ok = 0;
-				  gno->flag|=GNSS_FIX_YAW_INIT;
-				  gno->flag|=GNSS_FIX_ORT;
-				  gno->orient = satComYawInit.yaw*ATT_INIT_FACTOR_MIN;
-				  gno->orient_q = satComYawInit.yaw_q*ATT_INIT_FACTOR_MIN;
-		  }
-			if(satComYawFlag.update_ok)
-			{
-			    satComYawFlag.update_ok = 0;
-				  gno->flag|=GNSS_FIX_YAW_UPDATE;
-				  gno->flag|=GNSS_FIX_ORT;
-				  gno->orient = satComYawUpdate.yaw*ATT_UP_FACTOR_MIN;
-			    gno->orient_q = satComYawUpdate.yaw_q*ATT_UP_FACTOR_MIN;
-		  }
-			#endif
-						
-      gno->flag|=GNSS_FIX_DATA;
-		  memset(&gr,0,sizeof(gr));
-      
-      memset(data_to_arm2,0,sizeof(data_to_arm2));
-      memcpy(data_to_arm2,&gnssout,sizeof(gnssout));
-      
-      gnssout.check = CheckSumByte(data_to_arm2,sizeof(gnssout)-1);
-      
-      memcpy(data_to_arm2,&gnssout,sizeof(gnssout));
-     
-      UsartPushSendBuf(&usart6,data_to_arm2,sizeof(gnssout),0);
-//      UsartSend(&usart6,sizeof(gnssout));
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 }
 #endif
  if((gr->flag&GPGGA_FLAG)&&(gr->flag&BESTVELA_FLAG))
@@ -1240,58 +1132,3 @@ TpVoid GnssCombine(GnssOut *gno,GnssRec *gr)
      }
   }
 }
-<<<<<<< HEAD
-=======
-
-
-TpUchar CheckSumByte(TpUchar* buf ,int length)
-{
-  TpUint16 sum = 0;
-  TpUchar i;
-  TpUchar sum_low;
-
-  for(i=2;i<length-1;i++)
-  {
-    sum+=buf[i];
-  }
-
-  sum_low = sum&0x00ff;
-  return sum_low;
-}
-
-#ifdef UMI_SATCOM_FORMAT
-TpVoid SatComYawCombain(GnssOut *gno,SatComYawFlag *sy)
-{
-
-	 memset(gno,0,sizeof(gnssout));
-   gno->head = 0x23AB;
-	 if(satComYawFlag.init_ok)
-		{
-			satComYawFlag.init_ok = 0;
-			gno->flag|=GNSS_FIX_YAW_INIT;
-			gno->flag|=GNSS_FIX_ORT;
-			gno->orient = satComYawInit.yaw*ATT_INIT_FACTOR_MIN;
-			gno->orient_q = satComYawInit.yaw_q*ATT_INIT_FACTOR_MIN;
-		}
-		if(satComYawFlag.update_ok)
-		{
-			satComYawFlag.update_ok = 0;
-			gno->flag|=GNSS_FIX_YAW_UPDATE;
-			gno->flag|=GNSS_FIX_ORT;
-			gno->orient = satComYawUpdate.yaw*ATT_UP_FACTOR_MIN;
-			gno->orient_q = satComYawUpdate.yaw_q*ATT_UP_FACTOR_MIN;
-		}
-		
-		memset(data_to_arm2,0,sizeof(data_to_arm2));
-		memcpy(data_to_arm2,&gnssout,sizeof(gnssout));
-		
-		gnssout.check = CheckSumByte(data_to_arm2,sizeof(gnssout)-1);
-		
-		memcpy(data_to_arm2,&gnssout,sizeof(gnssout));
-	 
-		UsartPushSendBuf(&usart6,data_to_arm2,sizeof(gnssout),0);
-//		UsartSend(&usart6,sizeof(gnssout));
-
-}
-#endif
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6

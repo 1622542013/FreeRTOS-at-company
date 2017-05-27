@@ -15,13 +15,8 @@
 /*                              Global variables                              */
 /*============================================================================*/
 
-<<<<<<< HEAD
 TpUint16 SPI1_Buffer_Tx[SPI1_TX_SIZE];
 TpUint16 SPI1_Buffer_Rx[SPI1_RX_SIZE];
-=======
-TpUint16 SPI1_Buffer_Tx[5];
-TpUint16 SPI1_Buffer_Rx[5];
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 
 /****************************************************
  * Function:    SPI1_Init
@@ -89,13 +84,8 @@ TpBool SPI1_Init(TpVoid)
 *****************************************************/
 TpBool SPI1_DMA_TX_Init(TpVoid)
 {
-<<<<<<< HEAD
  // TpBool resutlt = INLIB_ERROR;
   signed char resutlt = -2;
-=======
-  TpBool resutlt = INLIB_ERROR;
-  
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
   DMA_InitTypeDef DMA_InitStructure;
 
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);  /* Enable DMA2 clock */
@@ -180,26 +170,13 @@ TpBool SPI1_DMA_RX_Init(TpVoid)
  * Output:
  * Return:
 *****************************************************/
-<<<<<<< HEAD
 TpVoid SPI1_DMA_TX(TpVoid)
 {  
-=======
-TpBool SPI1_DMA_TX(TpVoid)
-{
-  TpBool resutlt = INLIB_ERROR;
-  
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
   DMA_ClearFlag(DMA2_Stream3, DMA_FLAG_TCIF3);  /* Clear Pending DMA channel x flag (DMA2 Stream3 transfer completion flag) */
   DMA_Cmd(DMA2_Stream3, DISABLE);
   while(DMA_GetCmdStatus(DMA2_Stream3) != DISABLE);
   DMA_SetCurrDataCounter(DMA2_Stream3, 5);
   DMA_Cmd(DMA2_Stream3, ENABLE);
-<<<<<<< HEAD
-=======
-  
-  resutlt = INLIB_OK;
-  return resutlt;
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 }
 
 /****************************************************
@@ -209,26 +186,13 @@ TpBool SPI1_DMA_TX(TpVoid)
  * Output:
  * Return:
 *****************************************************/
-<<<<<<< HEAD
 TpVoid SPI1_DMA_RX(TpVoid)
 { 
-=======
-TpBool SPI1_DMA_RX(TpVoid)
-{
-  TpBool resutlt = INLIB_ERROR;
-  
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
   DMA_ClearFlag(DMA2_Stream0, DMA_FLAG_TCIF0);  /* Clear Pending DMA channel x flag (DMA2 Stream0 transfer completion flag) */
   DMA_Cmd(DMA2_Stream0, DISABLE);
   while(DMA_GetCmdStatus(DMA2_Stream0) != DISABLE);
   DMA_SetCurrDataCounter(DMA2_Stream0, 5);
   DMA_Cmd(DMA2_Stream0, ENABLE);
-<<<<<<< HEAD
-=======
-  
-  resutlt = INLIB_OK;
-  return resutlt;
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6
 }
 
 /****************************************************
@@ -246,7 +210,6 @@ TpUint16 SPI1_SendHalfWord(TpUint16 halfword)
   while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);/* Wait to receive a Half Word */
   return SPI_I2S_ReceiveData(SPI1); /* Return the Half Word read from the SPI bus */
 }
-<<<<<<< HEAD
 
 void SPI1_DMA_Dnit(void)
 {
@@ -263,5 +226,3 @@ void SPI1_DMA_Init(void)
 	SPI1_DMA_TX_Init();
 }
 
-=======
->>>>>>> b124b37e61948a38cca92d9a4f8f9a4cc8294dd6

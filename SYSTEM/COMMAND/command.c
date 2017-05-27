@@ -741,12 +741,14 @@ TpBool DecodeARM2Bin(TpUchar* pUsart_buff,TpUint16 len,UmiIgmBin* pUmiOutput)
 TpVoid OutMagCaliOnlinePara(TpFloat bias[3],TpFloat matrix[9])
 {
 	TpUchar len = 0;
-	TpUchar buf_magpara[200];
-	len  = snprintf((char*)buf_magpara,200,"The bias is : %f,%f,%f\r\n",bias[0],bias[1],bias[2]);
-	len += snprintf((char*)buf_magpara+len,200,"The matirx is : %f,%f,%f,%f,%f,%f,%f,%f,%f\r\n",
-		                                           matrix[0],matrix[1],matrix[2],
-	                                             matrix[3],matrix[4],matrix[5],
-	                                             matrix[6],matrix[7],matrix[8]);
+	TpUchar buf_magpara[50];
+//	len  = snprintf((char*)buf_magpara,200,"$cmd,bias,%.4f,%.4f,%.4f\r\n",bias[0],bias[1],bias[2]);
+//	len += snprintf((char*)buf_magpara+len,200,"$cmd,matirx,%.4f,%.4f,%.4f,%.4f,%.4f,%.4f,%.4f,%.4f,%.4f\r\n",
+//		                                           matrix[0],matrix[1],matrix[2],
+//	                                             matrix[3],matrix[4],matrix[5],
+//	                                             matrix[6],matrix[7],matrix[8]);
+	
+	len  = snprintf((char*)buf_magpara,50,"$cmd,mag,calibration,OK!\r\n");
 	UsartPushMainBuf(GetUsartAddress(USART_2),buf_magpara,len);
 }
 
