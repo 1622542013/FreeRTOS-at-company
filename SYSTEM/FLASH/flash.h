@@ -129,11 +129,15 @@ uint8_t GetMagParaUpdateFlag(void);
 
 void SetMagCaliParaMatrix(float matrix_mag[9]);
 void SetMagCaliParaBias(float bias_mag[3]);
+float* GetMagCaliParaBias(void);
+float* GetMagCaliParaMatrix(void);
+
 
 
 void SetMagDataUpdateFlag(void);
 void ClearMagDataUpdateFlag(void);
 uint8_t GetMagDataUpdateFlag(void);
+
 
 
 uint32_t GetMagRegisterRate(void);

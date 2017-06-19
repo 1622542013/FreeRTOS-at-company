@@ -30,7 +30,6 @@ TpBool HardWareInit(TpVoid)
 {
   TpBool  result = INLIB_ERROR;
 	
-	TpUint32 baud_usart1;
   TpUint32 baud_usart2;
   TpUint32 baud_usart6;	
 

@@ -559,10 +559,6 @@ TpBool UsartSend(Usart* pu)
 			 
 			 if(pu->cb.send_pt)
 			 {
-				  if(pu->cb.send_pt > 300 )
-				 {
-					pu->cb.send_pt = pu->cb.send_pt;
-				 }
 				 
 			 	 DMA_DeInit(DMA1_Stream6);	
 				 SendDMA_InitStructure_USART2.DMA_BufferSize = pu->cb.send_pt;

@@ -52,7 +52,5 @@ typedef double             TpDouble;
 typedef long long          TpInt64;
 typedef unsigned long long TpUint64;
 
-	
+
 #endif
-	
- 

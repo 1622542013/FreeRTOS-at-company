@@ -41,7 +41,7 @@ TpUint32 mag_collect_index;
 /*                              Global variables                              */
 /*============================================================================*/
 
-UmiIgmBin pUmiOutput;
+extern UmiIgmBin pUmiOutput;
 
 InterruptRecFlag* pInterrupt_rec_flag;
 
@@ -49,22 +49,12 @@ RM3100 rm3100_out;
 MagSend stMagSend;
 GnssOutPut gnss_out_data;
 
-/* magcali  */
-unsigned char state_mag = 0;
-EllipFittingResult ell_result;
-TpUchar  mag_result = 0;
-
 
 /*============================================================================*/
 /*                            Function definition                             */
 /*============================================================================*/
-extern TpUchar Gnss_not_already_flag;
+extern TpUchar Gnss_already_flag;
 
-extern unsigned int arm3_index;
-unsigned int arm3_index_temp = 0;
-
-#include "delay.h"
-float mag_cal_time;
 TpInt32 main(TpVoid)
 {
 	/* Application Programme Deviation */
@@ -76,80 +66,68 @@ TpInt32 main(TpVoid)
 	/* Create MagCaliOnline Instance */
 	MagCaliInit();
 	
-	for(;;)
-	{	
-		mag_result = MagCaliOnline(&state_mag,&ell_result);
-		if(mag_result)
-		{
-		   OutMagCaliOnlinePara(ell_result.center0,ell_result.D0m_inv);
-			 SetMagCaliParaBias(ell_result.center0);
-			 SetMagCaliParaMatrix(ell_result.D0m_inv);
-			 mag_cal_time = os_time();		
-		}
+	TpUchar mag_gnss_data_flag = 0;
 	
-		/* usart rec data flag */
-		pInterrupt_rec_flag = GetInterruptRecFlag();
-		
-/*-------------------------------- decode gnss data ---------------------------------- */
-		if(pInterrupt_rec_flag->rec_gnss)
-		{
-			pInterrupt_rec_flag->rec_gnss = 0;
-
-			DecodeUblox(pInterrupt_rec_flag->buff_gnss,pInterrupt_rec_flag->num_gnss);
-			PackGnssData(&gnss_out_data);
-			gnss_out_data.check =  CheckSumByte((TpUchar*)&gnss_out_data,sizeof(gnss_out_data));
+	for(;;)
+	{		
+			/* usart rec data flag */
+			pInterrupt_rec_flag = GetInterruptRecFlag();
 			
-			if(Gnss_not_already_flag == 0)
+	/*-------------------------------- decode gnss data ---------------------------------- */
+			if(pInterrupt_rec_flag->rec_gnss)
 			{
-				UsartPushMainBuf(GetUsartAddress(USART_6),(TpUchar*)&gnss_out_data,sizeof(gnss_out_data));
+				pInterrupt_rec_flag->rec_gnss = 0;
+
+				DecodeUblox(pInterrupt_rec_flag->buff_gnss,pInterrupt_rec_flag->num_gnss);
+				PackGnssData(&gnss_out_data);
+				gnss_out_data.check =  CheckSumByte((TpUchar*)&gnss_out_data,sizeof(gnss_out_data));	
 			}
-		}
-/*------------------------------- decode user commond ------------------------------- */
-		if(pInterrupt_rec_flag->rec_user)
-		{
-			pInterrupt_rec_flag->rec_user = 0;		
-			
-			DecodeCommond(pInterrupt_rec_flag->buff_user,pInterrupt_rec_flag->num_user);			
-		}
-/*------------------------------- decode ARM2 data ------------------------------- */
-		if(pInterrupt_rec_flag->rec_arm2)
-		{
-			pInterrupt_rec_flag->rec_arm2 = 0;
+	/*------------------------------- decode user commond ------------------------------- */
+			if(pInterrupt_rec_flag->rec_user)
+			{
+				pInterrupt_rec_flag->rec_user = 0;		
+				
+				DecodeCommond(pInterrupt_rec_flag->buff_user,pInterrupt_rec_flag->num_user);			
+			}
+	/*------------------------------- Send mag gnss data to ARM2 ------------------------------- */
+			if(pInterrupt_rec_flag->rec_arm2)
+			{
+				pInterrupt_rec_flag->rec_arm2 = 0;
+				
+				if((Gnss_already_flag == 1)&&(gnss_out_data.head != 0))
+				{
+					UsartPushMainBuf(GetUsartAddress(USART_6),(TpUchar*)&gnss_out_data,sizeof(gnss_out_data));
+					mag_gnss_data_flag |= 1<<1;
+				}		
+				if(stMagSend.head != 0)
+				{
+					UsartPushMainBuf(GetUsartAddress(USART_6),(TpUchar*)&stMagSend,sizeof(stMagSend));
+					mag_gnss_data_flag |= 1<<2;
+				}
 						
-			DecodeARM2Bin(pInterrupt_rec_flag->buff_arm2,pInterrupt_rec_flag->num_arm2,&pUmiOutput);
-			
-			if((arm3_index - arm3_index_temp) != 1)
-			{
-				arm3_index = arm3_index_temp;
+				if(mag_gnss_data_flag != 0)
+				{
+					mag_gnss_data_flag = 0;
+					UsartSend(GetUsartAddress(USART_6));
+				}	
+				
+				memset(&stMagSend,0,sizeof(stMagSend));
+				memset(&gnss_out_data,0,sizeof(gnss_out_data));
 			}
-			
-
-			UsartSend(GetUsartAddress(USART_2));
-			
-			arm3_index_temp = arm3_index;
-		}
-/*------------------------------ decode MAG data ------------------------------- */
-		if(pInterrupt_rec_flag->rec_mag)
-		{
-			pInterrupt_rec_flag->rec_mag = 0;
-			DecodeMagData(pInterrupt_rec_flag->buff_mag,&rm3100_out);
-			
-			stMagSend.head  = 0x45ab;
-			stMagSend.index ++;
-			stMagSend.magx  = rm3100_out.magx;
-			stMagSend.magy  = rm3100_out.magy;
-			stMagSend.magz  = rm3100_out.magz;
-			
-			stMagSend.check = CheckSumByte((TpUchar*)&stMagSend,sizeof(stMagSend));
-			UsartPushMainBuf(GetUsartAddress(USART_6),(TpUchar*)&stMagSend,sizeof(stMagSend));
-			UsartSend(GetUsartAddress(USART_6));	
-			
-					 /* MagCali online */
-		 if(GetCommondFlag()->magcali_online)
-		 {
-        CheckMagCaliOk(&stMagCaliFlag,&pUmiOutput,&rm3100_out,&mea_in);
-		 }	 
-		}
+	/*------------------------------ decode MAG data ------------------------------- */
+			if(pInterrupt_rec_flag->rec_mag)
+			{
+				pInterrupt_rec_flag->rec_mag = 0;
+				DecodeMagData(pInterrupt_rec_flag->buff_mag,&rm3100_out);
+				
+				stMagSend.head  = 0x45ab;
+				stMagSend.magx  = rm3100_out.magx;
+				stMagSend.magy  = rm3100_out.magy;
+				stMagSend.magz  = rm3100_out.magz;
+				
+				stMagSend.check = CheckSumByte((TpUchar*)&stMagSend,sizeof(stMagSend));
+	 
+			}			
 	}
 }
 

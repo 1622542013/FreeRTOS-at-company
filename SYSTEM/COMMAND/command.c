@@ -223,7 +223,7 @@ TpBool SetClass(Package* pa)
 		FlashWrite();	
     __enable_irq() ;
 		
-		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_SAVE,NULL),Commond_BIN_SIZE);
+	//	UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_SAVE,NULL),Commond_BIN_SIZE);
 		result = RESULT_OK;
 		return result;		
 	}
@@ -233,7 +233,7 @@ TpBool SetClass(Package* pa)
 	{
 	  FlashInit();
 		
-		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_SETTING_RESTORE,NULL),Commond_BIN_SIZE);
+	//	UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_SETTING_RESTORE,NULL),Commond_BIN_SIZE);
 		result = RESULT_OK;
 		return result;
 	}

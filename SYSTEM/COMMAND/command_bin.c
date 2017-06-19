@@ -77,7 +77,7 @@ TpVoid DecodeCommondBin(TpUchar* commnd_bin,TpUint16 length)
 	Commond_Bin   common_bin;
 
 	TpUint16 out_len;
-	TpUchar  check = 0;
+//	TpUchar  check = 0;
 
 	memcpy(&commond_upper_half,commnd_bin,sizeof(commond_upper_half));
 	
@@ -92,7 +92,7 @@ TpVoid DecodeCommondBin(TpUchar* commnd_bin,TpUint16 length)
 		case COMMAND_ID_GYRO_PARA :
 				{
 					memcpy(&CAL_PARA,commnd_bin,sizeof(CAL_PARA));
-					GyroCalPara(&CAL_PARA);
+				//	GyroCalPara(&CAL_PARA);
 				}
 				break;
 		case COMMAND_ID_NAV_MODE :

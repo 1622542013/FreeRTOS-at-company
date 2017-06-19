@@ -37,7 +37,7 @@
 
 //#include "Mag.h"
 #include "math.h"
-
+#include "command.h"
 
 static InterruptRecFlag interrupt_rec_flag;
 
@@ -213,45 +213,44 @@ void USART1_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
 	if(USART_GetITStatus(USART2, USART_IT_IDLE) != RESET)
-	{
-   
+	{ 
     USART2->SR;
     USART2->DR;
-		
+
 		/* get rec num  */	
     interrupt_rec_flag.num_user = BUFSIZE_USART2_REC-DMA_GetCurrDataCounter(DMA1_Stream5);	
 		memcpy(interrupt_rec_flag.buff_user,GetUsartAddress(USART_2)->cb.rec_buf,interrupt_rec_flag.num_user);  
 		/* set rec flag  */				
 		interrupt_rec_flag.rec_user = 1;
-		UsartRecEnable(GetUsartAddress(USART_2));				
+		UsartRecEnable(GetUsartAddress(USART_2));	
+
+	
 	}
 }
 
-unsigned int rx_index;
-unsigned int rx_index_temp = 0;
+UmiIgmBin pUmiOutput;
 void USART6_IRQHandler(void)
 {
+	int num = 0;
+	
 	if(USART_GetITStatus(USART6, USART_IT_IDLE) != RESET)
 	{
 		USART6->SR;
     USART6->DR;
-		
-		rx_index++;
-		
-		if((rx_index - rx_index_temp) != 1)
-		{
-			rx_index = rx_index;
-		}
-		
-		rx_index_temp = rx_index;
-		
-		/* get rec num  */	
-		interrupt_rec_flag.num_arm2 = BUFSIZE_USART6_REC-DMA_GetCurrDataCounter(DMA2_Stream1);
-		memcpy(interrupt_rec_flag.buff_arm2,GetUsartAddress(USART_6)->cb.rec_buf,interrupt_rec_flag.num_arm2);
-		/* set rec flag  */		
+				
 		interrupt_rec_flag.rec_arm2 = 1;
-		UsartRecEnable(GetUsartAddress(USART_6));		
 		
+		/* get rec num  */		
+		num = GetUsartRxNum(USART_6);	
+
+		
+		DecodeARM2Bin(GetUsartAddress(USART_6)->cb.rec_buf,num,&pUmiOutput);
+		
+			
+		UsartSend(GetUsartAddress(USART_2));
+		
+		UsartRecEnable(GetUsartAddress(USART_6));		
+			
    }
 }
 /******************************************************************************/

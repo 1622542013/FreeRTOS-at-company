@@ -22,8 +22,6 @@
 
 #define COM_ARM3_TO_ARM2				USART_6
 #define COM_ARM3_TO_USER        USART_2
-//#define PushOutSendBuff(send_buff,out_len)   		UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)send_buff,out_len)
-//#define PushSendtoArm2Buff(send_buff,out_len)   UsartPushMainBuf(GetUsartAddress(USART_6),(TpUchar*)send_buff,out_len)
 
 
 #define  OUTPUT_ID_IMU_ASCII     ((TpUchar)1)
@@ -76,11 +74,11 @@
 /* set mag sample rate */
 #define SET_MAG_RATE      			  ("$cmd,set,mag,samplerate,")
 /* set mag cali para */
-#define SET_MAG_CAL_PARA 					("$cmd,set,mag,cal_para,")
+#define SET_MAG_CAL_PARA 					("$cmd,set,mag,calpara,")
 /* erase mag cali para */
-#define SET_MAG_CAL_PARA_ERASE  	("$cmd,set,mag,cal_erase,*ff")
+#define SET_MAG_CAL_PARA_ERASE  	("$cmd,set,mag,calerase,*ff")
 /* mag cali online */
-#define SET_MAG_CAL_ONLINE        ("$cmd,set,mag,cal_on,*ff")
+#define SET_MAG_CAL_ONLINE        ("$cmd,set,mag,calon,*ff")
 /* settings save or restore */
 #define ALL_SETTING_SAVE					("$cmd,set,allsettings,save,*ff")
 #define ALL_SETTING_RESTORE 			("$cmd,set,allsettings,restore,*ff")

@@ -52,7 +52,7 @@ TpVoid FlashInit(TpVoid)
 	
 	/**** usart baudrate parameters ****/
 	syspara.baud_usart1 	= 115200;
-	syspara.baud_usart2 	= 460800;
+	syspara.baud_usart2 	= 230400;
 	syspara.baud_usart6 	= 921600;
 	/***********************************/
 	
@@ -92,9 +92,9 @@ TpVoid FlashInit(TpVoid)
   /*******************************/
 	
   /* out data parameters */
-	syspara.imu_ascii_out_rate = 1;
+	syspara.imu_ascii_out_rate = 0;
 	syspara.ahrs_ascii_out_rate = 0;
-	syspara.ahrs_bin_out_rate = 0;
+	syspara.ahrs_bin_out_rate = 1;
 	syspara.igm_ascii_out_rate = 0;
 	syspara.igm_bin_out_rate = 0;
 	/*******************************/
@@ -530,6 +530,8 @@ void SetMagCaliPara(float matrix_mag[12])
 	}
 }
 
+
+
 /**************************************************************************/
 
 
@@ -640,3 +642,14 @@ void SetMagCaliParaMatrix(float matrix_mag[9])
      syspara.matrix_mag[i] = matrix_mag[i];/*matrix_mag from 0 to 8*/
 	}
 }
+
+float* GetMagCaliParaBias(void)
+{
+	return syspara.bias_mag;
+}
+
+float* GetMagCaliParaMatrix(void)
+{
+	return syspara.matrix_mag;
+}
+

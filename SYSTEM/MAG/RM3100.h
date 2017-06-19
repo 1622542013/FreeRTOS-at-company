@@ -126,8 +126,6 @@ typedef struct _tagMagSend
 {
 	TpUint16 head;
 	
-	TpUint32 index;
-	
 	float magx;
 	float magy;
 	float magz;

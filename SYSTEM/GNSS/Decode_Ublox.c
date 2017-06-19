@@ -189,12 +189,12 @@ TpUchar CheckNmea(const TpUchar *buf,const TpUint16 count)
 }
 
 /*--------------------------------------------------------*/
-TpUchar Gnss_not_already_flag;
+TpUchar Gnss_already_flag;
 TpVoid PackGnssData(GnssOutPut* gnss)
 {
 	if(gpgga.time_utc != gprmc.time_utc)
 	{
-		Gnss_not_already_flag = 1;
+		Gnss_already_flag = 0;
 		memset(gnss,0xff,sizeof(GnssOutPut));
 		gnss->head = 0xFEDC;
 		gnss->flag = GNSS_INCOMPLETE;
@@ -202,7 +202,7 @@ TpVoid PackGnssData(GnssOutPut* gnss)
 	}
 	else
 	{
-		Gnss_not_already_flag = 0;
+		Gnss_already_flag = 1;
 	}
 	
 	gnss->head = 0xFEDC;

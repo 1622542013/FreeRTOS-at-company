@@ -10,7 +10,7 @@
 /*============================================================================*/
 
 #include "RM3100.h"
-
+#include "flash.h"
 
 /*============================================================================*/
 /*                              Global variables                              */
@@ -269,6 +269,9 @@ TpBool DecodeMagData(TpUint16* mag_data_buff,RM3100* pRm3100)
 	
 	TpUint32 Data;
 	
+	float* dift_mag_sys = GetMagCaliParaBias();
+	float* k_mag_sys = GetMagCaliParaMatrix();
+		
 	/* magx */
 	Data = (mag_data_buff[0]&0x00FF)<<16;
 	Data |= mag_data_buff[1];
@@ -298,6 +301,8 @@ TpBool DecodeMagData(TpUint16* mag_data_buff,RM3100* pRm3100)
 	
 	/* reg data to mag data */
 	Rm3100DataConversion(pRm3100);
+		
+	MagCaliCompensate(dift_mag_sys,k_mag_sys,pRm3100);
 	
 	return result;
 
