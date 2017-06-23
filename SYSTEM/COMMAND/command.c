@@ -691,25 +691,26 @@ TpBool DecodeARM2Bin(TpUchar* pUsart_buff,TpUint16 len,UmiIgmBin* pUmiOutput)
 	TpUint16 freed_back_length;
 	
 	
-	if(len > pUmiOutput_length)
-	{
-		  freed_back_length = len - pUmiOutput_length;
-		  DecodeCommondBin((TpUchar*)pUsart_buff,freed_back_length);
-		
-		  check_sum =  CheckSum((TpUchar*)pUsart_buff + freed_back_length,pUmiOutput_length);
-			memcpy(pUmiOutput,pUsart_buff + freed_back_length,pUmiOutput_length); 
-			
-			if((pUmiOutput->head[0] == DATA_FROM_ARM2_HEAD_1)&&(pUmiOutput->head[1] == DATA_FROM_ARM2_HEAD_2))
-			{
-				if(pUmiOutput->check == check_sum)
-				{
+//	if(len > pUmiOutput_length)
+//	{
+//		  freed_back_length = len - pUmiOutput_length;
+//		  DecodeCommondBin((TpUchar*)pUsart_buff,freed_back_length);
+//		
+//		  check_sum =  CheckSum((TpUchar*)pUsart_buff + freed_back_length,pUmiOutput_length);
+//			memcpy(pUmiOutput,pUsart_buff + freed_back_length,pUmiOutput_length); 
+//			
+//			if((pUmiOutput->head[0] == DATA_FROM_ARM2_HEAD_1)&&(pUmiOutput->head[1] == DATA_FROM_ARM2_HEAD_2))
+//			{
+//				if(pUmiOutput->check == check_sum)
+//				{
 
-					 LogOutput(pUmiOutput);
-					 result = 	RESULT_OK;			
-				}
-			}
-	}
-	else if(len == pUmiOutput_length)
+//					 LogOutput(pUmiOutput);
+//					 result = 	RESULT_OK;			
+//				}
+//			}
+//	}
+//	else 
+	if(len == pUmiOutput_length)
 	{
 			check_sum =  CheckSum((TpUchar*)pUsart_buff,pUmiOutput_length);
 			memcpy(pUmiOutput,pUsart_buff,pUmiOutput_length); 

@@ -78,17 +78,17 @@ uint8_t output_data_buff[512];
 
 TpVoid LogImuAscii(UmiIgmBin* pUmiOutput)
 {
-	TpUchar len = 0;
+	TpUint16 len = 0;
 	float Acc_Temp  = (float)pUmiOutput->imu.acc_temp / 16.0f;
 	float Gyro_temp = (float)pUmiOutput->imu.gyo_temp / 16.0f;
 	float Bmp_Temp  = (float)pUmiOutput->imu.bmp_temp / 16.0f;
 
-	len = snprintf((char*)output_data_buff,200,"%d,%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\r\n",
+	len = snprintf((char*)output_data_buff,200,"%d,%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\r\n",
 		      OUTPUT_ID_IMU_ASCII,pUmiOutput->index,pUmiOutput->tow_imu,
 					pUmiOutput->imu.gyox,pUmiOutput->imu.gyoy,pUmiOutput->imu.gyoz,
 					pUmiOutput->imu.accx,pUmiOutput->imu.accy,pUmiOutput->imu.accz,
 					pUmiOutput->mag.magx,pUmiOutput->mag.magy,pUmiOutput->mag.magz,
-					Gyro_temp,Acc_Temp,Bmp_Temp);
+					Gyro_temp,Acc_Temp);
 	
   UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
 }
@@ -96,7 +96,7 @@ TpVoid LogImuAscii(UmiIgmBin* pUmiOutput)
 
 TpVoid LogAhrsAscii(UmiIgmBin* pUmiOutput)
 {
-	TpUchar len = 0;
+	TpUint16 len = 0;
 	
 	len = snprintf((char*)output_data_buff,200,"%d,%d,%d,%f,%f,%f,%f,%f,%f,%f\r\n",
 									OUTPUT_ID_AHRS_ASCII,pUmiOutput->index,pUmiOutput->tow_imu,
@@ -188,7 +188,7 @@ uint8_t GetCheckbyte(uint8_t * p_char, uint32_t datanum )
 }
 
 #define GRA    		9.8f  /* Gravitational acceleration */ 
-#define S_TO_US 	(uint32_t)1000000	 /*Second to Microsecond*/
+#define S_TO_US 	(uint64_t)1000000	 /*Second to Microsecond*/
 TpVoid LogAhrsBin(UmiIgmBin* pUmiOutput)
 {
 	float changetime = 0.0;
@@ -206,8 +206,7 @@ TpVoid LogAhrsBin(UmiIgmBin* pUmiOutput)
 			Ahrs_IMU_upper.head[5] = 0x86;
 			Ahrs_IMU_upper.length  = sizeof(Ahrs_IMU_upper);
 			
-			Ahrs_IMU_upper.time = pUmiOutput->index * (uint32_t)(S_TO_US / (uint32_t)freq);
-	
+			Ahrs_IMU_upper.time = (uint64_t)pUmiOutput->index * (uint64_t)((uint64_t)S_TO_US / (uint64_t)freq);
 			Ahrs_IMU_upper.ID = 0;
 			Ahrs_IMU_upper.ax = pUmiOutput->imu.accx;
 			Ahrs_IMU_upper.ay = pUmiOutput->imu.accy;
@@ -242,27 +241,18 @@ TpVoid LogAhrsBin(UmiIgmBin* pUmiOutput)
 
 TpVoid LogIgmAscii(UmiIgmBin* pUmiOutput)
 {
-	TpUchar len_message = 0;
+	TpUint16 len_message = 0;
 
-	float Acc_Temp  = (float)pUmiOutput->imu.acc_temp / 16.0f;
-	float Gyro_temp = (float)pUmiOutput->imu.gyo_temp / 16.0f;
-	float Bmp_Temp  = (float)pUmiOutput->imu.bmp_temp / 16.0f;
-
-	
-  memset(output_data_buff,0,512);
-	
-	len_message = snprintf((char*)output_data_buff,512,"%d,%d,%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%.10f,%.10f,%f,%d,%d,%.10f,%.10f,%f,%f,%f,%f,%f,%f\r\n",
+	len_message = snprintf((char*)output_data_buff,512,"%d,%d,%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%.10f,%.10f,%.10f,%.10f,%f,%f,%f,%f,%f,%f\r\n",
 		      OUTPUT_ID_IGM_ASCII,pUmiOutput->index,pUmiOutput->tow_imu,pUmiOutput->week,
 					pUmiOutput->imu.gyox,pUmiOutput->imu.gyoy,pUmiOutput->imu.gyoz,
 					pUmiOutput->imu.accx,pUmiOutput->imu.accy,pUmiOutput->imu.accz,
 					pUmiOutput->mag.magx,pUmiOutput->mag.magy,pUmiOutput->mag.magz,
-					pUmiOutput->gnss.weekn,pUmiOutput->gnss.tow_pps,pUmiOutput->gnss.lat,pUmiOutput->gnss.lon,
-	        pUmiOutput->gnss.alt,pUmiOutput->gnss.gflag,pUmiOutput->gnss.hdop,
+					pUmiOutput->gnss.tow_pps,pUmiOutput->gnss.lat,pUmiOutput->gnss.lon,
 					pUmiOutput->nav.lat,pUmiOutput->nav.lon,pUmiOutput->nav.heading,pUmiOutput->nav.pitch,pUmiOutput->nav.roll,
 					pUmiOutput->nav.ve,pUmiOutput->nav.vn,pUmiOutput->nav.vu);
-	
-	UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len_message);
-	
+
+	UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,len_message);
 }
 
 TpVoid LogIgmBin(UmiIgmBin* pUmiOutput)
