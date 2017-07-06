@@ -68,9 +68,9 @@
 /* set product id */
 #define SET_PRODUCT_ID 						("$cmd,set,product,id,")
 /* set hardware version */
-#define SET_HARD_VERSION 					("$cmd,set,hardware,version,")
+#define SET_HARD_VERSION 					("$cmd,set,version,hardware,")
 /* set software version */
-#define SET_SOFT_VERSION 					("$cmd,set,software,version,")
+#define SET_SOFT_VERSION 					("$cmd,set,version,software,")
 /* set mag sample rate */
 #define SET_MAG_RATE      			  ("$cmd,set,mag,samplerate,")
 /* set mag cali para */
@@ -80,8 +80,8 @@
 /* mag cali online */
 #define SET_MAG_CAL_ONLINE        ("$cmd,set,mag,calon,*ff")
 /* settings save or restore */
-#define ALL_SETTING_SAVE					("$cmd,set,allsettings,save,*ff")
-#define ALL_SETTING_RESTORE 			("$cmd,set,allsettings,restore,*ff")
+#define ALL_SETTING_SAVE					("$cmd,save,config,*ff")
+#define ALL_SETTING_RESTORE 			("$cmd,freset,*ff")
 
 /************************ get commond****************************/
 /* ascii head of get */
@@ -90,45 +90,61 @@
 #define GET_BAUDRATE 							("$cmd,get,usart,baudrate,*ff")
 #define GET_BAUDRATE_OUT 					("$cmd,get,usart,baudrate,%d,*ff\r\n")
 /* product id*/
-#define GET_PRODUCT_ID 						("$cmd,get,product,id,*ff")
-#define GET_PRODUCT_ID_OUT 				("$cmd,get,product,id,%d,*ff\r\n")
+#define GET_PRODUCT_ID 						("$cmd,get,productid,*ff")
+#define GET_PRODUCT_ID_OUT 				("$cmd,get,productid,%d,*ff\r\n")
 /* hardware version */
-#define GET_HARD_VERSION 					("$cmd,get,hardware,version,*ff")
-#define GET_HARD_VERSION_OUT 			("$cmd,get,hardware,version,%d,*ff\r\n")
+#define GET_HARD_VERSION 					("$cmd,get,version,hardware,*ff")
+#define GET_HARD_VERSION_OUT 			("$cmd,get,version,hardware,%d,*ff\r\n")
 /* software version */
-#define GET_SOFT_VERSION 					("$cmd,get,software,version,*ff")
-#define GET_SOFT_VERSION_OUT 			("$cmd,get,software,version,%d,*ff\r\n")
+#define GET_SOFT_VERSION 					("$cmd,get,version,software,,*ff")
+#define GET_SOFT_VERSION_OUT 			("$cmd,get,version,software,,%d,*ff\r\n")
 /* mag sample rate */
 #define GET_MAG_RATE 							("$cmd,get,mag,samplerate,*ff")
 #define GET_MAG_RATE_OUT 					("$cmd,get,mag,samplerate,%dHZ,*ff\r\n")
 /* mag cali parameters */
-#define GET_MAG_CAL_PARA 					("$cmd,get,mag,calipara,*ff")
-#define GET_MAG_CAL_PARA_OUT 			("$cmd,get,mag,calipara,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,*ff\r\n")
+#define GET_MAG_CAL_PARA 					("$cmd,get,mag,calpara,*ff")
+#define GET_MAG_CAL_PARA_OUT 			("$cmd,get,mag,calpara,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,*ff\r\n")
 
 /* mag cali para user out */
 #define MAG_CAL_PARA_USER_OUT 	  ("$cmd,mag,calipara,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,*ff\r\n")
 /************************ output commond *******************************/
 
 #define ASCII_CLASS_OUTPUT  			("$cmd,output,")
-#define OUTPUT_IMU_ASCII 					("$cmd,output,imu,ascii,")
-#define OUTPUT_AHRS_ASCII_RATE 		("$cmd,output,ahrs,ascii,")
-#define OUTPUT_AHRS_BIN_RATE 			("$cmd,output,ahrs,bin,")
-#define OUTPUT_IGM_ASCII_RATE 		("$cmd,output,igm,ascii,")
-#define OUTPUT_IGM_BIN_RATE 			("$cmd,output,igm,bin,")
+#define OUTPUT_IMU_ASCII_RATE 		("$cmd,output,gpimu,ascii,")
+#define OUTPUT_AHRS_ASCII_RATE 		("$cmd,output,gpahrs,ascii,")
+#define OUTPUT_NAV_ASCII_RATE 		("$cmd,output,gpnav,ascii,")
+#define OUTPUT_AVNAV_ASCII_RATE 	("$cmd,output,avnav,ascii,")
+#define OUTPUT_LVNAV_ASCII_RATE 	("$cmd,output,lvnav,ascii,")
+#define OUTPUT_MVNAV_ASCII_RATE 	("$cmd,output,mvnav,ascii,")
 
+#define OUTPUT_GPGGA_RATE 				("$cmd,output,gpgga,")
+#define OUTPUT_GPRMC_RATE 				("$cmd,output,gprmc,")
 
+#define OUTPUT_IMU_BIN_RATE 			("$cmd,output,gpimu,bin,")
+#define OUTPUT_AHRS_BIN_RATE 			("$cmd,output,gpahrs,bin,")
+#define OUTPUT_NAV_BIN_RATE 			("$cmd,output,gpnav,bin,")
+#define OUTPUT_AVNAV_BIN_RATE 		("$cmd,output,avnav,bin,")
+#define OUTPUT_LVNAV_BIN_RATE 		("$cmd,output,lvnav,bin,")
+#define OUTPUT_MVNAV_BIN_RATE 		("$cmd,output,mvnav,bin,")
+
+#define OUTPUT_DEV_AHRS_BIN_RATE 	("$cmd,output,dev*gpahrs,bin,")
+#define OUTPUT_DEV_IGM_BIN_RATE 	("$cmd,output,dev*gpigm,bin,")
 /* commond sent to arm2 and arm1  */
 /************************ set commond****************************/
 #define SET_ACC_PARA_COMMAND  		("$cmd,set,acc,calpara,")
 #define SET_GYRO_PARA_COMMAND  		("$cmd,set,gyro,calpara,")
 #define ERASE_ACC_GYRO_PARA    		("$cmd,set,erase,accgyrocalpara,*ff")
-#define SET_NAV_WORK_MODE 				("$cmd,set,imu,navmode,")
-#define SET_LEVER_ARM 						("$cmd,set,gnss,leverarm,")
-/************************ get commond****************************/
 #define GET_ACC_PARA_COMMAND  		("$cmd,get,acc,cal_para,*ff")
 #define GET_GYRO_PARA_COMMAND  		("$cmd,get,gyro,cal_para,*ff")
-#define GET_NAV_WORK_MODE 				("$cmd,get,imu,navmode,*ff")
+
+/*-----------------------------------------------------------------*/
+#define SET_NAV_WORK_MODE 				("$cmd,set,appmode,")
+#define SET_LEVER_ARM 						("$cmd,set,gnss,leverarm,")
+#define SET_BASE_LINE 						("$cmd,set,gnss,baseline,")
+/************************ get commond****************************/
+#define GET_NAV_WORK_MODE 				("$cmd,get,appmode,*ff")
 #define GET_LEVER_ARM 						("$cmd,get,gnss,leverarm,*ff")
+#define GET_BASE_LINE 						("$cmd,set,gnss,baseline,")
 
 #define NAV_LAND_MODE 						("land")
 #define NAV_AIR_MODE 							("air")

@@ -132,19 +132,6 @@ TpVoid DecodeUblox(TpUchar *buf,TpUint16 length)
 }
 
 
-TpUchar CheckSumNmea(const TpUchar *buf,const TpUint16 count)
-{
-  TpUint16 i;
-  TpUchar check=0;
-  for(i=1;i<count-5;i++)/*except '*' 'check'(1 byte) '\r' '\n'*/
-  {
-    check ^= buf[i];
-  }
-	
-	return check;
-}
-
-
 void PackGgaData(GPGGA_DATA* gga,const TpChar* data_buff[])
 {
 	gga->time_utc = atof(data_buff[1]);

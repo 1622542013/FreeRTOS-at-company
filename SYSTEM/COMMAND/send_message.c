@@ -7,104 +7,244 @@
 #include "command.h"
 #include "flash.h"
 
-TpVoid LogOutput(UmiIgmBin* pUmiOutput)
+#define  output_buff_size 	512
+
+uint8_t output_data_buff[output_buff_size];
+
+TpUchar CheckAscii(const TpUchar *buf,const TpUint16 count)
 {
-	TpUint16 ratio = 0;
-	TpUint16 index = 0;
+  TpUint16 i;
+  TpUchar check_sum=0;
+  for(i=1;i<count-5;i++)
+  {
+    check_sum ^= buf[i];
+  }
 	
-	/* ascii out */
-	index = GetOutputFormat(IMU_ASCII);
-	if(index)
-	{
-	   ratio = BENCHMARK_FREQ /index;
-		 if(pUmiOutput->index%ratio==0)
-		 {
-		   LogImuAscii(pUmiOutput);
-		 }	
-	}
-	
-	/* ahrs ascii  */
-	index = 0;
-	index = GetOutputFormat(AHRS_ASCII);
-	if(index)
-	{
-	   ratio = BENCHMARK_FREQ /index;
-		 if(pUmiOutput->index%ratio==0)
-		 {
-		    LogAhrsAscii(pUmiOutput);
-		 }	
-	}
-  
-	/* ahrs bin  */
-	index = 0;
-	index = GetOutputFormat(AHRS_BIN);
-	if(index)
-	{
-	   ratio = BENCHMARK_FREQ /index;
-		 if(pUmiOutput->index%ratio==0)
-		 {
-		    LogAhrsBin(pUmiOutput);
-		 }	
-	}
- 	
-
-	/* igm ascii  */
-	index = 0;
-	index = GetOutputFormat(IGM_ASCII);
-	if(index)
-	{
-	   ratio = BENCHMARK_FREQ /index;
-		 if(pUmiOutput->index%ratio==0)
-		 {	  
-		    LogIgmAscii(pUmiOutput);
-		 }	
-	}
-	/* igm bin  */
-	index = 0;
-	index = GetOutputFormat(IGM_BIN);
-	if(index)
-	{
-		
-	   ratio = BENCHMARK_FREQ /index;
-		 if(pUmiOutput->index%ratio==0)
-		 {
-		    LogIgmBin(pUmiOutput);
-		 }	
-	}
-	
+	return check_sum;
 }
-
-uint8_t output_data_buff[512];
 
 TpVoid LogImuAscii(UmiIgmBin* pUmiOutput)
 {
 	TpUint16 len = 0;
+	TpUchar  check;
 	float Acc_Temp  = (float)pUmiOutput->imu.acc_temp / 16.0f;
 	float Gyro_temp = (float)pUmiOutput->imu.gyo_temp / 16.0f;
 	float Bmp_Temp  = (float)pUmiOutput->imu.bmp_temp / 16.0f;
 
-	len = snprintf((char*)output_data_buff,200,"%d,%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\r\n",
-		      OUTPUT_ID_IMU_ASCII,pUmiOutput->index,pUmiOutput->tow_imu,
+	len = snprintf((char*)output_data_buff,output_buff_size,"$GPIMU,%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+		      pUmiOutput->index,pUmiOutput->tow_imu,
 					pUmiOutput->imu.gyox,pUmiOutput->imu.gyoy,pUmiOutput->imu.gyoz,
 					pUmiOutput->imu.accx,pUmiOutput->imu.accy,pUmiOutput->imu.accz,
 					pUmiOutput->mag.magx,pUmiOutput->mag.magy,pUmiOutput->mag.magz,
 					Gyro_temp,Acc_Temp);
 	
   UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+	
+	
+	check = CheckAscii(output_data_buff,len);	
+	len = snprintf((char*)output_data_buff,output_buff_size,",*%X\r\n",check);
+	
+	UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+ 
 }
 
 
 TpVoid LogAhrsAscii(UmiIgmBin* pUmiOutput)
 {
 	TpUint16 len = 0;
+	TpUchar  check;
 	
-	len = snprintf((char*)output_data_buff,200,"%d,%d,%d,%f,%f,%f,%f,%f,%f,%f\r\n",
-									OUTPUT_ID_AHRS_ASCII,pUmiOutput->index,pUmiOutput->tow_imu,
+	len = snprintf((char*)output_data_buff,output_buff_size,"$GPAHRS,%d,%d,%f,%f,%f,%f,%f,%f,%f",
+									pUmiOutput->index,pUmiOutput->tow_imu,
 									pUmiOutput->nav.heading,pUmiOutput->nav.roll,pUmiOutput->nav.pitch,
 									pUmiOutput->nav.quat[0],pUmiOutput->nav.quat[1],pUmiOutput->nav.quat[2],pUmiOutput->nav.quat[3]);
 	
   UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+	
+	check = CheckAscii(output_data_buff,len);	
+	len = snprintf((char*)output_data_buff,output_buff_size,",*%X\r\n",check);
+	
+	UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
 }
+
+TpVoid LogNavAscii(UmiIgmBin* pUmiOutput)
+{
+	TpUint16 len = 0;
+	TpUchar  check;
+	
+	len = snprintf((char*)output_data_buff,output_buff_size,"$GPNAV,%d,%d,%d,%.10f,%.10f,%f,%f,%f,%f,%f,%f",
+									pUmiOutput->index,pUmiOutput->tow_imu,pUmiOutput->week,
+									pUmiOutput->nav.lat,pUmiOutput->nav.lon,
+									pUmiOutput->nav.heading,pUmiOutput->nav.roll,pUmiOutput->nav.pitch,
+									pUmiOutput->nav.ve,pUmiOutput->nav.vn,pUmiOutput->nav.vu);
+	
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+	
+	check = CheckAscii(output_data_buff,len);	
+	len = snprintf((char*)output_data_buff,output_buff_size,",*%X\r\n",check);
+	
+	UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+}
+
+TpVoid LogAvNavAscii(UmiIgmBin* pUmiOutput)
+{
+	TpUint16 len = 0;
+	
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+}
+
+TpVoid LogLvNavAscii(UmiIgmBin* pUmiOutput)
+{
+	TpUint16 len = 0;
+	
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+}
+
+TpVoid LogMvNavAscii(UmiIgmBin* pUmiOutput)
+{
+	TpUint16 len = 0;
+	
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+}
+
+TpVoid LogGpgga(UmiIgmBin* pUmiOutput)
+{
+//	TpUint16 len = 0;
+//	TpUchar  check;
+//	
+//	len = snprintf((char*)output_data_buff,output_buff_size,"$GPNAV,%d,%d,%d,%.10f,%.10f,%f,%f,%f,%f,%f,%f",
+//									pUmiOutput->index,pUmiOutput->tow_imu,pUmiOutput->week,
+//									pUmiOutput->nav.lat,pUmiOutput->nav.lon,
+//									pUmiOutput->nav.heading,pUmiOutput->nav.roll,pUmiOutput->nav.pitch,
+//									pUmiOutput->nav.ve,pUmiOutput->nav.vn,pUmiOutput->nav.vu);
+//	
+//  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+//	
+//	check = CheckAscii(output_data_buff,len);	
+//	len = snprintf((char*)output_data_buff,output_buff_size,",*%X\r\n",check);
+//	
+//	UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+}
+TpVoid LogGprmc(UmiIgmBin* pUmiOutput)
+{
+	TpUint16 len = 0;
+	
+	
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+}
+
+
+
+
+TpVoid LogImuBin(UmiIgmBin* pUmiOutput)
+{
+	ImuBin Imudata;
+	
+	Imudata.head 	 = 0XABCD;
+	Imudata.Class  = 0XDA;
+	Imudata.ID   	 = 0x01;
+	Imudata.length = sizeof(Imudata) - 2;
+	
+	Imudata.index 	= pUmiOutput->index;
+	Imudata.tow_imu = pUmiOutput->tow_imu;
+	
+	Imudata.accx  = pUmiOutput->imu.accx;
+	Imudata.accy  = pUmiOutput->imu.accy;
+	Imudata.accz  = pUmiOutput->imu.accz;
+	
+	Imudata.gyox = pUmiOutput->imu.gyox;
+	Imudata.gyoy = pUmiOutput->imu.gyoy;
+	Imudata.gyoz = pUmiOutput->imu.gyoz;
+	
+	Imudata.magx = pUmiOutput->mag.magx;
+	Imudata.magy = pUmiOutput->mag.magy;
+	Imudata.magz = pUmiOutput->mag.magz;
+	
+	Imudata.temp_acc = pUmiOutput->imu.acc_temp;
+	Imudata.temp_gyo = pUmiOutput->imu.gyo_temp;
+	
+	Imudata.check = CheckSumByte((TpUchar*)&Imudata,Imudata.length);
+	Imudata.end   = 0xFE;
+	
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)&Imudata,sizeof(Imudata));
+}
+TpVoid LogAhrsBin(UmiIgmBin* pUmiOutput)
+{
+	AhrsBin Ahrsdata;
+	
+	Ahrsdata.head 	 = 0XABCD;
+	Ahrsdata.Class   = 0XDA;
+	Ahrsdata.ID   	 = 0x01;
+	Ahrsdata.length  = sizeof(Ahrsdata) - 2;
+	
+	Ahrsdata.index 	 = pUmiOutput->index;
+	Ahrsdata.tow_imu = pUmiOutput->tow_imu;
+	
+	Ahrsdata.heading = pUmiOutput->nav.heading;
+	Ahrsdata.roll    = pUmiOutput->nav.roll;
+	Ahrsdata.pitch   = pUmiOutput->nav.pitch;
+	
+	Ahrsdata.quat[0] = pUmiOutput->nav.quat[0];
+	Ahrsdata.quat[1] = pUmiOutput->nav.quat[1];
+	Ahrsdata.quat[2] = pUmiOutput->nav.quat[2];
+	Ahrsdata.quat[3] = pUmiOutput->nav.quat[3];
+	
+	Ahrsdata.check = CheckSumByte((TpUchar*)&Ahrsdata,Ahrsdata.length);
+	Ahrsdata.end   = 0xFE;
+	
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)&Ahrsdata,sizeof(Ahrsdata));
+}
+TpVoid LogNavBin(UmiIgmBin* pUmiOutput)
+{
+	NavBin Navdata;
+	
+	Navdata.head 	  = 0XABCD;
+	Navdata.Class   = 0XDA;
+	Navdata.ID   	  = 0x01;
+	Navdata.length  = sizeof(Navdata) - 2;
+	
+	Navdata.index 	 = pUmiOutput->index;
+	Navdata.tow_imu  = pUmiOutput->tow_imu;
+	
+	Navdata.lat = pUmiOutput->nav.lat;
+	Navdata.lon = pUmiOutput->nav.lon;
+	
+	Navdata.heading = pUmiOutput->nav.heading;
+	Navdata.roll    = pUmiOutput->nav.roll;
+	Navdata.pitch   = pUmiOutput->nav.pitch;
+	
+	Navdata.ve = pUmiOutput->nav.ve;
+	Navdata.vn = pUmiOutput->nav.vn;
+	Navdata.vu = pUmiOutput->nav.vu;
+	
+	Navdata.check = CheckSumByte((TpUchar*)&Navdata,Navdata.length);
+	Navdata.end   = 0xFE;
+	
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)&Navdata,sizeof(Navdata));
+}
+TpVoid LogAvNavBin(UmiIgmBin* pUmiOutput)
+{
+	TpUint16 len = 0;
+	
+	
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+}
+TpVoid LogLvNavBin(UmiIgmBin* pUmiOutput)
+{
+	TpUint16 len = 0;
+	
+	
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+}
+TpVoid LogMvNavBin(UmiIgmBin* pUmiOutput)
+{
+	TpUint16 len = 0;
+	
+	
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
+}
+
+
 
 #pragma pack(push)
 #pragma pack(1)
@@ -189,7 +329,7 @@ uint8_t GetCheckbyte(uint8_t * p_char, uint32_t datanum )
 
 #define GRA    		9.8f  /* Gravitational acceleration */ 
 #define S_TO_US 	(uint64_t)1000000	 /*Second to Microsecond*/
-TpVoid LogAhrsBin(UmiIgmBin* pUmiOutput)
+TpVoid LogDevAhrsBin(UmiIgmBin* pUmiOutput)
 {
 	float changetime = 0.0;
 	float Gyro_temp = (float)pUmiOutput->imu.gyo_temp / 16.0f;
@@ -239,57 +379,228 @@ TpVoid LogAhrsBin(UmiIgmBin* pUmiOutput)
 			UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)&Ahrs_IMU_upper,sizeof(Ahrs_IMU_upper));	
 }
 
-TpVoid LogIgmAscii(UmiIgmBin* pUmiOutput)
-{
-	TpUint16 len_message = 0;
 
-	len_message = snprintf((char*)output_data_buff,512,"%d,%d,%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%.10f,%.10f,%.10f,%.10f,%f,%f,%f,%f,%f,%f\r\n",
-		      OUTPUT_ID_IGM_ASCII,pUmiOutput->index,pUmiOutput->tow_imu,pUmiOutput->week,
-					pUmiOutput->imu.gyox,pUmiOutput->imu.gyoy,pUmiOutput->imu.gyoz,
-					pUmiOutput->imu.accx,pUmiOutput->imu.accy,pUmiOutput->imu.accz,
-					pUmiOutput->mag.magx,pUmiOutput->mag.magy,pUmiOutput->mag.magz,
-					pUmiOutput->gnss.tow_pps,pUmiOutput->gnss.lat,pUmiOutput->gnss.lon,
-					pUmiOutput->nav.lat,pUmiOutput->nav.lon,pUmiOutput->nav.heading,pUmiOutput->nav.pitch,pUmiOutput->nav.roll,
-					pUmiOutput->nav.ve,pUmiOutput->nav.vn,pUmiOutput->nav.vu);
 
-	UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,len_message);
-}
-
-TpVoid LogIgmBin(UmiIgmBin* pUmiOutput)
+TpVoid LogDevNavBin(UmiIgmBin* pUmiOutput)
 {
 	UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)pUmiOutput,sizeof(UmiIgmBin));	
 }
 
-TpVoid AccCalPara(Commond_ACC_GYRO_PARA* acc_para)
+
+TpVoid LogOutput(UmiIgmBin* pUmiOutput)
 {
-	 TpUint16 out_len;
+	TpUint16 ratio = 0;
+	TpUint16 index = 0;
+	
+/*-----------------------------------------------------------------------------------------------------
+																					ASCII OURS
+-----------------------------------------------------------------------------------------------------*/
+	
+	/* imu ascii out */
+	index = GetOutputFormat(IMU_ASCII);
+	if(index)
+	{
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		   LogImuAscii(pUmiOutput);
+		 }	
+	}
+	
+	/* ahrs ascii  */
+	index = 0;
+	index = GetOutputFormat(AHRS_ASCII);
+	if(index)
+	{
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogAhrsAscii(pUmiOutput);
+		 }	
+	}
+	
+	/* nav ascii  */
+	index = 0;
+	index = GetOutputFormat(NAV_ASCII);
+	if(index)
+	{
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogNavAscii(pUmiOutput);
+		 }	
+	}
+	
+	/* avnav ascii  */
+	index = 0;
+	index = GetOutputFormat(AVNAV_ASCII);
+	if(index)
+	{
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogAvNavAscii(pUmiOutput);
+		 }	
+	}
+	
+	/* lvnav ascii  */
+	index = 0;
+	index = GetOutputFormat(LVNAV_ASCII);
+	if(index)
+	{
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogLvNavAscii(pUmiOutput);
+		 }	
+	}
+	
+	/* mvnav ascii  */
+	index = 0;
+	index = GetOutputFormat(MVNAV_ASCII);
+	if(index)
+	{
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogMvNavAscii(pUmiOutput);
+		 }	
+	}
+	
+/*-----------------------------------------------------------------------------------------------------
+																					ASCII NEMA
+-----------------------------------------------------------------------------------------------------*/
+  
+	/* GPGGA  */
+	index = 0;
+	index = GetOutputFormat(GPGGA);
+	if(index)
+	{
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogGpgga(pUmiOutput);
+		 }	
+	}
+
+	/* GPRMC */
+	index = 0;
+	index = GetOutputFormat(GPRMC);
+	if(index)
+	{
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {	  
+		    LogGprmc(pUmiOutput);
+		 }	
+	}
+/*-----------------------------------------------------------------------------------------------------
+																						BIN
+-----------------------------------------------------------------------------------------------------*/	
+
+	/* imu bin  */
+	index = 0;
+	index = GetOutputFormat(IMU_BIN);
+	if(index)
+	{
 		
-	 out_len = snprintf((char*)output_data_buff,512,ACC_CAL_PARA_OUT,\
-	 acc_para->ks0[0],acc_para->ks0[1],acc_para->ks0[2],
-	 acc_para->ks1[0],acc_para->ks1[1],acc_para->ks1[2],
-	 acc_para->kz0[0],acc_para->kz0[1],acc_para->kz0[2],
-	 acc_para->kz1[0],acc_para->kz1[1],acc_para->kz1[2],
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogImuBin(pUmiOutput);
+		 }	
+	}
 	
-	 acc_para->n0[0],acc_para->n0[1],acc_para->n0[2],
-	 acc_para->n1[0],acc_para->n1[1],acc_para->n1[2],
-	 acc_para->n2[0],acc_para->n2[1],acc_para->n2[2]);
+		/* imu bin  */
+	index = 0;
+	index = GetOutputFormat(AHRS_BIN);
+	if(index)
+	{
+		
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogAhrsBin(pUmiOutput);
+		 }	
+	}
 	
-	 UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,out_len);
+		/* nav bin  */
+	index = 0;
+	index = GetOutputFormat(NAV_BIN);
+	if(index)
+	{
+		
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogNavBin(pUmiOutput);
+		 }	
+	}
+	
+		/* avnav bin  */
+	index = 0;
+	index = GetOutputFormat(AVNAV_BIN);
+	if(index)
+	{
+		
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogAvNavBin(pUmiOutput);
+		 }	
+	}
+	
+		/* lvnav bin  */
+	index = 0;
+	index = GetOutputFormat(LVNAV_BIN);
+	if(index)
+	{
+		
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogLvNavBin(pUmiOutput);
+		 }	
+	}
+	
+	/* mvnav bin  */
+	index = 0;
+	index = GetOutputFormat(MVNAV_BIN);
+	if(index)
+	{
+		
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogMvNavBin(pUmiOutput);
+		 }	
+	}
+	
+	/* dev ahrs bin  */
+	index = 0;
+	index = GetOutputFormat(DEV_AHRS_BIN);
+	if(index)
+	{
+		
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogDevAhrsBin(pUmiOutput);
+		 }	
+	}
+	
+	/* dev nav bin  */
+	index = 0;
+	index = GetOutputFormat(DEV_NAV_BIN);
+	if(index)
+	{
+		
+	   ratio = BENCHMARK_FREQ /index;
+		 if(pUmiOutput->index%ratio==0)
+		 {
+		    LogDevNavBin(pUmiOutput);
+		 }	
+	}
+	
 }
 
-TpVoid GyroCalPara(Commond_ACC_GYRO_PARA* gyro_para)
-{
-	 TpUint16 out_len;
-		
-	 out_len = snprintf((char*)output_data_buff,512,GYRO_CAL_PARA_OUT,\
-	 gyro_para->ks0[0],gyro_para->ks0[1],gyro_para->ks0[2],
-	 gyro_para->ks1[0],gyro_para->ks1[1],gyro_para->ks1[2],
-	 gyro_para->kz0[0],gyro_para->kz0[1],gyro_para->kz0[2],
-	 gyro_para->kz1[0],gyro_para->kz1[1],gyro_para->kz1[2],
-	
-	 gyro_para->n0[0],gyro_para->n0[1],gyro_para->n0[2],
-	 gyro_para->n1[0],gyro_para->n1[1],gyro_para->n1[2],
-	 gyro_para->n2[0],gyro_para->n2[1],gyro_para->n2[2]);
-	
-	 UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,out_len);
-}

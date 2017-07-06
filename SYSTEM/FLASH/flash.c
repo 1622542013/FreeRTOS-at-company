@@ -91,14 +91,26 @@ TpVoid FlashInit(TpVoid)
 	syspara.bias_mag[2] = 0.0f;	
   /*******************************/
 	
-  /* out data parameters */
 	syspara.imu_ascii_out_rate = 0;
 	syspara.ahrs_ascii_out_rate = 0;
-	syspara.ahrs_bin_out_rate = 1;
-	syspara.igm_ascii_out_rate = 0;
-	syspara.igm_bin_out_rate = 0;
-	/*******************************/
+	syspara.nav_ascii_out_rate = 0;
+	syspara.avnav_ascii_out_rate = 0;
+	syspara.lvnav_ascii_out_rate = 0;
+	syspara.mvnav_ascii_out_rate = 0;
 	
+	syspara.gpgga_out_rate = 0;
+	syspara.gprmc_out_rate = 0;
+	
+	syspara.imu_bin_out_rate = 0;
+	syspara.ahrs_bin_out_rate = 0;
+	syspara.nav_bin_out_rate = 0;
+	syspara.avnav_bin_out_rate = 0;
+	syspara.lvnav_bin_out_rate = 0;
+	syspara.mvnav_bin_out_rate = 0;
+	
+	syspara.dev_ahrs_bin_out_rate = 0;
+	syspara.dev_igm_bin_out_rate = 0;
+		
 	syspara.data_out_format = 0x01;
 	
 }
@@ -197,6 +209,7 @@ TpVoid FlashWrite(TpVoid)
 	/*****************************************************************************/
 	
 	/************************* write out data parameters *************************/
+	
 	/* imu ascii out */
 	FlashData.fData = syspara.imu_ascii_out_rate;
 	FLASH_ProgramWord(Address, FlashData.iData);
@@ -207,20 +220,84 @@ TpVoid FlashWrite(TpVoid)
 	FLASH_ProgramWord(Address, FlashData.iData);
 	Address += 4;
 	
+	/* nav ascii out */
+	FlashData.fData = syspara.nav_ascii_out_rate;
+	FLASH_ProgramWord(Address, FlashData.iData);
+	Address += 4;
+	
+	/* avnav ascii out */
+	FlashData.fData = syspara.avnav_ascii_out_rate;
+	FLASH_ProgramWord(Address, FlashData.iData);
+	Address += 4;
+	
+	/* lvnav ascii out */
+	FlashData.fData = syspara.lvnav_ascii_out_rate;
+	FLASH_ProgramWord(Address, FlashData.iData);
+	Address += 4;
+	
+	/* mvnav ascii out */
+	FlashData.fData = syspara.mvnav_ascii_out_rate;
+	FLASH_ProgramWord(Address, FlashData.iData);
+	Address += 4;
+	
+	
+	
+	/* gpgga ascii out */
+	FlashData.fData = syspara.gpgga_out_rate;
+	FLASH_ProgramWord(Address, FlashData.iData);
+	Address += 4;
+	
+	/* gprmc ascii out */
+	FlashData.fData = syspara.gprmc_out_rate;
+	FLASH_ProgramWord(Address, FlashData.iData);
+	Address += 4;
+	
+/*--------------------------------------------bin----------------------------------------------*/	
+	
+	/* imu bin out */
+	FlashData.fData = syspara.imu_bin_out_rate;
+	FLASH_ProgramWord(Address, FlashData.iData);
+	Address += 4;
+	
 	/* ahrs bin out */
 	FlashData.fData = syspara.ahrs_bin_out_rate;
 	FLASH_ProgramWord(Address, FlashData.iData);
 	Address += 4;
 	
-	/* igm ascii out */
-	FlashData.fData = syspara.igm_ascii_out_rate;
+	/* nav bin out */
+	FlashData.fData = syspara.nav_bin_out_rate;
 	FLASH_ProgramWord(Address, FlashData.iData);
 	Address += 4;
 	
-	/* igm bin out */
-	FlashData.fData = syspara.igm_bin_out_rate;
+	/* avnav bin out */
+	FlashData.fData = syspara.avnav_bin_out_rate;
 	FLASH_ProgramWord(Address, FlashData.iData);
 	Address += 4;
+	
+	/* lvnav bin out */
+	FlashData.fData = syspara.lvnav_bin_out_rate;
+	FLASH_ProgramWord(Address, FlashData.iData);
+	Address += 4;
+	
+	/* mvnav bin out */
+	FlashData.fData = syspara.mvnav_bin_out_rate;
+	FLASH_ProgramWord(Address, FlashData.iData);
+	Address += 4;
+
+
+/*--------------------------------------------dev----------------------------------------------*/
+	
+	/* dev ahrs bin out */
+	FlashData.fData = syspara.dev_ahrs_bin_out_rate;
+	FLASH_ProgramWord(Address, FlashData.iData);
+	Address += 4;
+	
+	/* dev igm bin out */
+	FlashData.fData = syspara.dev_igm_bin_out_rate;
+	FLASH_ProgramWord(Address, FlashData.iData);
+	Address += 4;
+	
+
 	/*****************************************************************************/
 	
 	/* data out format  */
@@ -334,15 +411,63 @@ TpUint32 FlashRead(TpVoid)
 	Address += 4;
 	
 	FlashData.iData = (*(vu32*)Address);
+	syspara.nav_ascii_out_rate = FlashData.fData;
+	Address += 4;
+	
+	FlashData.iData = (*(vu32*)Address);
+	syspara.avnav_ascii_out_rate = FlashData.fData;
+	Address += 4;
+	
+	FlashData.iData = (*(vu32*)Address);
+	syspara.lvnav_ascii_out_rate = FlashData.fData;
+	Address += 4;
+	
+	FlashData.iData = (*(vu32*)Address);
+	syspara.mvnav_ascii_out_rate = FlashData.fData;
+	Address += 4;
+	
+	FlashData.iData = (*(vu32*)Address);
+	syspara.gpgga_out_rate = FlashData.fData;
+	Address += 4;
+	
+	FlashData.iData = (*(vu32*)Address);
+	syspara.gprmc_out_rate = FlashData.fData;
+	Address += 4;
+
+/*--------------------------------------------bin----------------------------------------------*/	
+	
+	FlashData.iData = (*(vu32*)Address);
+	syspara.imu_bin_out_rate = FlashData.fData;
+	Address += 4;
+	
+	FlashData.iData = (*(vu32*)Address);
 	syspara.ahrs_bin_out_rate = FlashData.fData;
 	Address += 4;
 	
 	FlashData.iData = (*(vu32*)Address);
-	syspara.igm_ascii_out_rate = FlashData.fData;
+	syspara.nav_bin_out_rate = FlashData.fData;
 	Address += 4;
 	
 	FlashData.iData = (*(vu32*)Address);
-	syspara.igm_bin_out_rate = FlashData.fData;
+	syspara.avnav_bin_out_rate = FlashData.fData;
+	Address += 4;
+	
+	FlashData.iData = (*(vu32*)Address);
+	syspara.lvnav_bin_out_rate = FlashData.fData;
+	Address += 4;
+	
+	FlashData.iData = (*(vu32*)Address);
+	syspara.mvnav_bin_out_rate = FlashData.fData;
+	Address += 4;
+	
+/*--------------------------------------------dev----------------------------------------------*/	
+	
+	FlashData.iData = (*(vu32*)Address);
+	syspara.dev_ahrs_bin_out_rate = FlashData.fData;
+	Address += 4;
+	
+	FlashData.iData = (*(vu32*)Address);
+	syspara.dev_igm_bin_out_rate = FlashData.fData;
 	Address += 4;
 	
 	FlashData.iData = (*(vu32*)Address);
@@ -469,9 +594,7 @@ TpBool SetUserUsartBaudrate(uint32_t baudrate)
 		case 76800 	:
 		case 115200 :	
 		case 230400 :
-		case 460800 :
-//		case 921600	:
-		
+		case 460800 :		
 									syspara.baud_usart2 = baudrate;
 											
 									__disable_irq();
@@ -482,7 +605,7 @@ TpBool SetUserUsartBaudrate(uint32_t baudrate)
 									break;
 		
 		default :
-									result = RESULT_ERROR;
+									result = RESULT_PARA_NOT_VALID;
 									break;
 	}
 	return result;
@@ -501,7 +624,7 @@ TpBool SetMagSampleRate(uint32_t mag_sample_rate)
 	}
 	else if(mag_register_rate == 0xffff)
 	{
-		result = RESULT_ERROR;	
+		result = RESULT_PARA_NOT_VALID;	
 		return result;
 	}
 	else
@@ -519,16 +642,43 @@ void SetMagCaliPara(float matrix_mag[12])
 	
 	for(i = 0;i < 12;i++)
 	{
-		if(i<9)
+		if(i < 9)
 		{
 			syspara.matrix_mag[i] = matrix_mag[i];/*matrix_mag from 0 to 8*/
 		}
 		else
 		{
-			syspara.bias_mag[i-9] = matrix_mag[i];/*bias_mag from 9 to 11*/
+			syspara.bias_mag[i-9] = matrix_mag[i];
 		}
 	}
 }
+
+void SetMagBias(float bias_mag[3])
+{
+	uint8_t i;
+	
+	for(i = 0;i < 3;i++)
+	{
+		if(i < 3)
+		{
+			syspara.bias_mag[i] = bias_mag[i];/*bias_mag from 9 to 11*/
+		}
+	}
+}
+	
+void SetMagMatrix(float matrix_mag[9])
+{
+	uint8_t i;
+	
+	for(i = 0;i < 9;i++)
+	{
+		if(i<9)
+		{
+			syspara.matrix_mag[i] = matrix_mag[i];/*matrix_mag from 0 to 8*/
+		}
+	}
+}
+
 
 
 
@@ -568,17 +718,29 @@ uint8_t GetMagDataUpdateFlag(void)
 }
 
 
-void clear_DATA_rate(void)
+void Clear_Ascii_Rate(void)
 {
 	syspara.imu_ascii_out_rate = 0;
 	syspara.ahrs_ascii_out_rate = 0;
-	syspara.igm_ascii_out_rate = 0;
+	syspara.nav_ascii_out_rate = 0;
+	syspara.avnav_ascii_out_rate = 0;
+	syspara.lvnav_ascii_out_rate = 0;
+	syspara.mvnav_ascii_out_rate = 0;
+	syspara.gpgga_out_rate = 0;
+	syspara.gprmc_out_rate = 0;
 }
 
-void clear_BIN_rate(void)
+
+void Clear_BIN_Rate(void)
 {
-	syspara.igm_bin_out_rate = 0;
+	syspara.imu_bin_out_rate = 0;
 	syspara.ahrs_bin_out_rate = 0;
+	syspara.nav_bin_out_rate = 0;
+	syspara.avnav_bin_out_rate = 0;
+	syspara.lvnav_bin_out_rate = 0;
+	syspara.mvnav_bin_out_rate = 0;
+	syspara.dev_ahrs_bin_out_rate = 0;
+	syspara.dev_igm_bin_out_rate = 0;
 }
 
 
@@ -586,39 +748,98 @@ void SetOutputRate(OutputFormat format,uint8_t rate)
 {
 	switch(format)
 	{
-		case	IMU_ASCII  : syspara.imu_ascii_out_rate = rate;
-											clear_BIN_rate();
-											break;
 		
-		case	AHRS_ASCII : syspara.ahrs_ascii_out_rate = rate;
-											clear_BIN_rate();
-											break;
+/*-----------------------------------------------------------------------------------------------------
+																							ASCII 
+-----------------------------------------------------------------------------------------------------*/
 		
+		case	IMU_ASCII   : syspara.imu_ascii_out_rate = rate;
+											  Clear_BIN_Rate();
+											  break;
+		
+		case	AHRS_ASCII  : syspara.ahrs_ascii_out_rate = rate;
+											  Clear_BIN_Rate();
+											  break;
+		case	NAV_ASCII   : syspara.nav_ascii_out_rate = rate;
+											  Clear_BIN_Rate();
+											  break;
+		case	AVNAV_ASCII : syspara.avnav_ascii_out_rate = rate;
+											  Clear_BIN_Rate();
+											  break;
+		case	LVNAV_ASCII : syspara.lvnav_ascii_out_rate = rate;
+											  Clear_BIN_Rate();
+											  break;
+		case	MVNAV_ASCII : syspara.mvnav_ascii_out_rate = rate;
+											  Clear_BIN_Rate();
+											  break;
+		case	GPGGA 		  : syspara.gpgga_out_rate = rate;
+											  Clear_BIN_Rate();
+											  break;
+		case	GPRMC 			: syspara.gprmc_out_rate = rate;
+											  Clear_BIN_Rate();
+											  break;
+
+/*-----------------------------------------------------------------------------------------------------
+																					BIN
+-----------------------------------------------------------------------------------------------------*/	
+
+		case	IMU_BIN   : syspara.imu_bin_out_rate = rate;
+											Clear_Ascii_Rate();
+											break;
 		case	AHRS_BIN  : syspara.ahrs_bin_out_rate = rate;
-											clear_DATA_rate();
+											Clear_Ascii_Rate();
 											break;
+		case	NAV_BIN	  : syspara.nav_bin_out_rate = rate;
+											Clear_Ascii_Rate();
+											break;
+		case	AVNAV_BIN : syspara.avnav_bin_out_rate = rate;
+											Clear_Ascii_Rate();
+											break;
+		case	LVNAV_BIN : syspara.lvnav_bin_out_rate = rate;
+											Clear_Ascii_Rate();
+											break;
+		case	MVNAV_BIN : syspara.mvnav_bin_out_rate = rate;
+											Clear_Ascii_Rate();
+											break;
+											
+/*-----------------------------------------------------------------------------------------------------
+																					developer
+-----------------------------------------------------------------------------------------------------*/																	
 		
-		case	IGM_ASCII  : syspara.igm_ascii_out_rate = rate;
-											clear_BIN_rate();
-											break;
+		case	DEV_AHRS_BIN  : syspara.dev_ahrs_bin_out_rate = rate;
+													Clear_Ascii_Rate();
+													break;
 		
-		case	IGM_BIN   : syspara.igm_bin_out_rate = rate;
-											clear_DATA_rate();
-											break;
+		case	DEV_NAV_BIN   : syspara.dev_igm_bin_out_rate = rate;
+													Clear_Ascii_Rate();
+													break;
 			
 		default 				:break;
 	}
 }
 
+
 uint8_t GetOutputFormat(OutputFormat format)
 {
 	switch(format)
 	{
-		case	IMU_ASCII  : return syspara.imu_ascii_out_rate;
-		case	AHRS_ASCII : return syspara.ahrs_ascii_out_rate;
-		case	AHRS_BIN  : return syspara.ahrs_bin_out_rate;
-		case	IGM_ASCII  : return syspara.igm_ascii_out_rate;
-		case	IGM_BIN   : return syspara.igm_bin_out_rate;
+		
+		case	IMU_ASCII  	 	: return syspara.imu_ascii_out_rate;
+		case	AHRS_ASCII  	: return syspara.ahrs_ascii_out_rate;
+		case	NAV_ASCII  	 	: return syspara.nav_ascii_out_rate;
+		case	AVNAV_ASCII 	: return syspara.avnav_ascii_out_rate;
+		case	LVNAV_ASCII 	: return syspara.lvnav_ascii_out_rate;
+		case	MVNAV_ASCII 	: return syspara.mvnav_ascii_out_rate;
+		case	GPGGA 		  	: return syspara.gpgga_out_rate;
+		case	GPRMC 				: return syspara.gprmc_out_rate;
+		case	IMU_BIN   		: return syspara.imu_bin_out_rate;
+		case	AHRS_BIN  		: return syspara.ahrs_bin_out_rate;
+		case	NAV_BIN	  		: return syspara.nav_bin_out_rate;
+		case	AVNAV_BIN 		: return syspara.avnav_bin_out_rate;
+		case	LVNAV_BIN 		: return syspara.lvnav_bin_out_rate;
+		case	MVNAV_BIN 		: return syspara.mvnav_bin_out_rate;	
+		case	DEV_AHRS_BIN  : return syspara.dev_ahrs_bin_out_rate;
+		case	DEV_NAV_BIN   : return syspara.dev_igm_bin_out_rate;
 			
 		default 				:break;
 	}

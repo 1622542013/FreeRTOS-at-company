@@ -247,7 +247,6 @@ TpInt32 Asc2Int(TpUchar* buf);
 TpInt32 CalculateBlockCRC32(TpInt32 count,TpUchar* buf );
 TpInt32 CRC32Value(TpInt32 i);
 
-static   TpUchar CheckSumNmea(const TpUchar *buf,const TpUint16 count);
 TpUchar  Asc2Uchar(TpUchar data);
 TpDouble Ddmm2dd(TpDouble data);
 TpInt32  Hhmmss2ss(TpDouble data);

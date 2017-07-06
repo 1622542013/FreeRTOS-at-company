@@ -59,9 +59,24 @@ typedef struct _tagSysPara
 	/* data out rate */
 	TpUchar  imu_ascii_out_rate;
 	TpUchar  ahrs_ascii_out_rate;
+	TpUchar  nav_ascii_out_rate;
+	TpUchar  avnav_ascii_out_rate;
+	TpUchar  lvnav_ascii_out_rate;
+	TpUchar  mvnav_ascii_out_rate;
+	
+	TpUchar  gpgga_out_rate;
+	TpUchar  gprmc_out_rate;
+	
+	TpUchar  imu_bin_out_rate;
 	TpUchar  ahrs_bin_out_rate;
-	TpUchar  igm_ascii_out_rate;
-	TpUchar  igm_bin_out_rate;
+	TpUchar  nav_bin_out_rate;
+	TpUchar  avnav_bin_out_rate;
+	TpUchar  lvnav_bin_out_rate;
+	TpUchar  mvnav_bin_out_rate;
+	
+	TpUchar  dev_ahrs_bin_out_rate;
+	TpUchar  dev_igm_bin_out_rate;
+	
 	/* data out format */
 	TpUint16 data_out_format;
 }SysPara;
@@ -70,11 +85,26 @@ typedef struct _tagSysPara
 
 typedef enum
 {
-	IMU_ASCII  = 1,
-	AHRS_ASCII = 2,
-	AHRS_BIN   = 3,
-	IGM_ASCII  = 4,
-	IGM_BIN    = 5
+	IMU_ASCII,
+	AHRS_ASCII,
+	NAV_ASCII,
+	AVNAV_ASCII,
+	LVNAV_ASCII,
+	MVNAV_ASCII,
+	 
+	GPGGA,
+	GPRMC,
+	
+	IMU_BIN,
+	AHRS_BIN,
+	NAV_BIN,
+	AVNAV_BIN,
+	LVNAV_BIN,
+	MVNAV_BIN,
+	
+	DEV_AHRS_BIN,
+	DEV_NAV_BIN
+	
 }OutputFormat;
 
 
@@ -137,6 +167,10 @@ float* GetMagCaliParaMatrix(void);
 void SetMagDataUpdateFlag(void);
 void ClearMagDataUpdateFlag(void);
 uint8_t GetMagDataUpdateFlag(void);
+
+void SetMagBias(float bias_mag[3]);	
+void SetMagMatrix(float matrix_mag[9]);
+
 
 
 

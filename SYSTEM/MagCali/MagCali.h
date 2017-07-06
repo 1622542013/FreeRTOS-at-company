@@ -13,7 +13,6 @@
 /*============================================================================*/
 
 #include "definition.h"
-#include "mclib_api.h"
 #include "globals.h"
 #include "Rm3100.h"
 #include "command.h"

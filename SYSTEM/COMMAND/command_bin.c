@@ -86,7 +86,7 @@ TpVoid DecodeCommondBin(TpUchar* commnd_bin,TpUint16 length)
 		case COMMAND_ID_ACC_PARA :
 				{
 					memcpy(&CAL_PARA,commnd_bin,sizeof(CAL_PARA));
-					AccCalPara(&CAL_PARA);
+					//AccCalPara(&CAL_PARA);
 				}
 				break;
 		case COMMAND_ID_GYRO_PARA :

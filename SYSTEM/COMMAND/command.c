@@ -61,7 +61,10 @@ void FindAsciiField(TpChar* pBuf,TpChar* Processed[],TpUchar* num)
 	*num = i-1;
 }
 
-
+/***************** mag cali online use ***************************/
+#include "MagCaliOnline.h"
+extern unsigned char flag_cali;
+/*****************************************************************/
 TpBool SetClass(Package* pa)
 {
 	TpBool result = RESULT_ERROR;
@@ -97,7 +100,7 @@ TpBool SetClass(Package* pa)
 	{
 		TpInt32 product_id = 0;
 		FindAsciiField(pa->buf,buff_processed,&num);
-		result = My_atoi((const char*)buff_processed[DATA_VALUE_LOCATION],&product_id);
+		result = My_atoi((const char*)buff_processed[3],&product_id);
 		
 		if(result != RESULT_OK)
 		{
@@ -211,49 +214,27 @@ TpBool SetClass(Package* pa)
   if(!memcmp(SET_MAG_CAL_ONLINE,pa->buf,sizeof(SET_MAG_CAL_ONLINE)-1))
 	{
 		commond_flag.magcali_online = 1;
-		result = RESULT_OK; 
+		result = RESULT_OK; 	
 		return result;    
 	}	
-/*----------------------------------- send to arm3,2,1  -----------------------------------*/	
-	
-	/****************** save configs*****************************/
-	if(!memcmp(ALL_SETTING_SAVE,pa->buf,sizeof(ALL_SETTING_SAVE)-1))
-	{
-		__disable_irq() ;
-		FlashWrite();	
-    __enable_irq() ;
-		
-	//	UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_SAVE,NULL),Commond_BIN_SIZE);
-		result = RESULT_OK;
-		return result;		
-	}
-	
-	/****************** all settings restore *****************************/
-	if(!memcmp(ALL_SETTING_RESTORE,pa->buf,sizeof(ALL_SETTING_RESTORE)-1))
-	{
-	  FlashInit();
-		
-	//	UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_SETTING_RESTORE,NULL),Commond_BIN_SIZE);
-		result = RESULT_OK;
-		return result;
-	}
+
 	
 /*----------------------------------- send to arm2 -----------------------------------*/
 	if(!memcmp(SET_NAV_WORK_MODE,pa->buf,sizeof(SET_NAV_WORK_MODE)-1))
 	{
 		FindAsciiField(pa->buf,buff_processed,&num);
 		
-		if(!memcmp(NAV_LAND_MODE,buff_processed[DATA_VALUE_LOCATION],sizeof(NAV_LAND_MODE)-1))
+		if(!memcmp(NAV_LAND_MODE,buff_processed[3],sizeof(NAV_LAND_MODE)-1))
 		{
 	    UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_NAV_MODE,DATA_LAND_MODE),Commond_BIN_SIZE);
 			return NO_ANSWER;
 		}
-		if(!memcmp(NAV_AIR_MODE,buff_processed[DATA_VALUE_LOCATION],sizeof(NAV_AIR_MODE)-1))
+		if(!memcmp(NAV_AIR_MODE,buff_processed[3],sizeof(NAV_AIR_MODE)-1))
 		{
 			UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_NAV_MODE,DATA_AIR_MODE),Commond_BIN_SIZE);
 			return NO_ANSWER;
 		}
-		if(!memcmp(NAV_OCEAN_MODE,buff_processed[DATA_VALUE_LOCATION],sizeof(NAV_OCEAN_MODE)-1))
+		if(!memcmp(NAV_OCEAN_MODE,buff_processed[3],sizeof(NAV_OCEAN_MODE)-1))
 		{
 			UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_NAV_MODE,DATA_OCEAN_MODE),Commond_BIN_SIZE);
 			return NO_ANSWER;
@@ -262,32 +243,33 @@ TpBool SetClass(Package* pa)
 		return RESULT_ERROR;		
 	}
 	
-//	if(strstr((const char*)pa->buf,SET_LEVER_ARM) !=NULL)
-//	{
-//		PushSendtoArm2Buff(CommondBin(FRAME_ID_SET,COMMAND_ID_NAV_MODE,DATA_OCEAN_MODE),Commond_BIN_SIZE);
-//		return RESULT_OK;
-//	}
+	if(strstr((const char*)pa->buf,SET_LEVER_ARM) !=NULL)
+	{
+		FindAsciiField(pa->buf,buff_processed,&num);
+
+		return RESULT_OK;
+	}
 
 /*--------------------------------- send to arm1 -----------------------------------*/	
-	if(strstr((const char*)pa->buf,SET_ACC_PARA_COMMAND) !=NULL)
-	{ 
-		FindAsciiField(pa->buf,buff_processed,&num);
-		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)PackAccPara(buff_processed,COMMAND_ID_ACC_PARA),Commond_ACC_GYRO_PARA_SIZE);	
-		return NO_ANSWER;
-	}
-	
-	if(strstr((const char*)pa->buf,SET_GYRO_PARA_COMMAND) !=NULL)
-	{	
-		FindAsciiField(pa->buf,buff_processed,&num);
-		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)PackAccPara(buff_processed,COMMAND_ID_GYRO_PARA),Commond_ACC_GYRO_PARA_SIZE);	
-		return NO_ANSWER;
-	}
-	
-	if(strstr((const char*)pa->buf,ERASE_ACC_GYRO_PARA) !=NULL)
-	{
-		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_ERASE_ACC_GYRO_PARA,NULL),Commond_BIN_SIZE);
-		return NO_ANSWER;
-	}
+//	if(strstr((const char*)pa->buf,SET_ACC_PARA_COMMAND) !=NULL)
+//	{ 
+//		FindAsciiField(pa->buf,buff_processed,&num);
+//		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)PackAccPara(buff_processed,COMMAND_ID_ACC_PARA),Commond_ACC_GYRO_PARA_SIZE);	
+//		return NO_ANSWER;
+//	}
+//	
+//	if(strstr((const char*)pa->buf,SET_GYRO_PARA_COMMAND) !=NULL)
+//	{	
+//		FindAsciiField(pa->buf,buff_processed,&num);
+//		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)PackAccPara(buff_processed,COMMAND_ID_GYRO_PARA),Commond_ACC_GYRO_PARA_SIZE);	
+//		return NO_ANSWER;
+//	}
+//	
+//	if(strstr((const char*)pa->buf,ERASE_ACC_GYRO_PARA) !=NULL)
+//	{
+//		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_ERASE_ACC_GYRO_PARA,NULL),Commond_BIN_SIZE);
+//		return NO_ANSWER;
+//	}
 	
 	return result;
 }
@@ -350,28 +332,33 @@ TpBool GetClass(Package* pa)
 	}
 	
 /*----------------------------------- send to arm2,1  -----------------------------------*/	
-	if(strstr((const char*)pa->buf,GET_ACC_PARA_COMMAND) !=NULL)
-	{ 
-		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_GET,COMMAND_ID_ACC_PARA,NULL),Commond_BIN_SIZE);	
-		return NO_ANSWER;		
-	}
-	
-	if(strstr((const char*)pa->buf,GET_GYRO_PARA_COMMAND) !=NULL)
-	{
-		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_GET,COMMAND_ID_GYRO_PARA,NULL),Commond_BIN_SIZE);
-		return NO_ANSWER;		
-	}
-	
-	if(strstr((const char*)pa->buf,GET_NAV_WORK_MODE) !=NULL)
-	{
-		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_GET,COMMAND_ID_NAV_MODE,NULL),Commond_BIN_SIZE);
-		return NO_ANSWER;	
-	}
-	
-//	if(strstr((const char*)pa->buf,GET_LEVER_ARM) !=NULL)
+//	if(strstr((const char*)pa->buf,GET_ACC_PARA_COMMAND) !=NULL)
+//	{ 
+//		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_GET,COMMAND_ID_ACC_PARA,NULL),Commond_BIN_SIZE);	
+//		return NO_ANSWER;		
+//	}
+//	
+//	if(strstr((const char*)pa->buf,GET_GYRO_PARA_COMMAND) !=NULL)
 //	{
-//		return RESULT_OK;
-//	}		
+//		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_GET,COMMAND_ID_GYRO_PARA,NULL),Commond_BIN_SIZE);
+//		return NO_ANSWER;		
+//	}
+	
+	if(!memcmp(GET_NAV_WORK_MODE,pa->buf,sizeof(GET_NAV_WORK_MODE)-1))
+	{
+		
+	}
+	
+	if(!memcmp(GET_LEVER_ARM,pa->buf,sizeof(GET_LEVER_ARM)-1))
+	{
+		
+	}
+	
+	if(!memcmp(GET_BASE_LINE,pa->buf,sizeof(GET_BASE_LINE)-1))
+	{
+		
+	}
+			
 	return result;	
 }
 
@@ -382,114 +369,130 @@ TpBool OutputClass(Package* pa)
 	TpChar* buff_processed[20]; 
 	TpUchar  num = 0;
 	TpInt32 rate = 0;
+	OutputFormat  output_format;
+	TpChar  rate_location = 0;
 	
-	/* output imu ascii */
-	if(!memcmp(OUTPUT_IMU_ASCII,pa->buf,sizeof(OUTPUT_IMU_ASCII)-1))
-	{
-		FindAsciiField(pa->buf,buff_processed,&num);
-		result = My_atoi((const char*)buff_processed[DATA_VALUE_LOCATION],&rate);
+/*-----------------------------------------------------------------------------------------------------
+																					ASCII OURS
+-----------------------------------------------------------------------------------------------------*/
 		
-		if(result != RESULT_OK)
-		{
-			return result;
-		}
-		else if((rate < 0)||(rate > OUTPUT_RATE_MAX))
-		{
-			result = RESULT_PARA_NOT_VALID;
-			return result;
-		}
-		else
-		{
-			SetOutputRate(IMU_ASCII,rate);
-			return result;			
-		}			
+	if(!memcmp(OUTPUT_IMU_ASCII_RATE,pa->buf,sizeof(OUTPUT_IMU_ASCII_RATE)-1))/* output imu ascii */
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = IMU_ASCII;
+	}	
+	else if(!memcmp(OUTPUT_AHRS_ASCII_RATE,pa->buf,sizeof(OUTPUT_AHRS_ASCII_RATE)-1))/* output ahrs ascii */
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = AHRS_ASCII;
+	}			
+	else if(!memcmp(OUTPUT_NAV_ASCII_RATE,pa->buf,sizeof(OUTPUT_NAV_ASCII_RATE)-1))/* output nav ascii */
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = NAV_ASCII;
+	}		
+	else if(!memcmp(OUTPUT_AVNAV_ASCII_RATE,pa->buf,sizeof(OUTPUT_AVNAV_BIN_RATE)-1))/* output avnav ascii */
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = AVNAV_ASCII;
 	}
-	/* output ahrs ascii */
-	if(!memcmp(OUTPUT_AHRS_ASCII_RATE,pa->buf,sizeof(OUTPUT_AHRS_ASCII_RATE)-1))
+	else if(!memcmp(OUTPUT_LVNAV_ASCII_RATE,pa->buf,sizeof(OUTPUT_LVNAV_BIN_RATE)-1))/* output lvnav ascii */
 	{
-		FindAsciiField(pa->buf,buff_processed,&num);
-		result = My_atoi((const char*)buff_processed[DATA_VALUE_LOCATION],&rate);
-		
-		if(result != RESULT_OK)
-		{
-			return result;
-		}
-		else if((rate < 0)||(rate > OUTPUT_RATE_MAX))
-		{
-			result = RESULT_PARA_NOT_VALID;
-			return result;
-		}
-		else
-		{
-			SetOutputRate(AHRS_ASCII,rate);
-			return result;			
-		}			
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = LVNAV_BIN;
 	}
-	/* output ahrs bin */
-	if(!memcmp(OUTPUT_AHRS_BIN_RATE,pa->buf,sizeof(OUTPUT_AHRS_BIN_RATE)-1))
+	else if(!memcmp(OUTPUT_MVNAV_ASCII_RATE,pa->buf,sizeof(OUTPUT_MVNAV_BIN_RATE)-1))/* output mvnav ascii */
 	{
-		FindAsciiField(pa->buf,buff_processed,&num);
-		result = My_atoi((const char*)buff_processed[DATA_VALUE_LOCATION],&rate);
-		
-		if(result != RESULT_OK)
-		{
-			return result;
-		}
-		else if((rate < 0)||(rate > OUTPUT_RATE_MAX))
-		{
-			result = RESULT_PARA_NOT_VALID;
-			return result;
-		}
-		else
-		{
-			SetOutputRate(AHRS_BIN,rate);	
-			return NO_ANSWER;			
-		}				 
-	}
-	/* output igm ascii */
-	if(!memcmp(OUTPUT_IGM_ASCII_RATE,pa->buf,sizeof(OUTPUT_IGM_ASCII_RATE)-1))
-	{
-		FindAsciiField(pa->buf,buff_processed,&num);
-		result = My_atoi((const char*)buff_processed[DATA_VALUE_LOCATION],&rate);
-		
-		if(result != RESULT_OK)
-		{
-			return result;
-		}
-		else if((rate < 0)||(rate > OUTPUT_RATE_MAX))
-		{
-			result = RESULT_PARA_NOT_VALID;
-			return result;
-		}
-		else
-		{
-			SetOutputRate(IGM_ASCII,rate);
-			return result;
-		}	 
-	}
-	/* output igm bin */
-	if(!memcmp(OUTPUT_IGM_BIN_RATE,pa->buf,sizeof(OUTPUT_IGM_BIN_RATE)-1))
-	{
-		FindAsciiField(pa->buf,buff_processed,&num);
-		result = My_atoi((const char*)buff_processed[DATA_VALUE_LOCATION],&rate);
-		
-		if(result != RESULT_OK)
-		{
-			return result;
-		}
-		else if((rate < 0)||(rate > OUTPUT_RATE_MAX))
-		{
-			result = RESULT_PARA_NOT_VALID;
-			return result;
-		}
-		else
-		{
-			SetOutputRate(IGM_BIN,rate);	
-			return NO_ANSWER;
-		}
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = MVNAV_BIN;
 	}
 	
-	return result;
+
+/*-----------------------------------------------------------------------------------------------------
+																					ASCII NEMA
+-----------------------------------------------------------------------------------------------------*/
+	
+	else if(!memcmp(OUTPUT_GPGGA_RATE,pa->buf,sizeof(OUTPUT_GPGGA_RATE)-1))	/* output imu ascii */
+	{
+		rate_location = 3;
+		output_format = GPGGA;
+	}
+	else if(!memcmp(OUTPUT_GPRMC_RATE,pa->buf,sizeof(OUTPUT_GPRMC_RATE)-1))/* output imu ascii */
+	{
+		rate_location = 3;
+		output_format = GPRMC;
+	}
+	
+/*-----------------------------------------------------------------------------------------------------
+																					BIN
+-----------------------------------------------------------------------------------------------------*/	
+		
+	else if(!memcmp(OUTPUT_IMU_BIN_RATE,pa->buf,sizeof(OUTPUT_IMU_BIN_RATE)-1))	/* output imu bin */
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = IMU_BIN;
+	}
+	else if(!memcmp(OUTPUT_AHRS_BIN_RATE,pa->buf,sizeof(OUTPUT_AHRS_BIN_RATE)-1))/* output ahrs bin */
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = AHRS_BIN;
+	}
+	else if(!memcmp(OUTPUT_NAV_BIN_RATE,pa->buf,sizeof(OUTPUT_NAV_BIN_RATE)-1))	/* output nav bin */
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = NAV_BIN;
+	}		
+	else if(!memcmp(OUTPUT_AVNAV_BIN_RATE,pa->buf,sizeof(OUTPUT_AVNAV_BIN_RATE)-1))/* output avnav bin */
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = AVNAV_BIN;
+	}
+	else if(!memcmp(OUTPUT_LVNAV_BIN_RATE,pa->buf,sizeof(OUTPUT_LVNAV_BIN_RATE)-1))/* output lvnav bin */
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = LVNAV_BIN;
+	}
+	else if(!memcmp(OUTPUT_MVNAV_BIN_RATE,pa->buf,sizeof(OUTPUT_MVNAV_BIN_RATE)-1))/* output mvnav bin */
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = MVNAV_BIN;
+	}
+	
+/*-----------------------------------------------------------------------------------------------------
+																					developer
+-----------------------------------------------------------------------------------------------------*/	
+	
+	else if(!memcmp(OUTPUT_DEV_AHRS_BIN_RATE,pa->buf,sizeof(OUTPUT_DEV_AHRS_BIN_RATE)-1))
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = DEV_AHRS_BIN;
+	}
+		else if(!memcmp(OUTPUT_DEV_IGM_BIN_RATE,pa->buf,sizeof(OUTPUT_DEV_IGM_BIN_RATE)-1))
+	{
+		rate_location = DATA_VALUE_LOCATION;
+		output_format = DEV_NAV_BIN;
+	}
+	
+	FindAsciiField(pa->buf,buff_processed,&num);
+	
+	result = My_atoi((const char*)buff_processed[rate_location],&rate);
+	
+	if(result != RESULT_OK)
+	{
+		return result;
+	}
+	else if((rate < 0)||(rate > OUTPUT_RATE_MAX))
+	{
+		result = RESULT_PARA_NOT_VALID;
+		return result;
+	}
+	else
+	{
+		SetOutputRate(output_format,rate);
+		return result;			
+	}		
+	
+//	return result;/*The program can't get here*/
 }
 
 TpBool DecodeCommond(uint8_t * pBuf,uint16_t len)
@@ -506,6 +509,11 @@ TpBool DecodeCommond(uint8_t * pBuf,uint16_t len)
 			{
 			  UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)NOT_A_VALID_COMMAND,sizeof(NOT_A_VALID_COMMAND)-1);
 				return result;
+			}
+			if(strstr((const char*)pBuf,"*ff\r\n") == NULL)
+			{
+			  UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)NOT_A_VALID_COMMAND,sizeof(NOT_A_VALID_COMMAND)-1);
+				return result;
 			}	
 			result = GetAsciiCommond(pBuf,len,&package);				
 	}
@@ -519,7 +527,7 @@ TpBool DecodeCommond(uint8_t * pBuf,uint16_t len)
 
 TpBool GetAsciiCommond(uint8_t * pBuf,uint16_t len,Package* pa)
 {
-	TpBool result = RESULT_ERROR;
+	TpBool result = INLIB_ERROR; /*123 Meaningless,just for judge the end [*ff\r\n]*/
 	
 	TpUchar  ch = 0;
 	TpUint16 i = 0;
@@ -549,8 +557,8 @@ TpBool GetAsciiCommond(uint8_t * pBuf,uint16_t len,Package* pa)
 								pa->pt++;
 								pa->num =pa->pt;
 								pa->start = 0;
-								DecodeAsciiCommond(pa);
-							}
+								result = DecodeAsciiCommond(pa);
+							}											
 					}
 					else
 					{
@@ -573,8 +581,6 @@ TpBool GetAsciiCommond(uint8_t * pBuf,uint16_t len,Package* pa)
       break;
 		}
 	}
-	
-	result = 	INLIB_OK;
 	return result;	
 }
 
@@ -626,8 +632,7 @@ TpBool DecodeAsciiCommond(Package* pa)
 				UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)NOT_A_VALID_COMMAND,sizeof(NOT_A_VALID_COMMAND)-1);
 			}						
 	}
-	
-  if(!memcmp(ASCII_CLASS_GET,pa->buf,sizeof(ASCII_CLASS_GET)-1))
+	else if(!memcmp(ASCII_CLASS_GET,pa->buf,sizeof(ASCII_CLASS_GET)-1))
 	{
 	    result = GetClass(pa);
 		
@@ -645,14 +650,13 @@ TpBool DecodeAsciiCommond(Package* pa)
 						UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)NOT_A_VALID_COMMAND,sizeof(NOT_A_VALID_COMMAND)-1);
 				    return RESULT_COMMAND_INVALID;
 			}	
-			else 
+			else if(result == RESULT_ERROR)
 			{
-				UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)NOT_A_VALID_COMMAND,sizeof(NOT_A_VALID_COMMAND)-1);
+				UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)FREEDBACK_ERROR,sizeof(FREEDBACK_ERROR)-1);
 				return RESULT_ERROR;
 			}
 	}
-	
-	if(!memcmp(ASCII_CLASS_OUTPUT,pa->buf,sizeof(ASCII_CLASS_OUTPUT)-1))
+	else if(!memcmp(ASCII_CLASS_OUTPUT,pa->buf,sizeof(ASCII_CLASS_OUTPUT)-1))
 	{
 	    result = OutputClass(pa);
 		
@@ -677,6 +681,33 @@ TpBool DecodeAsciiCommond(Package* pa)
 						break;
 			}
 	}
+		/****************** save configs*****************************/
+	else if(!memcmp(ALL_SETTING_SAVE,pa->buf,sizeof(ALL_SETTING_SAVE)-1))
+	{
+		__disable_irq() ;
+		FlashWrite();	
+    __enable_irq() ;
+		
+		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_USER),(TpUchar*)FREEDBACK_OK,sizeof(FREEDBACK_OK)-1);
+		result = RESULT_OK;
+		return result;		
+	}
+	
+	/****************** all settings restore *****************************/
+	else if(!memcmp(ALL_SETTING_RESTORE,pa->buf,sizeof(ALL_SETTING_RESTORE)-1))
+	{
+	  FlashInit();
+		
+		UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_USER),(TpUchar*)FREEDBACK_OK,sizeof(FREEDBACK_OK)-1);
+		result = RESULT_OK;
+		return result;
+	}
+	else
+	{
+		  UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)NOT_A_VALID_CONFIG,sizeof(NOT_A_VALID_CONFIG)-1);
+	}
+	
+	
 		
 	return result;
 }
@@ -688,28 +719,8 @@ TpBool DecodeARM2Bin(TpUchar* pUsart_buff,TpUint16 len,UmiIgmBin* pUmiOutput)
 	TpBool  result = RESULT_OK;
 	TpUint16 check_sum = 0;
 	TpUint16 pUmiOutput_length = sizeof(UmiIgmBin);
-	TpUint16 freed_back_length;
 	
 	
-//	if(len > pUmiOutput_length)
-//	{
-//		  freed_back_length = len - pUmiOutput_length;
-//		  DecodeCommondBin((TpUchar*)pUsart_buff,freed_back_length);
-//		
-//		  check_sum =  CheckSum((TpUchar*)pUsart_buff + freed_back_length,pUmiOutput_length);
-//			memcpy(pUmiOutput,pUsart_buff + freed_back_length,pUmiOutput_length); 
-//			
-//			if((pUmiOutput->head[0] == DATA_FROM_ARM2_HEAD_1)&&(pUmiOutput->head[1] == DATA_FROM_ARM2_HEAD_2))
-//			{
-//				if(pUmiOutput->check == check_sum)
-//				{
-
-//					 LogOutput(pUmiOutput);
-//					 result = 	RESULT_OK;			
-//				}
-//			}
-//	}
-//	else 
 	if(len == pUmiOutput_length)
 	{
 			check_sum =  CheckSum((TpUchar*)pUsart_buff,pUmiOutput_length);

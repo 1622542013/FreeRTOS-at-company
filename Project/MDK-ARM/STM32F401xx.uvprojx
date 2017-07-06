@@ -10,12 +10,12 @@
       <TargetName>STM32F401xx</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F401CC</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.6.0</PackID>
+          <PackID>Keil.STM32F4xx_DFP.2.11.0</PackID>
           <PackURL>http://www.keil.com/pack</PackURL>
           <Cpu>IROM(0x08000000,0x40000) IRAM(0x20000000,0x10000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -79,7 +79,7 @@
             <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
-            <RunUserProg1>1</RunUserProg1>
+            <RunUserProg1>0</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
             <UserProg1Name>C:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin -o  ..\MDK-ARM\Output\STM32F401xx.bin ..\MDK-ARM\Output\STM32F401xx.axf</UserProg1Name>
             <UserProg2Name></UserProg2Name>
@@ -125,47 +125,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>6</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>Segger\JL2CM3.dll</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -365,15 +324,18 @@
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
             <useXO>0</useXO>
-            <v6Lang>0</v6Lang>
-            <v6LangP>0</v6LangP>
-            <vShortEn>0</vShortEn>
-            <vShortWch>0</vShortWch>
+            <v6Lang>1</v6Lang>
+            <v6LangP>1</v6LangP>
+            <vShortEn>1</vShortEn>
+            <vShortWch>1</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--C99</MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F401xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\USER;..\..\SYSTEM\CONFIG;..\..\SYSTEM\FLASH;..\..\SYSTEM\USART;..\..\SYSTEM\MAG;..\..\SYSTEM\GNSS;..\..\SYSTEM\MagCali;..\..\SYSTEM\COMMAND;..\..\SYSTEM\DELAY;..\..\Libraries\MagCaliLib</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\USER;..\..\SYSTEM\CONFIG;..\..\SYSTEM\FLASH;..\..\SYSTEM\USART;..\..\SYSTEM\MAG;..\..\SYSTEM\GNSS;..\..\SYSTEM\MagCali;..\..\SYSTEM\COMMAND;..\..\SYSTEM\DELAY;..\..\SYSTEM\MagCaliOnline</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -386,6 +348,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -591,16 +554,6 @@
               <FileType>1</FileType>
               <FilePath>..\..\SYSTEM\MAG\RM3100.c</FilePath>
             </File>
-            <File>
-              <FileName>MagCali.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\MagCali\MagCali.c</FilePath>
-            </File>
-            <File>
-              <FileName>MagCaliLib.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\Libraries\MagCaliLib\MagCaliLib.lib</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -638,8 +591,49 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>MAG-calibration</GroupName>
+          <Files>
+            <File>
+              <FileName>cholcal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\SYSTEM\MagCaliOnline\cholcal.c</FilePath>
+            </File>
+            <File>
+              <FileName>eigcal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\SYSTEM\MagCaliOnline\eigcal.c</FilePath>
+            </File>
+            <File>
+              <FileName>MagCaliOnline.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\SYSTEM\MagCaliOnline\MagCaliOnline.c</FilePath>
+            </File>
+            <File>
+              <FileName>Mahony.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\SYSTEM\MagCaliOnline\Mahony.c</FilePath>
+            </File>
+            <File>
+              <FileName>matrix.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\SYSTEM\MagCaliOnline\matrix.c</FilePath>
+            </File>
+            <File>
+              <FileName>sdet.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\SYSTEM\MagCaliOnline\sdet.c</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>
+
+  <RTE>
+    <apis/>
+    <components/>
+    <files/>
+  </RTE>
 
 </Project>
