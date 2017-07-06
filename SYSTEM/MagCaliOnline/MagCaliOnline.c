@@ -27,6 +27,10 @@
 #ifdef R_DEBUG
 #include "usart.h"
 #include "delay.h"
+#include "command.h"
+
+CommondFlag* Output_Flag;
+
 #endif
 
 
@@ -272,17 +276,25 @@ void FindAppropriateMag(AhrsOut* pstAhrsIn,float mag[3])
 			 magy[mag_use_cnt] = mag[1];
 			 magz[mag_use_cnt] = mag[2];
 			 mag_use_cnt++;	
-
+/*---------------------------------------------------------------------------------------*/
+/**************************************USER  FUNCTION*************************************/
 			#ifdef R_DEBUG
-			float ratio_mag = 0.0;
-			unsigned char ratio_mag_out = 0;
-			ratio_mag = mag_use_cnt - 1;
-			ratio_mag = ratio_mag/MAG_DATA_LEN;
-			ratio_mag_out = ratio_mag*100;
-			len = snprintf((char*)outputMag,200,"%f %f %f %d\r\n",magx[mag_use_cnt-1],magy[mag_use_cnt-1],magz[mag_use_cnt-1],ratio_mag_out);
-      UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)outputMag,(TpUint16)len);
+			
+			Output_Flag = GetCommondFlag();
+			if(Output_Flag->mag_output_progress == 1)
+			{
+				float ratio_mag = 0.0;
+				unsigned char ratio_mag_out = 0;
+				ratio_mag = mag_use_cnt - 1;
+				ratio_mag = ratio_mag/MAG_DATA_LEN;
+				ratio_mag_out = ratio_mag*100;
+				len = snprintf((char*)outputMag,200,"%f %f %f %d\r\n",magx[mag_use_cnt-1],magy[mag_use_cnt-1],magz[mag_use_cnt-1],ratio_mag_out);
+				UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)outputMag,(TpUint16)len);
+			}
 		  #endif
-			/********************* RLS **************************/		
+/**************************************USER  FUNCTION*************************************/
+/*---------------------------------------------------------------------------------------*/
+					
 		}
 		// Reach the coverage
 		if(mag_use_cnt==MAG_DATA_LEN)
@@ -377,6 +389,7 @@ void  MagCaliOnline(AhrsOut* pstAhrsIn,float gyo[3],float acc[3],float mag[3],co
 
 unsigned char MagEllipFitting(void)
 {
+	unsigned char result = LIB_RETURN_ERROR;
 	double k = 0.0;
 	unsigned int i, j = 0;
 
@@ -530,7 +543,11 @@ unsigned char MagEllipFitting(void)
   free(alfa);
   free(chol_delta);
 	
-  return LIB_RETURN_OK;
+	
+  if(CheckCaliQuality())
+		result = LIB_RETURN_OK;
+	
+  return result;
 
 }
 
@@ -810,4 +827,50 @@ void StartMagCali(void)
 unsigned char CheckGyoBiasDone(void)
 {
    return _flag_gyo_bias_done;
+}
+
+/************************************************************************
+name:	  	GetMagCaliResult
+function: return mag calibration result,including mag bias and k matrix
+************************************************************************/
+
+unsigned char CheckCaliQuality(void)
+{
+	unsigned char result = LIB_RETURN_ERROR;
+  unsigned short int i = 0;
+	float mag_tmp[3] = {0.0f};
+	float mag_comp[3] = {0.0f};
+	float mag_norm = 0.0f;
+	float mag_norm_mean = 0.0f;
+	float mag_norm_std  = 0.0f;
+	
+	for(i = 0;i<MAG_DATA_LEN;i++)
+	{
+		  /* first step: subtract bias*/
+			mag_tmp[0] = magx[i] - bias_mag[0];
+			mag_tmp[1] = magy[i] - bias_mag[1];
+			mag_tmp[2] = magz[i] - bias_mag[2];
+			
+			/* second step: multiply */
+			mag_comp[0] = matrix_mag[0] * mag_tmp[0] + matrix_mag[1] * mag_tmp[1] + matrix_mag[2] * mag_tmp[2];
+			mag_comp[1] = matrix_mag[3] * mag_tmp[0] + matrix_mag[4] * mag_tmp[1] + matrix_mag[5] * mag_tmp[2];
+			mag_comp[2] = matrix_mag[6] * mag_tmp[0] + matrix_mag[7] * mag_tmp[1] + matrix_mag[8] * mag_tmp[2];
+		
+		  mag_norm = sqrtf(mag_comp[0]*mag_comp[0] + mag_comp[1]*mag_comp[1] + mag_comp[2]*mag_comp[2]);
+		  mag_norm_mean += mag_norm;
+		  mag_norm_std  += mag_norm*mag_norm;
+	}
+	
+	mag_norm_mean = mag_norm_mean/MAG_DATA_LEN;
+	mag_norm_std  = mag_norm_std/MAG_DATA_LEN;
+	
+	mag_norm_std = mag_norm_std - mag_norm_mean*mag_norm_mean;
+	mag_norm_std = sqrtf(mag_norm_std);
+	
+	if(mag_norm_std<=MAG_CALI_NOM_STD_MAX)
+	{
+			result = LIB_RETURN_OK;
+	}
+
+	return result;
 }

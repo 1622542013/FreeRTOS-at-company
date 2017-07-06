@@ -118,6 +118,10 @@ typedef struct tagRM3100
   TpFloat magx;
 	TpFloat magy;
 	TpFloat magz;
+	/* mag after calibration data */
+  TpFloat cal_magx;
+	TpFloat cal_magy;
+	TpFloat cal_magz;
 }RM3100;
 
 

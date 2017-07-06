@@ -301,6 +301,10 @@ TpBool DecodeMagData(TpUint16* mag_data_buff,RM3100* pRm3100)
 	
 	/* reg data to mag data */
 	Rm3100DataConversion(pRm3100);
+	
+	pRm3100->cal_magx = pRm3100->magx;
+	pRm3100->cal_magy = pRm3100->magy;
+	pRm3100->cal_magz = pRm3100->magz;
 		
 	MagCaliCompensate(dift_mag_sys,k_mag_sys,pRm3100);
 	
@@ -314,14 +318,14 @@ TpBool MagCaliCompensate(const float bias_mag[3],const float mul_matrix[9],RM310
 	TpFloat  mag_comp[3];
 
 	/* frist step: compensate bias */
-	mag_comp[0] = rm3100->magx - bias_mag[0];
-	mag_comp[1] = rm3100->magy - bias_mag[1];
-	mag_comp[2] = rm3100->magz - bias_mag[2];
+	mag_comp[0] = rm3100->cal_magx - bias_mag[0];
+	mag_comp[1] = rm3100->cal_magy - bias_mag[1];
+	mag_comp[2] = rm3100->cal_magz - bias_mag[2];
 	
 	/* second step: multiply */
-  rm3100->magx = mul_matrix[0] * mag_comp[0] + mul_matrix[1] * mag_comp[1] + mul_matrix[2] * mag_comp[2];
-	rm3100->magy = mul_matrix[3] * mag_comp[0] + mul_matrix[4] * mag_comp[1] + mul_matrix[5] * mag_comp[2];
-	rm3100->magz = mul_matrix[6] * mag_comp[0] + mul_matrix[7] * mag_comp[1] + mul_matrix[8] * mag_comp[2];
+  rm3100->cal_magx = mul_matrix[0] * mag_comp[0] + mul_matrix[1] * mag_comp[1] + mul_matrix[2] * mag_comp[2];
+	rm3100->cal_magy = mul_matrix[3] * mag_comp[0] + mul_matrix[4] * mag_comp[1] + mul_matrix[5] * mag_comp[2];
+	rm3100->cal_magz = mul_matrix[6] * mag_comp[0] + mul_matrix[7] * mag_comp[1] + mul_matrix[8] * mag_comp[2];
 	
 	return result;
 

@@ -29,6 +29,7 @@
 #define MAG_EIGEN_OUT_DIM        ((unsigned int)6)
 #define MAG_EIGEN_OUT_DIM_ROW    ((unsigned char)4)	
 #define MAG_ELLIP_ROW            ((unsigned char)10)	
+#define MAG_CALI_NOM_STD_MAX     ((float)0.04)
 
 /*============================================================================*/
 /*                             struct define                             */
@@ -72,6 +73,7 @@ void resolve_eigen(const float k,const float D_ellip[MAG_ELLIP_ROW*MAG_DATA_LEN]
 unsigned char MagMemoryInit(void);
 void GetEllipFittingPara(float bias[3],float k_matrix[9]);
 unsigned char CheckEllipFittingOk(void);
+unsigned char CheckCaliQuality(void);
 
 	
 #ifdef __cplusplus

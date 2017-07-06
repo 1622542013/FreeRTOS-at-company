@@ -78,7 +78,9 @@
 /* erase mag cali para */
 #define SET_MAG_CAL_PARA_ERASE  	("$cmd,set,mag,calerase,*ff")
 /* mag cali online */
-#define SET_MAG_CAL_ONLINE        ("$cmd,set,mag,calon,*ff")
+#define SET_MAG_CAL_ONLINE_OUTPUT ("$cmd,set,mag,calon-test,*ff")
+/* mag cali online */
+#define SET_MAG_CAL_ONLINE_NO_OUT ("$cmd,set,mag,calon,*ff")
 /* settings save or restore */
 #define ALL_SETTING_SAVE					("$cmd,save,config,*ff")
 #define ALL_SETTING_RESTORE 			("$cmd,freset,*ff")
@@ -282,6 +284,7 @@ typedef struct _tagCommondFlag
 {
 	TpUchar  magcali_online;
 	TpUchar  magpara_update;
+	TpUchar  mag_output_progress;
 
 }CommondFlag;
 

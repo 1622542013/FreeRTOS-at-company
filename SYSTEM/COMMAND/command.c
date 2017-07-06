@@ -211,9 +211,18 @@ TpBool SetClass(Package* pa)
 		 return result;
 	}	
 /****************** set mag cali online *****************************/
-  if(!memcmp(SET_MAG_CAL_ONLINE,pa->buf,sizeof(SET_MAG_CAL_ONLINE)-1))
+  if(!memcmp(SET_MAG_CAL_ONLINE_NO_OUT,pa->buf,sizeof(SET_MAG_CAL_ONLINE_NO_OUT)-1))
 	{
 		commond_flag.magcali_online = 1;
+		commond_flag.mag_output_progress = 0;
+		result = RESULT_OK; 	
+		return result;    
+	}	
+	
+	 if(!memcmp(SET_MAG_CAL_ONLINE_OUTPUT,pa->buf,sizeof(SET_MAG_CAL_ONLINE_OUTPUT)-1))
+	{
+		commond_flag.magcali_online = 1;
+		commond_flag.mag_output_progress = 1;
 		result = RESULT_OK; 	
 		return result;    
 	}	
