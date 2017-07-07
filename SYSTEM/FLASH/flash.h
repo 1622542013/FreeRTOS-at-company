@@ -47,38 +47,41 @@ typedef struct _tagSysPara
 	TpUint32 software_version;	
 	/* gnss lever arm */
 	TpFloat  gnss_lever[3];
+	TpFloat  gnss_baseline;
 	/* user usart baudrate */
 	TpUint32 baud_usart1;	
 	TpUint32 baud_usart2;	
-	TpUint32 baud_usart6;	
+	TpUint32 baud_usart6;
+	/*APP MODE*/
+	TpUint32	 appmode;
 	/* mag calibration para */
 	TpUint32 mag_sample_rate;	
 	TpFloat  matrix_mag[9];
 	TpFloat  rotation_mag[9];
 	TpFloat  bias_mag[3];
 	/* data out rate */
-	TpUchar  imu_ascii_out_rate;
-	TpUchar  ahrs_ascii_out_rate;
-	TpUchar  nav_ascii_out_rate;
-	TpUchar  avnav_ascii_out_rate;
-	TpUchar  lvnav_ascii_out_rate;
-	TpUchar  mvnav_ascii_out_rate;
+	TpUint32  imu_ascii_out_rate;
+	TpUint32  ahrs_ascii_out_rate;
+	TpUint32  nav_ascii_out_rate;
+	TpUint32  avnav_ascii_out_rate;
+	TpUint32  lvnav_ascii_out_rate;
+	TpUint32  mvnav_ascii_out_rate;
 	
-	TpUchar  gpgga_out_rate;
-	TpUchar  gprmc_out_rate;
+	TpUint32  gpgga_out_rate;
+	TpUint32  gprmc_out_rate;
 	
-	TpUchar  imu_bin_out_rate;
-	TpUchar  ahrs_bin_out_rate;
-	TpUchar  nav_bin_out_rate;
-	TpUchar  avnav_bin_out_rate;
-	TpUchar  lvnav_bin_out_rate;
-	TpUchar  mvnav_bin_out_rate;
+	TpUint32  imu_bin_out_rate;
+	TpUint32  ahrs_bin_out_rate;
+	TpUint32  nav_bin_out_rate;
+	TpUint32  avnav_bin_out_rate;
+	TpUint32  lvnav_bin_out_rate;
+	TpUint32  mvnav_bin_out_rate;
 	
-	TpUchar  dev_ahrs_bin_out_rate;
-	TpUchar  dev_igm_bin_out_rate;
+	TpUint32  dev_ahrs_bin_out_rate;
+	TpUint32  dev_igm_bin_out_rate;
 	
 	/* data out format */
-	TpUint16 data_out_format;
+	TpUint32 data_out_format;
 }SysPara;
 
 #pragma pack(pop)
@@ -171,7 +174,13 @@ uint8_t GetMagDataUpdateFlag(void);
 void SetMagBias(float bias_mag[3]);	
 void SetMagMatrix(float matrix_mag[9]);
 
+uint32_t GetAppMode(void);
+void SetAppMode(uint32_t mode);
+void SetGnssArm(float arm[3]);
+void SetGnssBaseline(float baseline);
 
+void GetGnssArm(float (*arm)[3]);
+float GetGnssBaseLine(void);
 
 
 uint32_t GetMagRegisterRate(void);

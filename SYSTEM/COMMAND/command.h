@@ -89,8 +89,8 @@
 /* ascii head of get */
 #define ASCII_CLASS_GET  					("$cmd,get,")
 /* user baudrate */
-#define GET_BAUDRATE 							("$cmd,get,usart,baudrate,*ff")
-#define GET_BAUDRATE_OUT 					("$cmd,get,usart,baudrate,%d,*ff\r\n")
+#define GET_BAUDRATE 							("$cmd,get,com,baudrate,*ff")
+#define GET_BAUDRATE_OUT 					("$cmd,get,com,baudrate,%d,*ff\r\n")
 /* product id*/
 #define GET_PRODUCT_ID 						("$cmd,get,productid,*ff")
 #define GET_PRODUCT_ID_OUT 				("$cmd,get,productid,%d,*ff\r\n")
@@ -98,8 +98,8 @@
 #define GET_HARD_VERSION 					("$cmd,get,version,hardware,*ff")
 #define GET_HARD_VERSION_OUT 			("$cmd,get,version,hardware,%d,*ff\r\n")
 /* software version */
-#define GET_SOFT_VERSION 					("$cmd,get,version,software,,*ff")
-#define GET_SOFT_VERSION_OUT 			("$cmd,get,version,software,,%d,*ff\r\n")
+#define GET_SOFT_VERSION 					("$cmd,get,version,software,*ff")
+#define GET_SOFT_VERSION_OUT 			("$cmd,get,version,software,%d,*ff\r\n")
 /* mag sample rate */
 #define GET_MAG_RATE 							("$cmd,get,mag,samplerate,*ff")
 #define GET_MAG_RATE_OUT 					("$cmd,get,mag,samplerate,%dHZ,*ff\r\n")
@@ -146,17 +146,24 @@
 /************************ get commond****************************/
 #define GET_NAV_WORK_MODE 				("$cmd,get,appmode,*ff")
 #define GET_LEVER_ARM 						("$cmd,get,gnss,leverarm,*ff")
-#define GET_BASE_LINE 						("$cmd,set,gnss,baseline,")
+#define GET_BASE_LINE 						("$cmd,get,gnss,baseline,*ff")
+
+#define GET_LEVER_ARM_OUT 				("$cmd,get,gnss,leverarm,%f,%f,%f,*ff\r\n")
+#define GET_BASE_LINE_OUT 				("$cmd,get,gnss,baseline,%f,*ff\r\n")
 
 #define NAV_LAND_MODE 						("land")
 #define NAV_AIR_MODE 							("air")
 #define NAV_OCEAN_MODE 						("ocean")
 
-#define NAV_LAND_MODE_OUT					("Navigation mode is land *ff\r\n")
-#define NAV_AIR_MODE_OUT 					("Navigation mode is air *ff\r\n")		
-#define NAV_OCEAN_MODE_OUT				("Navigation mode is ocean *ff\r\n")		
+#define LAND 											1
+#define AIR 											2
+#define OCEAN 										3
 
+#define NAV_LAND_MODE_OUT					("$cmd,get,appmode,land,*ff\r\n")
+#define NAV_AIR_MODE_OUT 					("$cmd,get,appmode,air,*ff\r\n")		
+#define NAV_OCEAN_MODE_OUT				("$cmd,get,appmode,ocean,*ff\r\n")		
 
+#define NO_USE										("This function has not been opened yet\r\n")
 /************************ ARM1,2 freedback****************************/
 
 

@@ -48,13 +48,17 @@ TpVoid FlashInit(TpVoid)
 	syspara.gnss_lever[0] = 0.0f;
 	syspara.gnss_lever[1] = 0.0f;
 	syspara.gnss_lever[2] = 0.0f;
+	
+	syspara.gnss_baseline = 0.0f;
 	/***********************************/
 	
 	/**** usart baudrate parameters ****/
 	syspara.baud_usart1 	= 115200;
-	syspara.baud_usart2 	= 230400;
+	syspara.baud_usart2 	= 460800;
 	syspara.baud_usart6 	= 921600;
 	/***********************************/
+	
+	syspara.appmode = LAND;
 	
 	/*********** mag parameters *********/
 	/* mag sample rate */
@@ -164,6 +168,11 @@ TpVoid FlashWrite(TpVoid)
 	FlashData.fData = syspara.gnss_lever[2];
 	FLASH_ProgramWord(Address,FlashData.iData);
 	Address += 4;
+	
+	/* write gnss base line */
+	FlashData.fData = syspara.gnss_baseline;
+	FLASH_ProgramWord(Address,FlashData.iData);
+	Address += 4;
 	/*****************************************************************************/
 	
 	/********************************* write usart baudrate***********************/
@@ -177,7 +186,10 @@ TpVoid FlashWrite(TpVoid)
 	FLASH_ProgramWord(Address,syspara.baud_usart6);
 	Address += 4;
 	
-	/*****************************************************************************/
+	/*******************************work mode*************************************/
+	/* write work mode */
+	FLASH_ProgramWord(Address,syspara.appmode);
+	Address += 4;
 	
 	/**************************** write mag parameters **************************/
 	/* write mag sample rate */
@@ -359,6 +371,10 @@ TpUint32 FlashRead(TpVoid)
 	FlashData.iData = (*(vu32*)Address);
 	syspara.gnss_lever[2] = FlashData.fData;
 	Address += 4;
+	
+	FlashData.iData = (*(vu32*)Address);
+	syspara.gnss_baseline = FlashData.fData;
+	Address += 4;
 	/******************************************************************/
 	
 	/******************  read usart baudrate *************************/
@@ -368,6 +384,13 @@ TpUint32 FlashRead(TpVoid)
 	Address += 4;
 	syspara.baud_usart6 = (*(vu32*)Address);
 	Address += 4;
+	
+	/******************************************************************/
+	
+	/******************  read work mode *************************/
+	syspara.appmode = (*(vu32*)Address);
+	Address += 4;
+	
   /******************************************************************/
 	
 	/******************  read mag parameters *************************/
@@ -481,6 +504,23 @@ TpUint32 FlashRead(TpVoid)
 /**************************************************************************/
 /*												Application program															*/
 /**************************************************************************/
+void GetGnssArm(float (*arm)[3])
+{
+	(*arm)[0] = syspara.gnss_lever[0];
+	(*arm)[1] = syspara.gnss_lever[1];
+	(*arm)[2] = syspara.gnss_lever[2];
+}
+
+float GetGnssBaseLine(void)
+{
+	return syspara.gnss_baseline;
+}
+
+uint32_t GetAppMode(void)
+{
+	return syspara.appmode;
+}
+
 uint32_t GetProductID(void)
 {
 	return syspara.product_id;
@@ -564,6 +604,22 @@ void GetBiasMag(float (*bias_mag)[3])
 }
 
 /**************************************************************************/
+void SetGnssArm(float arm[3])
+{
+	syspara.gnss_lever[0] = arm[0];
+	syspara.gnss_lever[1] = arm[1];
+	syspara.gnss_lever[2] = arm[2];
+}
+
+void SetGnssBaseline(float baseline)
+{
+	syspara.gnss_baseline = baseline;
+}
+
+void SetAppMode(uint32_t mode)
+{
+	syspara.appmode = mode;
+}
 
 void SetProductID(uint32_t product_id)
 {

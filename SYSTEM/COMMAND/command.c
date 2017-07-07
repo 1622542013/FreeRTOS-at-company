@@ -228,34 +228,57 @@ TpBool SetClass(Package* pa)
 	}	
 
 	
-/*----------------------------------- send to arm2 -----------------------------------*/
+/*----------------------------------- WORK MODE -----------------------------------*/
 	if(!memcmp(SET_NAV_WORK_MODE,pa->buf,sizeof(SET_NAV_WORK_MODE)-1))
 	{
 		FindAsciiField(pa->buf,buff_processed,&num);
 		
 		if(!memcmp(NAV_LAND_MODE,buff_processed[3],sizeof(NAV_LAND_MODE)-1))
-		{
-	    UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_NAV_MODE,DATA_LAND_MODE),Commond_BIN_SIZE);
-			return NO_ANSWER;
+		{  
+			SetAppMode(LAND);
+			return RESULT_OK;
 		}
 		if(!memcmp(NAV_AIR_MODE,buff_processed[3],sizeof(NAV_AIR_MODE)-1))
-		{
-			UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_NAV_MODE,DATA_AIR_MODE),Commond_BIN_SIZE);
-			return NO_ANSWER;
+		{		
+			SetAppMode(AIR);
+			return RESULT_OK;
 		}
 		if(!memcmp(NAV_OCEAN_MODE,buff_processed[3],sizeof(NAV_OCEAN_MODE)-1))
 		{
-			UsartPushMainBuf(GetUsartAddress(COM_ARM3_TO_ARM2),(TpUchar*)CommondBin(FRAME_ID_SET,COMMAND_ID_NAV_MODE,DATA_OCEAN_MODE),Commond_BIN_SIZE);
-			return NO_ANSWER;
+			SetAppMode(OCEAN);
+			return RESULT_OK;
 		}
 		
 		return RESULT_ERROR;		
 	}
 	
-	if(strstr((const char*)pa->buf,SET_LEVER_ARM) !=NULL)
+	if(!memcmp(SET_LEVER_ARM,pa->buf,sizeof(SET_LEVER_ARM)-1))
+	{
+	
+		FindAsciiField(pa->buf,buff_processed,&num);
+		
+		float gnss_arm[3];
+		
+		gnss_arm[0] = atof(buff_processed[4]);
+		gnss_arm[1] = atof(buff_processed[5]);		
+		gnss_arm[2] = atof(buff_processed[6]);
+		
+		
+		SetGnssArm(gnss_arm);
+	
+		return RESULT_OK;
+	}
+	
+		if(!memcmp(SET_BASE_LINE,pa->buf,sizeof(SET_BASE_LINE)-1))
 	{
 		FindAsciiField(pa->buf,buff_processed,&num);
-
+		
+		float baseline;
+		
+		baseline = atof(buff_processed[4]);
+		
+		SetGnssBaseline(baseline);
+		
 		return RESULT_OK;
 	}
 
@@ -355,19 +378,46 @@ TpBool GetClass(Package* pa)
 	
 	if(!memcmp(GET_NAV_WORK_MODE,pa->buf,sizeof(GET_NAV_WORK_MODE)-1))
 	{
+		uint32_t mode;
+		mode = GetAppMode();
+		
+		switch(mode)
+		{
+			case LAND:
+									  out_len = snprintf(send_buff,FREEDBACK_BUFF_SIZE,NAV_LAND_MODE_OUT);
+									  return RESULT_OK;
+					
+			case AIR:
+										out_len = snprintf(send_buff,FREEDBACK_BUFF_SIZE,NAV_AIR_MODE_OUT);
+										return RESULT_OK;
+			case OCEAN:
+										out_len = snprintf(send_buff,FREEDBACK_BUFF_SIZE,NAV_OCEAN_MODE_OUT);
+										return RESULT_OK;
+			
+			default :   	break;
+		}
 		
 	}
 	
 	if(!memcmp(GET_LEVER_ARM,pa->buf,sizeof(GET_LEVER_ARM)-1))
 	{
+		float gnss_arm[3];
 		
+		GetGnssArm(&gnss_arm);
+		
+		out_len = snprintf(send_buff,FREEDBACK_BUFF_SIZE,GET_LEVER_ARM_OUT,gnss_arm[0],gnss_arm[1],gnss_arm[2]);
+		return RESULT_OK;
 	}
 	
 	if(!memcmp(GET_BASE_LINE,pa->buf,sizeof(GET_BASE_LINE)-1))
 	{
+		float base_line;	
+		base_line = GetGnssBaseLine();
 		
+		out_len = snprintf(send_buff,FREEDBACK_BUFF_SIZE,GET_BASE_LINE_OUT,base_line);
+		return RESULT_OK;
 	}
-			
+	
 	return result;	
 }
 
@@ -716,8 +766,6 @@ TpBool DecodeAsciiCommond(Package* pa)
 		  UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)NOT_A_VALID_CONFIG,sizeof(NOT_A_VALID_CONFIG)-1);
 	}
 	
-	
-		
 	return result;
 }
 

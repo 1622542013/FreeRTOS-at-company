@@ -35,7 +35,7 @@ TpBool HardWareInit(TpVoid)
 
 	/* systick init */
   SystickInit();
-	
+		
 	/* flash init */
 	if(FlashRead()!=FLAG_FLASH)
 	{
