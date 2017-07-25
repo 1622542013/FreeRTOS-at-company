@@ -896,7 +896,7 @@ uint8_t GetOutputFormat(OutputFormat format)
 		case	MVNAV_BIN 		: return syspara.mvnav_bin_out_rate;	
 		case	DEV_AHRS_BIN  : return syspara.dev_ahrs_bin_out_rate;
 		case	DEV_NAV_BIN   : return syspara.dev_igm_bin_out_rate;
-			
+	
 		default 				:break;
 	}
 	return 0x00;

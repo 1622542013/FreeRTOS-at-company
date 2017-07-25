@@ -334,7 +334,7 @@ TpVoid LogDevAhrsBin(UmiIgmBin* pUmiOutput)
 	float changetime = 0.0;
 	float Gyro_temp = (float)pUmiOutput->imu.gyo_temp / 16.0f;
 	
-	uint32_t  freq = GetOutputFormat(AHRS_BIN);
+	uint32_t  freq = GetOutputFormat(DEV_AHRS_BIN);
 	
 	    changetime = 1.0f / (float)freq;
 	

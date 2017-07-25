@@ -160,9 +160,9 @@ TpInt32 main(TpVoid)
 				DecodeMagData(pInterrupt_rec_flag->buff_mag,&rm3100_out);
 				
 				stMagSend.head  = 0x45ab;
-				stMagSend.magx  = rm3100_out.magx;
-				stMagSend.magy  = rm3100_out.magy;
-				stMagSend.magz  = rm3100_out.magz;
+				stMagSend.magx  = rm3100_out.cal_magx;
+				stMagSend.magy  = rm3100_out.cal_magy;
+				stMagSend.magz  = rm3100_out.cal_magz;
 				
 				stMagSend.check = CheckSumByte((TpUchar*)&stMagSend,sizeof(stMagSend));
 				

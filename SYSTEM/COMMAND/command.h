@@ -57,8 +57,11 @@
 /* config ok or error */
 #define FREEDBACK_OK 							("$cmd,Config,ok*ff\r\n")
 #define FREEDBACK_ERROR  					("$cmd,Config,error*ff !!!\r\n")
-#define NOT_A_VALID_CONFIG  			("$cmd,Config,Parameter is Invalid !!!\r\n")
-#define NOT_A_VALID_COMMAND  			("$cmd,Command is Invalid !!!\r\n")
+#define NOT_A_VALID_CONFIG  			("$cmd,Config,error*ff !!!\r\n")
+#define NOT_A_VALID_COMMAND  			("$cmd,Config,error*ff !!!\r\n")
+//#define FREEDBACK_ERROR  					("$cmd,Config,error*ff !!!\r\n")
+//#define NOT_A_VALID_CONFIG  			("$cmd,Config,Parameter is Invalid !!!\r\n")
+//#define NOT_A_VALID_COMMAND  			("$cmd,Command is Invalid !!!\r\n")
 
 /************************ set commond****************************/
 /* ascii head of set */
@@ -66,7 +69,7 @@
 /* set user usart baudrate */
 #define SET_BAUDRATE  						("$cmd,set,com,baudrate,")
 /* set product id */
-#define SET_PRODUCT_ID 						("$cmd,set,product,id,")
+#define SET_PRODUCT_ID 						("$cmd,set,productid,")
 /* set hardware version */
 #define SET_HARD_VERSION 					("$cmd,set,version,hardware,")
 /* set software version */
@@ -129,8 +132,8 @@
 #define OUTPUT_LVNAV_BIN_RATE 		("$cmd,output,lvnav,bin,")
 #define OUTPUT_MVNAV_BIN_RATE 		("$cmd,output,mvnav,bin,")
 
-#define OUTPUT_DEV_AHRS_BIN_RATE 	("$cmd,output,dev*gpahrs,bin,")
-#define OUTPUT_DEV_IGM_BIN_RATE 	("$cmd,output,dev*gpigm,bin,")
+#define OUTPUT_DEV_AHRS_BIN_RATE 	("$cmd,output,ahrs,bin,")
+#define OUTPUT_DEV_IGM_BIN_RATE 	("$cmd,output,igm,bin,")
 /* commond sent to arm2 and arm1  */
 /************************ set commond****************************/
 #define SET_ACC_PARA_COMMAND  		("$cmd,set,acc,calpara,")

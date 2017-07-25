@@ -569,7 +569,7 @@ TpBool DecodeCommond(uint8_t * pBuf,uint16_t len)
 			  UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)NOT_A_VALID_COMMAND,sizeof(NOT_A_VALID_COMMAND)-1);
 				return result;
 			}
-			if(strstr((const char*)pBuf,"*ff\r\n") == NULL)
+			if(strstr((const char*)pBuf,",*ff\r\n") == NULL)
 			{
 			  UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)NOT_A_VALID_COMMAND,sizeof(NOT_A_VALID_COMMAND)-1);
 				return result;
