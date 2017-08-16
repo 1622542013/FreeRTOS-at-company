@@ -11,7 +11,7 @@
 
 #include "RM3100.h"
 #include "flash.h"
-
+#include "matrix.h"
 /*============================================================================*/
 /*                              Global variables                              */
 /*============================================================================*/
@@ -318,9 +318,9 @@ TpBool MagCaliCompensate(const float bias_mag[3],const float mul_matrix[9],RM310
 	TpFloat  mag_comp[3];
 
 	/* frist step: compensate bias */
-	mag_comp[0] = rm3100->cal_magx - bias_mag[0];
-	mag_comp[1] = rm3100->cal_magy - bias_mag[1];
-	mag_comp[2] = rm3100->cal_magz - bias_mag[2];
+	mag_comp[0] = rm3100->magx - bias_mag[0];
+	mag_comp[1] = rm3100->magy - bias_mag[1];
+	mag_comp[2] = rm3100->magz - bias_mag[2];
 	
 	/* second step: multiply */
   rm3100->cal_magx = mul_matrix[0] * mag_comp[0] + mul_matrix[1] * mag_comp[1] + mul_matrix[2] * mag_comp[2];
@@ -398,3 +398,42 @@ TpBool ChangeMagSampleRate(TpUint16 sample_rate)
 //  result = RESULT_OK;
 //	return result;
 //}
+
+TpBool MagMatrixNewCalc(float bias_mag[3],float mul_matrix[9])
+{
+	TpBool result = RESULT_ERROR;
+
+	float  bias_tmp[3] = {0.0f};
+	float  matrix_tmp[9] = {0.0f};
+  
+  float bias_mag_new[3];
+  float mul_matrix_new[9];
+	
+	unsigned char i = 0;
+	
+	// 从flash读取旧系数 
+	float* dift_mag_sys = GetMagCaliParaBias();
+	float* k_mag_sys = GetMagCaliParaMatrix();
+  
+    // 新的磁matrix系数
+    MulMatxxf(3,3,3,mul_matrix,k_mag_sys,mul_matrix_new);
+    // 新的零偏
+    for(i = 0;i<9;i++)
+        matrix_tmp[i] = k_mag_sys[i];
+    InvMatxf(3,matrix_tmp);
+    MulMatxxf(3,3,1,matrix_tmp,bias_mag,bias_tmp);
+    for(i = 0;i<3;i++)
+    {
+      bias_mag_new[i] = dift_mag_sys[i] + bias_tmp[i];
+    }
+    
+   SetMagBias(bias_mag_new);	
+   SetMagMatrix(mul_matrix_new);
+ 
+  __disable_irq() ;
+  FlashWrite();	
+  __enable_irq() ;
+	
+	result = RESULT_OK;	
+	return result;
+}

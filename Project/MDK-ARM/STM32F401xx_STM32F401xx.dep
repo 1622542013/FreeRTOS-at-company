@@ -1,1081 +1,0 @@
-Dependencies for Project 'STM32F401xx', Target 'STM32F401xx': (DO NOT MODIFY !)
-F (..\..\Libraries\CMSIS\system_stm32f4xx.c)(0x578D8C80)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\system_stm32f4xx.o --omf_browse .\output\system_stm32f4xx.crf --depend .\output\system_stm32f4xx.d)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\CMSIS\startup\startup_stm32f401xx.s)(0x593DFC22)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"--list .\startup_stm32f401xx.lst --xref -o .\output\startup_stm32f401xx.o --depend .\output\startup_stm32f401xx.d)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\misc.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\misc.o --omf_browse .\output\misc.crf --depend .\output\misc.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_crc.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_crc.o --omf_browse .\output\stm32f4xx_crc.crf --depend .\output\stm32f4xx_crc.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dac.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_dac.o --omf_browse .\output\stm32f4xx_dac.crf --depend .\output\stm32f4xx_dac.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dma.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_dma.o --omf_browse .\output\stm32f4xx_dma.crf --depend .\output\stm32f4xx_dma.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_exti.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_exti.o --omf_browse .\output\stm32f4xx_exti.crf --depend .\output\stm32f4xx_exti.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_flash.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_flash.o --omf_browse .\output\stm32f4xx_flash.crf --depend .\output\stm32f4xx_flash.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_gpio.o --omf_browse .\output\stm32f4xx_gpio.crf --depend .\output\stm32f4xx_gpio.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_i2c.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_i2c.o --omf_browse .\output\stm32f4xx_i2c.crf --depend .\output\stm32f4xx_i2c.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_pwr.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_pwr.o --omf_browse .\output\stm32f4xx_pwr.crf --depend .\output\stm32f4xx_pwr.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_rcc.o --omf_browse .\output\stm32f4xx_rcc.crf --depend .\output\stm32f4xx_rcc.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rtc.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_rtc.o --omf_browse .\output\stm32f4xx_rtc.crf --depend .\output\stm32f4xx_rtc.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sdio.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_sdio.o --omf_browse .\output\stm32f4xx_sdio.crf --depend .\output\stm32f4xx_sdio.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_spi.o --omf_browse .\output\stm32f4xx_spi.crf --depend .\output\stm32f4xx_spi.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_syscfg.o --omf_browse .\output\stm32f4xx_syscfg.crf --depend .\output\stm32f4xx_syscfg.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_tim.o --omf_browse .\output\stm32f4xx_tim.crf --depend .\output\stm32f4xx_tim.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_usart.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_usart.o --omf_browse .\output\stm32f4xx_usart.crf --depend .\output\stm32f4xx_usart.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_wwdg.c)(0x56B86B2A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_wwdg.o --omf_browse .\output\stm32f4xx_wwdg.crf --depend .\output\stm32f4xx_wwdg.d)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-F (..\..\USER\main.c)(0x595D912E)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
-I (..\..\SYSTEM\CONFIG\config.h)(0x5901D754)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\USER\globals.h)(0x591AA766)
-I (..\..\USER\definition.h)(0x594729D8)
-I (..\..\SYSTEM\USART\usart.h)(0x591981C2)
-I (..\..\SYSTEM\GNSS\gnss.h)(0x595B675B)
-I (..\..\SYSTEM\MAG\RM3100.h)(0x594731BC)
-I (..\..\SYSTEM\MAG\SPI1.h)(0x5922B24D)
-I (..\..\USER\stm32f4xx_it.h)(0x59239429)
-I (..\..\SYSTEM\COMMAND\command.h)(0x595C5502)
-I (..\..\SYSTEM\GNSS\Decode_Ublox.h)(0x59269F38)
-I (..\..\SYSTEM\FLASH\flash.h)(0x595B23D2)
-I (..\..\SYSTEM\GNSS\Ublox.h)(0x5923F880)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdio.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdlib.h)(0x53463A44)
-I (..\..\SYSTEM\MagCaliOnline\MagCaliOnline.h)(0x595C6E3A)
-I (..\..\SYSTEM\MagCaliOnline\Mahony.h)(0x595C6E3A)
-F (..\..\SYSTEM\CONFIG\config.c)(0x59472346)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\config.o --omf_browse .\output\config.crf --depend .\output\config.d)
-I (..\..\SYSTEM\CONFIG\config.h)(0x5901D754)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\USER\globals.h)(0x591AA766)
-I (..\..\USER\definition.h)(0x594729D8)
-I (..\..\SYSTEM\USART\usart.h)(0x591981C2)
-I (..\..\SYSTEM\FLASH\flash.h)(0x595B23D2)
-I (..\..\SYSTEM\GNSS\Ublox.h)(0x5923F880)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (..\..\SYSTEM\DELAY\delay.h)(0x58FDCD1A)
-I (..\..\SYSTEM\MAG\RM3100.h)(0x594731BC)
-I (..\..\SYSTEM\MAG\SPI1.h)(0x5922B24D)
-F (..\..\USER\stm32f4xx_it.c)(0x594732A5)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\stm32f4xx_it.o --omf_browse .\output\stm32f4xx_it.crf --depend .\output\stm32f4xx_it.d)
-I (..\..\USER\stm32f4xx_it.h)(0x59239429)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\USER\definition.h)(0x594729D8)
-I (..\..\SYSTEM\USART\usart.h)(0x591981C2)
-I (..\..\SYSTEM\MAG\SPI1.h)(0x5922B24D)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (..\..\SYSTEM\GNSS\gnss.h)(0x595B675B)
-I (..\..\USER\globals.h)(0x591AA766)
-I (..\..\SYSTEM\MAG\RM3100.h)(0x594731BC)
-I (..\..\SYSTEM\FLASH\flash.h)(0x595B23D2)
-I (..\..\SYSTEM\GNSS\Ublox.h)(0x5923F880)
-I (J:\software\Keil 5\ARM\ARMCC\include\math.h)(0x53463A44)
-I (..\..\SYSTEM\COMMAND\command.h)(0x595C5502)
-F (..\..\USER\globals.c)(0x59472346)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\globals.o --omf_browse .\output\globals.crf --depend .\output\globals.d)
-I (..\..\USER\globals.h)(0x591AA766)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\USER\definition.h)(0x594729D8)
-F (..\..\SYSTEM\DELAY\delay.c)(0x58FDC968)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\delay.o --omf_browse .\output\delay.crf --depend .\output\delay.d)
-I (..\..\SYSTEM\DELAY\delay.h)(0x58FDCD1A)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\USER\globals.h)(0x591AA766)
-I (..\..\USER\definition.h)(0x594729D8)
-F (..\..\SYSTEM\USART\usart.c)(0x592F8D67)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\usart.o --omf_browse .\output\usart.crf --depend .\output\usart.d)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdio.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdlib.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (..\..\SYSTEM\USART\usart.h)(0x591981C2)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\USER\definition.h)(0x594729D8)
-F (..\..\SYSTEM\FLASH\flash.c)(0x595B5430)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\flash.o --omf_browse .\output\flash.crf --depend .\output\flash.d)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdlib.h)(0x53463A44)
-I (..\..\SYSTEM\FLASH\flash.h)(0x595B23D2)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\USER\definition.h)(0x594729D8)
-I (..\..\SYSTEM\GNSS\Ublox.h)(0x5923F880)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (..\..\SYSTEM\USART\USART.h)(0x591981C2)
-I (..\..\SYSTEM\COMMAND\command.h)(0x595C5502)
-I (..\..\USER\globals.h)(0x591AA766)
-I (..\..\SYSTEM\MAG\RM3100.h)(0x594731BC)
-I (..\..\SYSTEM\MAG\SPI1.h)(0x5922B24D)
-F (..\..\SYSTEM\MAG\SPI1.c)(0x5922B279)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\spi1.o --omf_browse .\output\spi1.crf --depend .\output\spi1.d)
-I (..\..\SYSTEM\MAG\SPI1.h)(0x5922B24D)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\USER\definition.h)(0x594729D8)
-F (..\..\SYSTEM\MAG\RM3100.c)(0x594726E5)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\rm3100.o --omf_browse .\output\rm3100.crf --depend .\output\rm3100.d)
-I (..\..\SYSTEM\MAG\RM3100.h)(0x594731BC)
-I (..\..\SYSTEM\MAG\SPI1.h)(0x5922B24D)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\USER\definition.h)(0x594729D8)
-I (..\..\USER\globals.h)(0x591AA766)
-I (..\..\SYSTEM\FLASH\flash.h)(0x595B23D2)
-I (..\..\SYSTEM\GNSS\Ublox.h)(0x5923F880)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (..\..\SYSTEM\USART\USART.h)(0x591981C2)
-F (..\..\SYSTEM\GNSS\Ublox.c)(0x590C4BAE)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\ublox.o --omf_browse .\output\ublox.crf --depend .\output\ublox.d)
-I (..\..\SYSTEM\GNSS\Ublox.h)(0x5923F880)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\SYSTEM\USART\USART.h)(0x591981C2)
-I (..\..\USER\definition.h)(0x594729D8)
-I (..\..\SYSTEM\DELAY\Delay.h)(0x58FDCD1A)
-I (..\..\USER\globals.h)(0x591AA766)
-F (..\..\SYSTEM\GNSS\Decode_Ublox.c)(0x595B675B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\decode_ublox.o --omf_browse .\output\decode_ublox.crf --depend .\output\decode_ublox.d)
-I (..\..\SYSTEM\GNSS\Decode_Ublox.h)(0x59269F38)
-I (..\..\USER\definition.h)(0x594729D8)
-I (..\..\USER\globals.h)(0x591AA766)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdio.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdlib.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-F (..\..\SYSTEM\COMMAND\command.c)(0x595D92BF)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\command.o --omf_browse .\output\command.crf --depend .\output\command.d)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdio.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdlib.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (..\..\SYSTEM\COMMAND\command.h)(0x595C5502)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\SYSTEM\USART\usart.h)(0x591981C2)
-I (..\..\USER\definition.h)(0x594729D8)
-I (..\..\USER\globals.h)(0x591AA766)
-I (..\..\SYSTEM\COMMAND\command_bin.h)(0x5922B7FB)
-I (..\..\SYSTEM\COMMAND\send_message.h)(0x595C4BF8)
-I (..\..\SYSTEM\FLASH\flash.h)(0x595B23D2)
-I (..\..\SYSTEM\GNSS\Ublox.h)(0x5923F880)
-I (..\..\SYSTEM\MAG\SPI1.h)(0x5922B24D)
-I (..\..\SYSTEM\MagCaliOnline\MagCaliOnline.h)(0x595C6E3A)
-I (..\..\SYSTEM\MagCaliOnline\Mahony.h)(0x595C6E3A)
-F (..\..\SYSTEM\COMMAND\send_message.c)(0x595C54C7)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\send_message.o --omf_browse .\output\send_message.crf --depend .\output\send_message.d)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdio.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdlib.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (..\..\SYSTEM\COMMAND\send_message.h)(0x595C4BF8)
-I (..\..\SYSTEM\COMMAND\command.h)(0x595C5502)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\SYSTEM\USART\usart.h)(0x591981C2)
-I (..\..\USER\definition.h)(0x594729D8)
-I (..\..\USER\globals.h)(0x591AA766)
-I (..\..\SYSTEM\COMMAND\command_bin.h)(0x5922B7FB)
-I (..\..\SYSTEM\FLASH\flash.h)(0x595B23D2)
-I (..\..\SYSTEM\GNSS\Ublox.h)(0x5923F880)
-F (..\..\SYSTEM\COMMAND\command_bin.c)(0x595B660A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\command_bin.o --omf_browse .\output\command_bin.crf --depend .\output\command_bin.d)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdio.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdlib.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (..\..\SYSTEM\COMMAND\command_bin.h)(0x5922B7FB)
-I (..\..\USER\globals.h)(0x591AA766)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\USER\definition.h)(0x594729D8)
-I (..\..\SYSTEM\COMMAND\send_message.h)(0x595C4BF8)
-I (..\..\SYSTEM\COMMAND\command.h)(0x595C5502)
-I (..\..\SYSTEM\USART\usart.h)(0x591981C2)
-F (..\..\SYSTEM\MagCaliOnline\cholcal.c)(0x595C6E3A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\cholcal.o --omf_browse .\output\cholcal.crf --depend .\output\cholcal.d)
-I (J:\software\Keil 5\ARM\ARMCC\include\math.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdio.h)(0x53463A44)
-I (..\..\SYSTEM\MagCaliOnline\cholcal.h)(0x595C6E3A)
-F (..\..\SYSTEM\MagCaliOnline\eigcal.c)(0x595C6E3A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\eigcal.o --omf_browse .\output\eigcal.crf --depend .\output\eigcal.d)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdio.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\math.h)(0x53463A44)
-I (..\..\SYSTEM\MagCaliOnline\eigcal.h)(0x595C6E3A)
-F (..\..\SYSTEM\MagCaliOnline\MagCaliOnline.c)(0x595D94F8)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\magcalionline.o --omf_browse .\output\magcalionline.crf --depend .\output\magcalionline.d)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdlib.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\stddef.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdio.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\math.h)(0x53463A44)
-I (..\..\SYSTEM\MagCaliOnline\MagCaliOnline.h)(0x595C6E3A)
-I (..\..\SYSTEM\MagCaliOnline\Mahony.h)(0x595C6E3A)
-I (..\..\SYSTEM\MagCaliOnline\matrix.h)(0x595C6E3A)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\SYSTEM\MagCaliOnline\MagPoint.h)(0x595C6E3A)
-I (..\..\SYSTEM\MagCaliOnline\sdet.h)(0x595C6E3A)
-I (..\..\SYSTEM\MagCaliOnline\eigcal.h)(0x595C6E3A)
-I (..\..\SYSTEM\MagCaliOnline\cholcal.h)(0x595C6E3A)
-I (..\..\SYSTEM\USART\usart.h)(0x591981C2)
-I (..\..\Libraries\CMSIS\stm32f4xx.h)(0x578D8CA8)
-I (..\..\Libraries\CMSIS\core_cm4.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmInstr.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmFunc.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\core_cmSimd.h)(0x56B86B28)
-I (..\..\Libraries\CMSIS\system_stm32f4xx.h)(0x56B86B28)
-I (..\..\USER\stm32f4xx_conf.h)(0x56B86B2C)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x56B86B2A)
-I (..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x56B86B2A)
-I (..\..\USER\definition.h)(0x594729D8)
-I (..\..\SYSTEM\DELAY\delay.h)(0x58FDCD1A)
-I (..\..\USER\globals.h)(0x591AA766)
-F (..\..\SYSTEM\MagCaliOnline\Mahony.c)(0x595C6E3A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\mahony.o --omf_browse .\output\mahony.crf --depend .\output\mahony.d)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\math.h)(0x53463A44)
-I (..\..\SYSTEM\MagCaliOnline\matrix.h)(0x595C6E3A)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-I (..\..\SYSTEM\MagCaliOnline\Mahony.h)(0x595C6E3A)
-F (..\..\SYSTEM\MagCaliOnline\matrix.c)(0x595C6E3A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\matrix.o --omf_browse .\output\matrix.crf --depend .\output\matrix.d)
-I (J:\software\Keil 5\ARM\ARMCC\include\math.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdlib.h)(0x53463A44)
-I (J:\software\Keil 5\ARM\ARMCC\include\string.h)(0x53463A44)
-I (..\..\SYSTEM\MagCaliOnline\matrix.h)(0x595C6E3A)
-I (J:\software\Keil 5\ARM\ARMCC\include\stdint.h)(0x53463A44)
-F (..\..\SYSTEM\MagCaliOnline\sdet.c)(0x595C6E3A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\USER -I..\..\SYSTEM\CONFIG -I..\..\SYSTEM\FLASH -I..\..\SYSTEM\USART -I..\..\SYSTEM\MAG -I..\..\SYSTEM\GNSS -I..\..\SYSTEM\MagCali -I..\..\SYSTEM\COMMAND -I..\..\SYSTEM\DELAY -I..\..\SYSTEM\MagCaliOnline --C99-I "J:\software\Keil 5\ARM\RV31\INC"-I "J:\software\Keil 5\ARM\CMSIS\4.1.1\CMSIS\Include"-I "J:\software\Keil 5\Keil\STM32F4xx_DFP\1.0.8\Device\Include"-DSTM32F401xx -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\output\sdet.o --omf_browse .\output\sdet.crf --depend .\output\sdet.d)
-I (J:\software\Keil 5\ARM\ARMCC\include\math.h)(0x53463A44)
-I (..\..\SYSTEM\MagCaliOnline\sdet.h)(0x595C6E3A)

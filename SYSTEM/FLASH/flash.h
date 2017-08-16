@@ -156,6 +156,7 @@ TpBool SetUserUsartBaudrate(uint32_t baudrate);
 /***************************set  mag  parameter*********************************/
 TpBool SetMagSampleRate(uint32_t mag_sample_rate);
 void SetMagCaliPara(float matrix_mag[12]);
+void SetMagCaliParaErase(float matrix_mag[12]);
 void SetMagParaUpdateFlag(void);
 void ClearMagParaUpdateFlag(void);
 uint8_t GetMagParaUpdateFlag(void);

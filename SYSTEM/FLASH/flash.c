@@ -695,7 +695,41 @@ TpBool SetMagSampleRate(uint32_t mag_sample_rate)
 void SetMagCaliPara(float matrix_mag[12])
 {
 	uint8_t i;
-	
+  
+  float bias_new[3];
+  float k_new[9];
+  
+  for(i = 0;i < 12;i++)
+	{
+		if(i < 9)
+		{
+			k_new[i] = matrix_mag[i];/*matrix_mag from 0 to 8*/
+		}
+		else
+		{
+			bias_new[i-9] = matrix_mag[i];
+		}
+	}
+  
+  MagMatrixNewCalc(bias_new,k_new);
+  
+//	for(i = 0;i < 12;i++)
+//	{
+//		if(i < 9)
+//		{
+//			syspara.matrix_mag[i] = matrix_mag[i];/*matrix_mag from 0 to 8*/
+//		}
+//		else
+//		{
+//			syspara.bias_mag[i-9] = matrix_mag[i];
+//		}
+//	}
+}
+
+void SetMagCaliParaErase(float matrix_mag[12])
+{
+	uint8_t i;
+  
 	for(i = 0;i < 12;i++)
 	{
 		if(i < 9)
@@ -708,6 +742,7 @@ void SetMagCaliPara(float matrix_mag[12])
 		}
 	}
 }
+
 
 void SetMagBias(float bias_mag[3])
 {

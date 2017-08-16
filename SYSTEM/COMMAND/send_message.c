@@ -43,9 +43,8 @@ TpVoid LogImuAscii(UmiIgmBin* pUmiOutput)
 	
 	check = CheckAscii(output_data_buff,len);	
 	len = snprintf((char*)output_data_buff,output_buff_size,",*%X\r\n",check);
-	
-	UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
- 
+   
+  UsartPushSendBuf(GetUsartAddress(USART_2),(TpUchar*)output_data_buff,(TpUint16)len);
 }
 
 

@@ -172,6 +172,7 @@ RM3100* ReturnRM3100Address(void);
 TpBool MagCaliCompensate(const float bias_mag[3],const float mul_matrix[],RM3100* rm3100);
 TpBool MagMulMatrixCalc(const float matrix_mag[],const float rotation_mag[],float mul_matrix[]);
 TpBool ChangeMagSampleRate(TpUint16 rate);
+TpBool MagMatrixNewCalc(float bias_mag[3],float mul_matrix[9]);
 //TpBool CombineMagBin(RM3100* pRm3100,UmiMagBin* pUmiMagBin);	
 #ifdef __cplusplus
 }

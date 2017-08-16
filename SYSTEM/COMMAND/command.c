@@ -206,7 +206,7 @@ TpBool SetClass(Package* pa)
   if(!memcmp(SET_MAG_CAL_PARA_ERASE,pa->buf,sizeof(SET_MAG_CAL_PARA_ERASE)-1))
 	{
      float mag_para[MAG_CAL_PARA_NUM] = MAG_CAL_PARA_INIT;
-     SetMagCaliPara(mag_para);
+     SetMagCaliParaErase(mag_para);
 		 result = RESULT_OK;
 		 return result;
 	}	

@@ -169,12 +169,11 @@ TpInt32 main(TpVoid)
 				/***************** mag cali online use *********************/
 							
 				// mag
-				mag[0] = rm3100_out.magx;
-				mag[1] = rm3100_out.magy;
-				mag[2] = rm3100_out.magz;
+				mag[0] = rm3100_out.cal_magx;
+				mag[1] = rm3100_out.cal_magy;
+				mag[2] = rm3100_out.cal_magz;
 
-				MagCalibration();
-	 
+				MagCalibration(); 
 			}			
 	}
 }
@@ -222,17 +221,11 @@ void MagCalibration(void)
 												flag_cali = 0;
 												GetEllipFittingPara(bias,k_matrix);
 												
-												SetMagBias(bias);	
-												SetMagMatrix(k_matrix);
-												
-												__disable_irq() ;
-												FlashWrite();	
-												__enable_irq() ;
-												
+                        MagMatrixNewCalc(bias,k_matrix);
+                        		
 											  len = snprintf((char*)outputPara,200,"Mag Calibration succeed !!!\r\n");
 												UsartPushMainBuf(GetUsartAddress(USART_2),(TpUchar*)outputPara,(TpUint16)len);
-												out_para = 0;
-																			
+												out_para = 0;										
 											}
 											else
 											{
