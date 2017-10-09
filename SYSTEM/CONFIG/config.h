@@ -1,9 +1,7 @@
-/*=========================================================================*/
-/* Copyright (C), 2016, Yagro Co., Ltd.                                    */
-/* File name:   config.h                                                */
-/* Date:        2017.4.25                                                   */
-/* Description:                                                            */
-/*=========================================================================*/
+/**
+ * @file        config.h
+ * @brief       初始化文件
+ */
 
 #ifndef __UMI_HW_CONFIG_H_
 #define __UMI_HW_CONFIG_H_
@@ -43,7 +41,7 @@ extern "C"
 {
 #endif /* __cplusplus */
 
-TpBool HardWareInit(TpVoid);
+void HardWareInit(TpVoid);
 TpVoid EXTI_Config(TpVoid);
 TpBool TIM_Config(TpVoid);
 TpBool GPIO_Config(TpVoid);
@@ -53,7 +51,9 @@ TpBool StartupPrint(TpVoid);
 TpVoid UbloxConfig(TpVoid);
   
 TpVoid NVIC_Config(TpVoid);
-  
+
+void USART_Init_Usr(void);  
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

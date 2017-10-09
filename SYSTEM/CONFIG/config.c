@@ -1,9 +1,7 @@
-/*============================================================================*/
-/* Copyright (C), 2016, Yagro Co., Ltd.                                       */
-/* File name:   config.c                                                      */
-/* Date:        2017.4.24                                                     */
-/* Description: config systick,TIM and Usart                                   */
-/*============================================================================*/
+/**
+ * @file        config.c
+ * @brief       初始化文件
+ */
 
 /*============================================================================*/
 /*                               Header include                               */
@@ -11,11 +9,8 @@
 
 #include "config.h"
 #include "flash.h"
-#include "usart.h"
+#include "USART.h"
 #include "delay.h"
-#if (RM3100_OPEN)
-#include "RM3100.h"
-#endif
 
 
 /*============================================================================*/
@@ -26,142 +21,59 @@
 /*                            Function definition                             */
 /*============================================================================*/
 
-TpBool HardWareInit(TpVoid)
+void USART_Init_Usr()
 {
-  TpBool  result = INLIB_ERROR;
-	
-  TpUint32 baud_usart2;
-  TpUint32 baud_usart6;	
-
-	/* systick init */
-  SystickInit();
-
-	/* flash init */
-	if(FlashRead()!=FLAG_FLASH)
-	{
-		FlashInit();
-		FlashWrite();	
-	}
-	
-	/* init RM3100 and SPI  */
-  if(RM3100_OPEN)
-	{
-    RM3100Config(GetMagRegisterRate());	
-	}
-	
-		/* init UBLOX */
-	if(UBLOX_OPEN)
-	{
-    UbloxInit();
-	}
-
-	baud_usart2 = GetUserUsartBaudrate();
-  UsartConfig(GetUsartAddress(USART_2),USART_2,baud_usart2);
- 
-	baud_usart6 = GetDataUsartBaudrate();
-  UsartConfig(GetUsartAddress(USART_6),USART_6,baud_usart6);
+  Usart* usr_usart;
+  usr_usart = GetUsartAddress(USART_2);
   
-  EXTI_Config();
-  NVIC_Config();
-	
-
-  
-  result = INLIB_OK;
-  return result;
+  UsartConfig(usr_usart,USART_2,230400);
 }
-
 
 TpVoid NVIC_Config(TpVoid)
 {
 	NVIC_InitTypeDef NVIC_InitStructure;
 	
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0 );
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
 	
-	NVIC_InitStructure.NVIC_IRQChannel = USART6_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x00;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x00;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure); 
-	
-	NVIC_InitStructure.NVIC_IRQChannel = EXTI2_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x00;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x01;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-  
-  NVIC_InitStructure.NVIC_IRQChannel=EXTI1_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x01;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x00;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);  	
-	
-	NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream0_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x00;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x01;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-	
-	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x00;
+	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x02;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x02;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-	
-	NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x01;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x03;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
+	NVIC_Init(&NVIC_InitStructure); 
+
 }
 
 
+/**
+ * @brief 定时器初始化
+ * @note  TIM2 ： 20KHZ    以供FreeRTOS系统使用
+ *
+ * @retval 成功返回值： 无
+ * @retval 失败返回值： 无
+ * @pre    调用举例 ： 
+ */ 
 
-TpVoid EXTI_Config(TpVoid)
+void TIM_Configuration(void)
 {
-  
-  GPIO_InitTypeDef GPIO_InitStructure;
-  EXTI_InitTypeDef EXTI_InitStructure;
-  
-#if (EXTI_LINE0_OPEN)
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+  TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
 
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
-  GPIO_Init(GPIOA, &GPIO_InitStructure);
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);  /* Enable TIM2 clock */
 
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
-  SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource0);
-
-  EXTI_ClearITPendingBit(EXTI_Line0);
-  EXTI_InitStructure.EXTI_Line = EXTI_Line0;
-  EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-  EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
-  EXTI_InitStructure.EXTI_LineCmd = ENABLE;
-  EXTI_Init(&EXTI_InitStructure);
-#endif
-
-#if (EXTI_LINE1_OPEN)
-   /* GPIOs Configuration */
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
-
-  /* Configure PA1 pin as input floating */
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
-  GPIO_Init(GPIOB, &GPIO_InitStructure);
-
-  /* LINE1 Configuration */
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
-  SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource1);
-
-  /* Clear pending flags */
-  EXTI_ClearITPendingBit(EXTI_Line1);
-
-  EXTI_InitStructure.EXTI_Line = EXTI_Line1;
-  EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-  EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
-  EXTI_InitStructure.EXTI_LineCmd = ENABLE;
-  EXTI_Init(&EXTI_InitStructure);
-#endif
+  TIM_TimeBaseInitStructure.TIM_Prescaler = 83;                   /* Specifies the prescaler value used to divide the TIM clock. */
+  TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up; /* Specifies the counter mode */
+  TIM_TimeBaseInitStructure.TIM_Period = 49;                     /* Reload value	approximate 20KHz */
+  TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+  TIM_TimeBaseInit(TIM2, &TIM_TimeBaseInitStructure);
+  TIM_ClearFlag(TIM2, TIM_FLAG_Update);
+  TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+  TIM_Cmd(TIM2, ENABLE);
 }
+
+void HardWareInit(TpVoid)
+{
+  TIM_Configuration();
+  USART_Init_Usr();
+  NVIC_Config();
+}
+
+

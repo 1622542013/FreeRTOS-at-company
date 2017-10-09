@@ -57,9 +57,9 @@ typedef struct _tagInterruptRecFlag
 	TpUint16 num_arm2;
 	
 	TpUint16 buff_mag[SPI1_RX_SIZE];
-	TpUchar buff_gnss[BUFSIZE_USART1_REC];
-	TpUchar buff_user[BUFSIZE_USART2_REC];
-	TpUchar buff_arm2[BUFSIZE_USART6_REC];
+	TpUchar buff_gnss[1];
+	TpUchar buff_user[1];
+	TpUchar buff_arm2[1];
 	
 }InterruptRecFlag;
 
@@ -70,10 +70,10 @@ void HardFault_Handler(void);
 void MemManage_Handler(void);
 void BusFault_Handler(void);
 void UsageFault_Handler(void);
-void SVC_Handler(void);
+//void SVC_Handler(void);
 void DebugMon_Handler(void);
-void PendSV_Handler(void);
-void SysTick_Handler(void);
+//void PendSV_Handler(void);
+//void SysTick_Handler(void);
 
 InterruptRecFlag* GetInterruptRecFlag(TpVoid);
 

@@ -272,7 +272,7 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x8010000</StartAddress>
+                <StartAddress>0x8000000</StartAddress>
                 <Size>0x40000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
@@ -335,7 +335,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F401xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\USER;..\..\SYSTEM\CONFIG;..\..\SYSTEM\FLASH;..\..\SYSTEM\USART;..\..\SYSTEM\MAG;..\..\SYSTEM\GNSS;..\..\SYSTEM\MagCali;..\..\SYSTEM\COMMAND;..\..\SYSTEM\DELAY;..\..\SYSTEM\MagCaliOnline</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\USER;..\..\SYSTEM\CONFIG;..\..\SYSTEM\FLASH;..\..\SYSTEM\MAG;..\..\SYSTEM\GNSS;..\..\SYSTEM\MagCali;..\..\SYSTEM\COMMAND;..\..\SYSTEM\DELAY;..\..\SYSTEM\MagCaliOnline;..\..\Libraries\FreeRTOS\include;..\..\Libraries\FreeRTOS\portable;..\..\SYSTEM\USART-1;..\..\USER</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -504,6 +504,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\USER\globals.c</FilePath>
             </File>
+            <File>
+              <FileName>usr_FreeRTOS.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\USER\usr_FreeRTOS.h</FilePath>
+            </File>
+            <File>
+              <FileName>FreeRTOSConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Libraries\FreeRTOS\include\FreeRTOSConfig.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -520,19 +530,9 @@
           <GroupName>USART</GroupName>
           <Files>
             <File>
-              <FileName>usart.c</FileName>
+              <FileName>USART.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\USART\usart.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FLASH</GroupName>
-          <Files>
-            <File>
-              <FileName>flash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\FLASH\flash.c</FilePath>
+              <FilePath>..\..\SYSTEM\USART-1\USART.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -547,82 +547,57 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>MAG</GroupName>
+          <GroupName>FreeRTOS/Source</GroupName>
           <Files>
             <File>
-              <FileName>RM3100.c</FileName>
+              <FileName>croutine.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\MAG\RM3100.c</FilePath>
+              <FilePath>..\..\Libraries\FreeRTOS\croutine.c</FilePath>
+            </File>
+            <File>
+              <FileName>event_groups.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\FreeRTOS\event_groups.c</FilePath>
+            </File>
+            <File>
+              <FileName>list.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\FreeRTOS\list.c</FilePath>
+            </File>
+            <File>
+              <FileName>queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\FreeRTOS\queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>tasks.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\FreeRTOS\tasks.c</FilePath>
+            </File>
+            <File>
+              <FileName>timers.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\FreeRTOS\timers.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>GNSS</GroupName>
+          <GroupName>FreeRTOS/Port</GroupName>
           <Files>
             <File>
-              <FileName>Ublox.c</FileName>
+              <FileName>port.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\GNSS\Ublox.c</FilePath>
+              <FilePath>..\..\Libraries\FreeRTOS\portable\port.c</FilePath>
             </File>
             <File>
-              <FileName>Decode_Ublox.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\GNSS\Decode_Ublox.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>COMMAND</GroupName>
-          <Files>
-            <File>
-              <FileName>command.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\COMMAND\command.c</FilePath>
+              <FileName>portmacro.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Libraries\FreeRTOS\portable\portmacro.h</FilePath>
             </File>
             <File>
-              <FileName>send_message.c</FileName>
+              <FileName>heap_4.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\COMMAND\send_message.c</FilePath>
-            </File>
-            <File>
-              <FileName>command_bin.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\COMMAND\command_bin.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>MAG-calibration</GroupName>
-          <Files>
-            <File>
-              <FileName>cholcal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\MagCaliOnline\cholcal.c</FilePath>
-            </File>
-            <File>
-              <FileName>eigcal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\MagCaliOnline\eigcal.c</FilePath>
-            </File>
-            <File>
-              <FileName>MagCaliOnline.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\MagCaliOnline\MagCaliOnline.c</FilePath>
-            </File>
-            <File>
-              <FileName>Mahony.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\MagCaliOnline\Mahony.c</FilePath>
-            </File>
-            <File>
-              <FileName>matrix.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\MagCaliOnline\matrix.c</FilePath>
-            </File>
-            <File>
-              <FileName>sdet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\SYSTEM\MagCaliOnline\sdet.c</FilePath>
+              <FilePath>..\..\Libraries\FreeRTOS\portable\heap_4.c</FilePath>
             </File>
           </Files>
         </Group>

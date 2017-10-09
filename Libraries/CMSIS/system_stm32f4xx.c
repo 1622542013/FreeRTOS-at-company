@@ -315,7 +315,7 @@
   */
 
 #include "stm32f4xx.h"
-
+//#define STM32F40_41xxx
 /**
   * @}
   */

@@ -654,7 +654,7 @@ TpBool SetUserUsartBaudrate(uint32_t baudrate)
 									syspara.baud_usart2 = baudrate;
 											
 									__disable_irq();
-									UsartConfig(GetUsartAddress(USART_2),USART_2,baudrate);
+								//	UsartConfig(GetUsartAddress(USART_2),USART_2,baudrate);
 									__enable_irq();
 
 									result = RESULT_OK;
