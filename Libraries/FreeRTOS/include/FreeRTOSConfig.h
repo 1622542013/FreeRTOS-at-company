@@ -40,13 +40,13 @@
 #define configUSE_IDLE_HOOK				0   /**< 使能空闲钩子函数 */
 #define configUSE_TICK_HOOK				0   /**< 使能滴答时钟中断里的钩子函数 */
 #define configCPU_CLOCK_HZ				( (uint32_t)84000000 )        /**< 定义系统主频84M */
-#define configTICK_RATE_HZ				( ( TickType_t ) 1000 )       /**< 定义系统时钟节拍  1000HZ */
+#define configTICK_RATE_HZ				( ( TickType_t ) 1000)       /**< 定义系统时钟节拍  1MHZ */
 #define configMAX_PRIORITIES			( 5 )                         /**< 定义系统最大优先级数，定义为5 ，则可使用优先级0，1，2，3，4，不包含5 */
 #define configMINIMAL_STACK_SIZE	( ( unsigned short ) 130 )    /**< 定义系统空闲任务堆大小 */
 #define configTOTAL_HEAP_SIZE			( ( size_t ) ( 20 * 1024 ) )  /**< 定义系统任务堆大小 */
 #define configMAX_TASK_NAME_LEN		( 16 )                        /**< 定义系统任务名最大字节数,结束符也包含在内*/
 #define configUSE_TRACE_FACILITY		1 /**< 要配置显示栈的使用情况 。置1，使能 vTaskList() 和 vTaskGetRunTimeStats() */ 
-#define configUSE_16_BIT_TICKS			0 /**< 定义TickType_t字节数，0即32位（32位单片机使用），1即16位（16，8位单片机使用）*/
+#define configUSE_16_BIT_TICKS			0 /**< 定义TickType_t字节数，0即24位(定义32位变量，只用低24位)（32位单片机使用），1即16位(定义16位变量，只用低8位)*/
 #define configIDLE_SHOULD_YIELD			1 
 #define configUSE_MUTEXES				    1 /**< 使能互斥信号量 */
 #define configQUEUE_REGISTRY_SIZE		8 /**< 定义可以注册的信号量和消息队列设置 */

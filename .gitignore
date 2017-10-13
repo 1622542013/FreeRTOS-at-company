@@ -16,3 +16,5 @@ ipch/
 *.uvoptx
 *.uvguix.*
 Output/
+*mygit*
+*.pub
