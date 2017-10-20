@@ -60,7 +60,7 @@ TpInt32 main(TpVoid)
   
   out_usart = GetUsartAddress(USART_2);  
   test_group = xEventGroupCreate();/*创建事件组*/
-  AppObjCreate ();/*软件定时器组*/
+//  AppObjCreate ();/*软件定时器组*/
   AppMsgCreate();
   /* 启动调度，开始执行任务 */
   vTaskStartScheduler();
@@ -85,7 +85,7 @@ QueueHandle_t xQueue2;
 static void AppMsgCreate (void)
 {
     /* 创建 10 个 uint8_t 型消息队列 */
-    xQueue1 = xQueueCreate(10, sizeof(uint8_t));
+    xQueue1 = xQueueCreate(1, sizeof(TpInt32));
     if( xQueue1 == 0 )
     {
     /* 没有创建成功，用户可以在这里加入创建失败的处理机制 */
@@ -99,139 +99,159 @@ static void AppMsgCreate (void)
     }
 }
 
-
+TpInt32 ucCount = 0;
 void TimerCallback(xTimerHandle pxTimer)
 {
-  TpInt32 ucCount[10] = {1,2,3,4,5,6,7,8,9,0};
-
   
-    if(xQueueSend(xQueue1,(void *) &ucCount,(TickType_t)10) == pdPASS )
-    {
-      len = snprintf((char*)buff,100,"\r\n******************定时器函数来了，哈哈哈哈******************\r\n \r\n=======消息队列发送成功=====\r\n");
-    
-      UsartPushSendBuf(out_usart,(unsigned char*)buff,len);	
-      UsartSend(out_usart);
-    }
+ucCount++;
+  
+//  
+//    if(xQueueSend(xQueue1,(void *) &ucCount,0) == pdPASS )
+//    {
+////      len = snprintf((char*)buff,100,"\r\n******************定时器函数来了，哈哈哈哈******************\r\n \r\n=======消息队列发送成功=====\r\n");
+////    
+////      UsartPushSendBuf(out_usart,(unsigned char*)buff,len);	
+////      UsartSend(out_usart);
+//    }
+//    else
+//    {
+//       ucCount = 0;
+//    }
 }
 
 static TimerHandle_t xTimers = NULL;
 static void AppObjCreate (void)
 {
-  const TickType_t xTimerPer = 1000;
+  const TickType_t xTimerPer = 1;
     /*
     创建定时器，如果在 RTOS 调度开始前初始化定时器，那么系统启动后才会执行。
     */
-    xTimers = xTimerCreate("Timer", /* 定时器名字 */
-                           xTimerPer, /* 定时器周期,单位时钟节拍 */
-                           pdTRUE, /* 周期性 */
-                          (void *) 1, /* 定时器 ID */
-                          TimerCallback); /* 定时器回调函数 */
-    if(xTimers == NULL)
-    {
-      /* 没有创建成功，用户可以在这里加入创建失败的处理机制 */
-    }
-    else
-    {
-      /* 启动定时器，系统启动后才开始工作 */
-      if(xTimerStart(xTimers, 1) != pdPASS)
-      {
-      /* 定时器还没有进入激活状态 */
-      }
-    }
+//    xTimers = xTimerCreate("Timer", /* 定时器名字 */
+//                           1, /* 定时器周期,单位时钟节拍 */
+//                           pdTRUE, /* 周期性 */
+//                          (void *) 1, /* 定时器 ID */
+//                          TimerCallback); /* 定时器回调函数 */
+//    if(xTimers == NULL)
+//    {
+//      /* 没有创建成功，用户可以在这里加入创建失败的处理机制 */
+//    }
+//    else
+//    {
+//      /* 启动定时器，系统启动后才开始工作 */
+//      if(xTimerStart(xTimers, 1) != pdPASS)
+//      {
+//      /* 定时器还没有进入激活状态 */
+//      }
+//    }
 }
 
 
 #define one_bit   (1<<1)
 #define two_bit   (1<<2)
-
+TpInt32 oo;
 char send_buff2[100];
 static void vTaskTaskUserIF(void *pvParameters)
 {
   int len2 = 0;
   static int count = 0;
   EventBits_t test_bit;
+  int i,j,k;
     while(1)
     {
       memset(send_buff2, 0, 100);	//清空内存
-         
-      count++; 
 
-      if((count % 10) == 0)
-      {
-        test_bit = xEventGroupSetBits(test_group, one_bit);
-        len2 += snprintf((char*)send_buff2,100,"\r\n\r\n=======置位 事件标志组 1 ========\r\n\r\n"); 
-      }
-      else if((count % 11) == 0)
-      {
-      //  test_bit = xEventGroupSetBits(test_group, two_bit);
-        len2 += snprintf((char*)send_buff2,100,"\r\n\r\n=======啦啦啦啦啦啦啦啦========\r\n\r\n"); 
-      } 
+      test_bit = xEventGroupSetBits(test_group, one_bit);
+
       
       
-      if(len2 > 0)
-      {
-        UsartPushSendBuf(out_usart,(unsigned char*)send_buff2,len2);
-        UsartSend(out_usart); 
-      }
+
+        count++;
+        len2 += snprintf((char*)send_buff2,100,"TaskIF : %d\r\n",count); 
+   
+        
+        if(len2 > 0)
+        {
+          UsartPushSendBuf(out_usart,(unsigned char*)send_buff2,len2);
+          UsartSend(out_usart); 
+        }
+          
       
-      /* 任务所在位置 */
-      vTaskDelay(1000);
+       vTaskDelay(1000);
     }
+      
 }
 
+TpInt32 rev;
+TpInt32 xx;
+TpInt32 rev2[1000];
 static void vTaskLED(void *pvParameters)
 {
   int len2 = 0;
   static int count = 0;
+  
+  int i,j,k;
+  
+  BaseType_t xResult;
+  
     while(1)
-    {       
-      len = snprintf((char*)buff,100,"test for vTaskLED work number : %d\r\n",count);
-      
-      UsartPushSendBuf(out_usart,(unsigned char*)buff,len);	
-      UsartSend(out_usart);
-      count++;
-      
-      
+    {   
 
-      vTaskDelay(1000);
+//      xResult = xQueueReceive(xQueue1, /* 消息队列句柄 */
+//                             &rev, /* 存储接收到的数据到变量 ucQueueMsgValue 中 */
+//                             portMAX_DELAY);/* 设置阻塞时间 */
+//      
+//      rev2[count] = rev;
+//     
+      for(i = 99999;i>0;i--)
+      {
+        count++;
+        len = snprintf((char*)buff,100,"vTaskLED : %d\r\n",count);
+        
+        UsartPushSendBuf(out_usart,(unsigned char*)buff,len);	
+        UsartSend(out_usart);
+        
+        for(j=999;j>0;j--)
+          for(k=999;k>0;k--);
+      }
     }
 }
 
 char send_buff[500];
 char TaskList_buff[200];
 char TaskRunTimebuff[200];
-
+TpInt32 msg;
 static void vTaskMsgPro(void *pvParameters)
 {
     int len2 = 0;
   
     while(1)
     {
-      vTaskList((char *)TaskList_buff);  
-      vTaskGetRunTimeStats((char *)TaskRunTimebuff);      
-    
-      memset(send_buff, 0, 500);	//清空内存
-      len2 = snprintf((char*)send_buff,500,
-"\r\n=================================================\r\ntask         status   priority   no_use_Stack_Size    ID \r\n%s\r\n\r\ntask_name       work_time         useful_rate\r\n%s\r\n",
-      TaskList_buff,TaskRunTimebuff); 
+//      vTaskList((char *)TaskList_buff);  
+//      vTaskGetRunTimeStats((char *)TaskRunTimebuff);      
+//    
+//      memset(send_buff, 0, 500);	//清空内存
+//      len2 = snprintf((char*)send_buff,500,
+//"\r\n=================================================\r\ntask         status   priority   no_use_Stack_Size    ID \r\n%s\r\n\r\ntask_name       work_time         useful_rate\r\n%s\r\n",
+//      TaskList_buff,TaskRunTimebuff); 
 
-      UsartPushSendBuf(out_usart,(unsigned char*)send_buff,len2);	
-      UsartSend(out_usart);
-      
+//      UsartPushSendBuf(out_usart,(unsigned char*)send_buff,len2);	
+//      UsartSend(out_usart);
+//      msg++;
       vTaskDelay(1000);
     }
 }
-
+int test;
 static void vTaskStart(void *pvParameters)
 {
     EventBits_t test_bit;
   
     while(1)
     {
+      test++;
        test_bit = xEventGroupWaitBits(test_group,      /* 事件标志组句柄 */
                                       one_bit|two_bit,            /* 等待 bit0 和 bit1 被设置 */
                                       pdTRUE,            /* 退出前 bit0 和 bit1 被清除，这里是 bit0 和 bit1都被设置才表示“退出” */
-                                      pdFALSE,         /* 设置为 pdTRUE 表示等待 bit1 和 bit0 都被设置*/
+                                      pdTRUE,         /* 设置为 pdTRUE 表示等待 bit1 和 bit0 都被设置*/
                                       portMAX_DELAY);
       
       if(test_bit & one_bit)
@@ -250,13 +270,13 @@ static void AppTaskCreate (void)
                  "vTaskUserIF",     /* 任务名    */
                  800,               /* 任务栈大小，单位：4字节 */
                  NULL,              /* 任务参数  */
-                 1,                  /* 任务优先级*/
+                 2,                  /* 任务优先级*/
                  &xHandleTaskUserIF );  /* 任务句柄  */
     
     
      xTaskCreate( vTaskLED,           /* 任务函数 */
                  "vTaskLED",         /* 任务名    */
-                 500,                 /* 任务栈大小，单位：4字节 */
+                 800,                 /* 任务栈大小，单位：4字节 */
                  NULL,               /* 任务参数  */
                  2,                  /* 任务优先级*/
                  &xHandleTaskLED ); /* 任务句柄  */
